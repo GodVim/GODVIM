@@ -4,10 +4,6 @@ return {
 	dependencies = {
 		'zeioth/garbage-day.nvim',
 		'williamboman/mason.nvim',
-		{
-			'nvim-java/nvim-java',
-      event = "InsertEnter"
-		},
 		'williamboman/mason-lspconfig.nvim',
 	},
 	config = function()
@@ -32,8 +28,6 @@ return {
 			automatic_installation = true,
 		})
 
-        require("java").setup({})
-        lspconfig.jdtls.setup({})
 
 		for _, server in ipairs(servers) do
 			lspconfig[server].setup({})
