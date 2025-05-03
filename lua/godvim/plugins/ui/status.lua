@@ -1,6 +1,6 @@
 return {
 	"rebelot/heirline.nvim",
-	event = "BufReadPre",
+	event = "UiEnter",
 	dependencies = { "Zeioth/heirline-components.nvim" },
 	opts = function()
 		local lib = require "heirline-components.all"
