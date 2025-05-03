@@ -34,15 +34,6 @@ return {
 
 		require('java').setup()
 
-		lspconfig[lua_ls].setup({
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { 'vim' }, -- Tell lua_ls that `vim` is a global
-					},
-				},
-			},
-		})
 		for _, server in ipairs(servers) do
 			lspconfig[server].setup({})
 		end
