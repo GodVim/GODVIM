@@ -32,14 +32,11 @@ return {
 			automatic_installation = true,
 		})
 
+        require("java").setup({})
+        lspconfig.jdtls.setup({})
 
 		for _, server in ipairs(servers) do
 			lspconfig[server].setup({})
-      if server = "jdtls" then
-        require("java").setup({})
-        lspconfig.jdtls.setup({})
-      end
-
 		end
 	end,
 }
