@@ -35,7 +35,7 @@ return {
       { "<leader>fb", "<cmd>Telescope Buffers<cr>",                               desc = "Buffers" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>",                             desc = "Help" },
 
-      { "<leader>ca", vim.lsp.buf.code_action,                                    desc = "Code Action",    mode = { "n", "v" } },
+      { "<leader>ca", "<cmd>lua require('actions-preview').code_actions()<cr>",   desc = "Code Action",    mode = { "n", "v" } },
 
       { "<leader>m",  "<cmd>RenderMarkdown toggle<cr>",                           desc = "Render Markdown" },
       { "<leader>e",  "<cmd>lua require('mini.files').open()<cr>",                desc = "File Explorer" },
