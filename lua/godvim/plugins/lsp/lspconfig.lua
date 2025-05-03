@@ -6,7 +6,7 @@ return {
 		'williamboman/mason.nvim',
 		{
 			'nvim-java/nvim-java',
-			event = "InsertEnter"
+      event = "InsertEnter"
 		},
 		'williamboman/mason-lspconfig.nvim',
 	},
@@ -32,10 +32,14 @@ return {
 			automatic_installation = true,
 		})
 
-		require('java').setup()
 
 		for _, server in ipairs(servers) do
 			lspconfig[server].setup({})
+      if server = "jdtls" then
+        require("java").setup({})
+        lspconfig.jdtls.setup({})
+      end
+
 		end
 	end,
 }
