@@ -1,14 +1,34 @@
+local current = 2
 return {
-	's1n7ax/nvim-terminal',
-	event = "BufReadPost",
-	config = function()
-		vim.o.hidden = true
-		require('nvim-terminal').setup({
-			disable_default_keymaps = true,
-		})
-		terminal = require('nvim-terminal').DefaultTerminal;
-
-		vim.api.nvim_set_keymap('n', '<leader>t', ':lua terminal:toggle()<cr>',
-			{ silent = true, desc = "Toggle Terminal" })
-	end,
+  'CRAG666/betterTerm.nvim',
+  keys = {
+    {
+      mode = { 'n', 't' },
+      '<leader>t',
+      function()
+        require('betterTerm').open()
+      end,
+      desc = 'Open terminal',
+    },
+    {
+      '<leader>ft',
+      function()
+        require('betterTerm').select()
+      end,
+      desc = 'Select terminal',
+    },
+    {
+      '<leader>ti',
+      function()
+        require('betterTerm').open(current)
+        current = current + 1
+      end,
+      desc = 'Init new terminal',
+    },
+  },
+  opts = {
+    position = 'bot',
+    size = 15,
+  },
+  -- config = true,
 }

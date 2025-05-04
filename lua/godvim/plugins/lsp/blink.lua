@@ -1,68 +1,106 @@
 return {
-  "Saghen/blink.cmp",
-  dependencies = { "rafamadriz/friendly-snippets" },
-
-  event = { "InsertEnter", "CmdlineEnter" },
-  version = "*",
-
-  ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
-  opts = {
-    -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
-    -- 'super-tab' for mappings similar to vscode (tab to accept)
-    -- 'enter' for enter to accept
-    -- 'none' for no mappings
-    -- All presets have the following mappings:
-    -- C-space: Open menu or open docs if already open
-    -- C-n/C-p or Up/Down: Select next/previous item
-    -- C-e: Hide menu
-    -- C-k: Toggle signature help (if signature.enabled = true)
-    keymap = { preset = "default" },
-
-    appearance = {
-      nerd_font_variant = "mono",
-    },
-
-    cmdline = {
-      enabled = true,
-      completion = {
-        menu = { auto_show = true },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
     },
-    completion = {
-      accept = {
-        auto_brackets = { enabled = true },
-      },
-      documentation = {
-        auto_show = true,
-        auto_show_delay_ms = 200,
-      },
-      ghost_text = {
-        enabled = true,
-        show_without_selection = true,
-      },
-      list = {
-        selection = {
-          preselect = false,
-          auto_insert = true,
-        },
-      },
-      menu = {
-        draw = {
-          columns = {
-            { "label",    "label_description", gap = 1 },
-            { "kind_icon" },
-          },
-          treesitter = { "lsp" },
-        },
-      },
-    },
-
-    sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
-    },
-
-    fuzzy = { implementation = "prefer_rust_with_warning" },
   },
-  opts_extend = { "sources.default" },
+  {
+	"Saghen/blink.cmp",
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		"mikavilpas/blink-ripgrep.nvim"
+	},
+	event = {
+		"InsertEnter",
+		"CmdlineEnter"
+	},
+	version = "*",
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+	opts = {
+		keymap = {
+			preset = "enter"
+		},
+		appearance = {
+			nerd_font_variant = "mono"
+		},
+		completion = {
+			accept = {
+				auto_brackets = {
+					enabled = true
+				}
+			},
+			documentation = {
+				auto_show = true
+			},
+			ghost_text = {
+				enabled = false
+			},
+			list = {
+				selection = {
+					preselect = false,
+					auto_insert = true
+				}
+			},
+			menu = {
+            draw = {
+      components = {
+        kind_icon = {
+          text = function(ctx)
+            local kind_icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
+            return kind_icon
+          end,
+          -- (optional) use highlights from mini.icons
+          highlight = function(ctx)
+            local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+            return hl
+          end,
+        },
+        kind = {
+          -- (optional) use highlights from mini.icons
+          highlight = function(ctx)
+            local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+            return hl
+          end,
+        }
+      }
+    }
+			}
+		},
+		sources = {
+			default = {
+				"lsp",
+				"path",
+				"snippets",
+				"buffer",
+				"ripgrep",
+        "lazydev",
+			},
+			providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            -- make lazydev completions top priority (see `:h blink.cmp`)
+            score_offset = 100,
+          },
+				ripgrep = {
+					module = "blink-ripgrep",
+					name = "Ripgrep",
+					score_offset = -4,
+                    ---@module "blink-ripgrep"
+                    ---@type blink-ripgrep.Options
+					opts = {
+						prefix_mix_len = 3,
+						context_size = 5,
+						max_filesize = "1M"
+					}
+				}
+			}
+		}
+	}
+}
 }

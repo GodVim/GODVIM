@@ -15,7 +15,6 @@ return {
 
 		local servers = {
 			'lua_ls',
-			'jdtls',
 			'ruff',
 			'jsonls',
 			'yamlls',
