@@ -2,12 +2,7 @@ return {
   "gbprod/substitute.nvim",
 
   event = { "BufReadPre", "BufNewFile" },
-  config = function()
-    local substitute = require("substitute")
-
-    substitute.setup()
-  end,
-
+  opts = {},
   -- stylua: ignore
   keys = {
     { "<leader>rs", function() require("substitute").operator() end, desc = "Substitute with motion" },

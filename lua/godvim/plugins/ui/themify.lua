@@ -3,9 +3,7 @@ return {
 	"lmantw/themify.nvim",
 	lazy = false, -- load on Neovim startup
 	priority = 999,
-
-	config = function()
-		require("themify").setup({
+  opts = {
 			{
 				"folke/tokyonight.nvim",
 				blacklist = { "tokyonight-day", "tokyonight-storm" },
@@ -33,6 +31,5 @@ return {
 			"gbprod/nord.nvim",
 			"loctvl842/monokai-pro.nvim",
 			"default"
-		})
-	end,
+		}
 }
