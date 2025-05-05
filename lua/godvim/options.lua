@@ -1,4 +1,14 @@
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.laststatus = 3
+vim.loader.enable()
+local set = vim.opt
+
+set.tabstop = 2
+set.shiftwidth = 2
+set.expandtab = true
+set.laststatus = 3
+set.smoothscroll = true
+set.smartindent = true
+set.ignorecase = true
+set.smartcase = true
+
+set.updatetime = 200
+

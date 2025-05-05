@@ -19,7 +19,7 @@ return {
 
 		format_on_save = {
 			lsp_fallback = false,
-			timeout_ms = 1000,
+			imeout_ms = 1000,
 		},
 
 		formatters = {
