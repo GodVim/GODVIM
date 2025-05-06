@@ -1,9 +1,9 @@
 return {
 	"rebelot/heirline.nvim",
-	event = "BufReadPre",
+	event = "UiEnter",
 	dependencies = { "Zeioth/heirline-components.nvim" },
 	opts = function()
-		local lib = require "heirline-components.all"
+		local lib = require("heirline-components.all")
 		return {
 			statusline = { -- UI statusbar
 				hl = { fg = "fg", bg = "bg" },
@@ -26,7 +26,7 @@ return {
 	config = function(_, opts)
 		vim.o.cmdheight = 0
 		local heirline = require("heirline")
-		local heirline_components = require "heirline-components.all"
+		local heirline_components = require("heirline-components.all")
 
 		-- Setup
 		heirline_components.init.subscribe_to_events()
