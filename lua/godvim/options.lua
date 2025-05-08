@@ -1,14 +1,14 @@
 vim.loader.enable()
-local set = vim.opt
+local opt = vim.opt
 
-set.tabstop = 2
-set.shiftwidth = 2
-set.expandtab = true
-set.laststatus = 3
-set.smoothscroll = true
-set.smartindent = true
-set.ignorecase = true
-set.smartcase = true
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.laststatus = 3
+opt.smoothscroll = true
+opt.smartindent = true
+opt.ignorecase = true
+opt.smartcase = true
 
-set.updatetime = 200
-
+opt.updatetime = 200
+opt.clipboard:append("unnamedplus")
