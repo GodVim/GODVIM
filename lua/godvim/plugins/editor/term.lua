@@ -1,34 +1,26 @@
 local current = 2
 return {
-  'CRAG666/betterTerm.nvim',
-  keys = {
-    {
-      mode = { 'n', 't' },
-      '<leader>t',
-      function()
-        require('betterTerm').open()
-      end,
-      desc = 'Open terminal',
-    },
-    {
-      '<leader>ft',
-      function()
-        require('betterTerm').select()
-      end,
-      desc = 'Select terminal',
-    },
-    {
-      '<leader>ti',
-      function()
-        require('betterTerm').open(current)
-        current = current + 1
-      end,
-      desc = 'Init new terminal',
-    },
-  },
-  opts = {
-    position = 'bot',
-    size = 15,
-  },
-  -- config = true,
+	"CRAG666/betterTerm.nvim",
+	keys = {
+		{
+			mode = { "n", "t" },
+			"<leader>t",
+			function()
+				require("betterTerm").open()
+			end,
+			desc = "Open terminal",
+		},
+		{
+			"<leader>ft",
+			function()
+				require("betterTerm").select()
+			end,
+			desc = "Select terminal",
+		},
+	},
+	opts = {
+		position = "bot",
+		size = 15,
+	},
+	-- config = true,
 }
