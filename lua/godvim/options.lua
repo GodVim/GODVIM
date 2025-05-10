@@ -12,3 +12,8 @@ opt.smartcase = true
 
 opt.updatetime = 200
 opt.clipboard:append("unnamedplus")
+
+
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+opt.whichwrap:append "<>[]hl"

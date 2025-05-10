@@ -1,35 +1,36 @@
 return {
 
-	"lmantw/themify.nvim",
-	lazy = false, -- load on Neovim startup
-	priority = 999,
+  "lmantw/themify.nvim",
+  lazy = false, -- load on Neovim startup
+  priority = 999,
   opts = {
-			{
-				"folke/tokyonight.nvim",
-				blacklist = { "tokyonight-day", "tokyonight-storm" },
-			},
-			{
-				"everviolet/nvim",
-				branch = "mega",
-				blacklist = { "evergarden-winter", "evergarden-spring" },
-			},
-			{
-				"catppuccin/nvim",
-				blacklist = { "catppuccin-latte", "catppuccin-mocha" },
-			},
-			{
-				"rose-pine/neovim",
-				blacklist = { "rose-pine-dawn", "rose-pine-moon" },
-			},
-			"lunarvim/synthwave84.nvim",
-			"Shatur/neovim-ayu",
-			"phha/zenburn.nvim",
-			"projekt0n/github-nvim-theme",
-			"ellisonleao/gruvbox.nvim",
-			"marko-cerovac/material.nvim",
-			"navarasu/onedark.nvim",
-			"gbprod/nord.nvim",
-			"loctvl842/monokai-pro.nvim",
-			"default"
-		}
+    {
+      "folke/tokyonight.nvim",
+      blacklist = { "tokyonight-day", "tokyonight-storm" },
+    },
+    {
+      "everviolet/nvim",
+      branch = "mega",
+      blacklist = { "evergarden-winter", "evergarden-spring" },
+    },
+    {
+      "catppuccin/nvim",
+      blacklist = { "catppuccin-latte", "catppuccin-mocha" },
+    },
+    {
+      "rose-pine/neovim",
+      blacklist = { "rose-pine-dawn", "rose-pine-moon" },
+    },
+    {
+      "rmehri01/onenord.nvim",
+      branch = "main",
+      blacklist = { "onenord-light" },
+    },
+    "navarasu/onedark.nvim",
+    "gbprod/nord.nvim",
+    "EdenEast/nightfox.nvim",
+    "sainnhe/sonokai",
+    "loctvl842/monokai-pro.nvim",
+    "default"
+  }
 }
