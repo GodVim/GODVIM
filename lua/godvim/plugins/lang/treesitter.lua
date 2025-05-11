@@ -1,18 +1,24 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPre", "BufNewFile" },
-  build = ":TSUpdate",
-  dependencies = {
-    "windwp/nvim-ts-autotag",
+  {
+    "folke/todo-comments.nvim",
+    -- dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
   },
-  config = function(__opts)
-    require("nvim-treesitter").setup(__opts)
-  end,
-opts  = {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPre", "BufNewFile" },
+    build = ":TSUpdate",
+    dependencies = {
+      "windwp/nvim-ts-autotag",
+    },
+    opts = {
       highlight = {
         enable = true,
       },
-      -- enable indentation
       indent = { enable = true },
       -- enable autotagging (w/ nvim-ts-autotag plugin)
       autotag = {
@@ -40,3 +46,4 @@ opts  = {
       },
     }
   }
+}
