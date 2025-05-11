@@ -12,6 +12,7 @@ return {
       { "<leader>s",  group = "Sessions" },
       { "<leader>f",  group = "Find" },
       { "<leader>d",  group = "Debug" },
+      { "<leader>t",  group = "Todos" },
 
       ----- Buffers -----
       { "<leader>bd", "<cmd>bdelete<cr>",                                         desc = "Close buffer" },
@@ -24,14 +25,19 @@ return {
       { "<leader>fb", "<cmd>Telescope Buffers<cr>",                               desc = "Buffers" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>",                             desc = "Help" },
       { "<leader>fr", '<cmd>lua require("ssr").open()<cr>',                       desc = "Replace" },
+      { "<leader>ft", "<cmd>TodoTelescope<cr>",                                   desc = "Todo" },
 
+      ----- Todos -----
+      { "<leader>ts", "<cmd>TodoQuickFix<cr>",                                    desc = "List todos" },
+      { "<leader>tl", "<cmd>Trouble todo",                                        desc = "Outline todos" },
+
+      ----- random stuff -----
       {
         "<leader>ca",
         "<cmd>lua require('actions-preview').code_actions()<cr>",
         desc = "Code Action",
         mode = { "n", "v" },
       },
-
       { "<leader>a", "<cmd>Themify<cr>",                          desc = "Themes" },
       { "<leader>e", "<cmd>lua require('mini.files').open()<cr>", desc = "File Explorer" },
     })
