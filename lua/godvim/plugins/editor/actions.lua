@@ -1,4 +1,5 @@
 return {
- "aznhe21/actions-preview.nvim",
-	event = "InsertEnter",
+  "aznhe21/actions-preview.nvim",
+  event = "InsertEnter",
+  lazy = true,
 }

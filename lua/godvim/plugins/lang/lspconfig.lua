@@ -1,7 +1,8 @@
 return {
-      { "williamboman/mason-lspconfig"
-      },
-    {
+  {
+    "williamboman/mason-lspconfig"
+  },
+  {
     "nvim-java/nvim-java",
     ft = "java",
     dependencies = {
