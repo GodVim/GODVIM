@@ -1,6 +1,5 @@
 return {
-	'xeluxee/competitest.nvim',
-	dependencies = 'MunifTanjim/nui.nvim',
-	cmd = "CompetiTest",
+  'xeluxee/competitest.nvim',
+  cmd = "CompetiTest",
   opts = {},
 }

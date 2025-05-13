@@ -22,14 +22,14 @@ return {
 
       { "<leader>ff", "<cmd>Telescope find_files<cr>",                            desc = "Files" },
       { "<leader>fg", "<cmd>Telescope live_grep<cr>",                             desc = "Grep" },
-      { "<leader>fb", "<cmd>Telescope Buffers<cr>",                               desc = "Buffers" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>",                               desc = "Buffers" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>",                             desc = "Help" },
       { "<leader>fr", '<cmd>lua require("ssr").open()<cr>',                       desc = "Replace" },
       { "<leader>ft", "<cmd>TodoTelescope<cr>",                                   desc = "Todo" },
 
       ----- Todos -----
       { "<leader>ts", "<cmd>TodoQuickFix<cr>",                                    desc = "List todos" },
-      { "<leader>tl", "<cmd>Trouble todo",                                        desc = "Outline todos" },
+      { "<leader>tl", "<cmd>Trouble todo<cr>",                                    desc = "Outline todos" },
 
       ----- random stuff -----
       {

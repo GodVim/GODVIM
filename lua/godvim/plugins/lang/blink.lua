@@ -69,11 +69,11 @@ return {
       },
       sources = {
         default = {
+          "snippets",
+          "ripgrep",
           "lsp",
           "path",
-          "snippets",
           "buffer",
-          "ripgrep",
           "lazydev",
         },
         providers = {
