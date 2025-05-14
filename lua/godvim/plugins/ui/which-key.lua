@@ -20,6 +20,7 @@ return {
       { "<leader>bb", "<cmd>Telescope buffers<cr>",                               desc = "Switch buffer" },
       { "<leader>bf", "<cmd>lua require('conform').format({ async = true })<cr>", desc = "Format Buffer" },
 
+      ----- Telescope -----
       { "<leader>ff", "<cmd>Telescope find_files<cr>",                            desc = "Files" },
       { "<leader>fg", "<cmd>Telescope live_grep<cr>",                             desc = "Grep" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>",                               desc = "Buffers" },
@@ -31,13 +32,16 @@ return {
       { "<leader>ts", "<cmd>TodoQuickFix<cr>",                                    desc = "List todos" },
       { "<leader>tl", "<cmd>Trouble todo<cr>",                                    desc = "Outline todos" },
 
-      ----- random stuff -----
+      ----- Code -----
+      { "<leader>cr", "<cmd>RunCode<cr>",                                         desc = "Run" },
       {
         "<leader>ca",
         "<cmd>lua require('actions-preview').code_actions()<cr>",
         desc = "Code Action",
-        mode = { "n", "v" },
       },
+
+      ----- random stuff -----
+
       { "<leader>a", "<cmd>Themify<cr>",                          desc = "Themes" },
       { "<leader>e", "<cmd>lua require('mini.files').open()<cr>", desc = "File Explorer" },
     })
