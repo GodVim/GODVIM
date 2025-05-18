@@ -31,14 +31,14 @@ return {
     version = false,
     opts = {},
   },
-  -- {
-  -- 	"echasnovski/mini.tabline",
-  -- 	event = "BufReadPost", -- Load only after a real file is opened
-  -- 	version = false,
-  -- 	config = function()
-  -- 		require("mini.tabline").setup()
-  -- 	end,
-  -- },
+  {
+    "echasnovski/mini.tabline",
+    event = "BufReadPost", -- Load only after a real file is opened
+    version = false,
+    config = function()
+      require("mini.tabline").setup()
+    end,
+  },
   {
     "echasnovski/mini.snippets",
     dependencies = {
