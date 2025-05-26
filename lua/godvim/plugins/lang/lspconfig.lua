@@ -22,7 +22,7 @@ return {
       "zeioth/garbage-day.nvim",
       {
         "mason-org/mason.nvim",
-         version = "^1.0.0" 
+         version = "^1.0.0",
         opts = {
           registries = {
             'github:nvim-java/mason-registry@2024-12-24-graceful-raft',
