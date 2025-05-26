@@ -20,7 +20,7 @@ return {
     dependencies = {
       "zeioth/garbage-day.nvim",
       {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         opts = {
           registries = {
             'github:nvim-java/mason-registry@2024-12-24-graceful-raft',
