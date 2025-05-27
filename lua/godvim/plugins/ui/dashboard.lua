@@ -22,10 +22,10 @@ return {
         center = {
           { action = "Telescope find_files", desc = " Find File", icon = " ", key = "f" },
           { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
+          { action = 'Telescope projects', desc = " Projects", icon = " ", key = "p" },
           { action = "Telescope old_files", desc = " Recent Files", icon = " ", key = "r" },
-          --    { action = "Telescope live_grep", desc = " Find Text", icon = " ", key = "g" },
+          { action = "Telescope live_grep", desc = " Find Text", icon = " ", key = "g" },
           { action = "Leet", desc = " Leetcode", icon = " ", key = "c" },
-          { action = 'require("persistence").load({})', desc = " Restore Session", icon = " ", key = "s" },
           { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
           { action = "vim.api.nvim_input('<cmd>qa<cr>')", desc = " Quit", icon = " ", key = "q" },
         },
