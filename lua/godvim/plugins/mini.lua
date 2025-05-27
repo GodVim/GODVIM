@@ -41,7 +41,7 @@ return {
   },
   {
     "echasnovski/mini.snippets",
-    event = "User FilePost"
+    event = "User FilePost",
     dependencies = {
       "rafamadriz/friendly-snippets",
     },
