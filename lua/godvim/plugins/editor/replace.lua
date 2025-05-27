@@ -1,5 +1,6 @@
 return {
   "cshuaimin/ssr.nvim",
+  lazy = true,
   module = "ssr",
   opts = {
     border = "rounded",
