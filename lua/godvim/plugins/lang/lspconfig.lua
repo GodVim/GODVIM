@@ -7,7 +7,7 @@ return {
       ts = { "biomejs" },
       tsx = { "biomejs" },
       jsx = { "biomejs" },
-  }
+  },
   {
     "williamboman/mason-lspconfig",
      version = "^1.0.0" 
