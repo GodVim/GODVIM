@@ -2,7 +2,7 @@ return {
 
   "lmantw/themify.nvim",
   priority = 999,
-  event = "UiEnter",
+  lazy = false,
   opts = {
     {
       "folke/tokyonight.nvim",
