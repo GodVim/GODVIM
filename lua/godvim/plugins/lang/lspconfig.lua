@@ -43,8 +43,8 @@ return {
         "lua_ls",
         "ruff",
         "jsonls",
-        "jdtls",
-        "yamlls",
+
+                "yamlls",
         "pyright",
         "marksman",
       }
@@ -69,7 +69,6 @@ return {
 --        },
 --      })
 
-      lspconfig.jdtls.setup({})
       lspconfig.lua_ls.setup({})
       lspconfig.jsonls.setup({})
       lspconfig.ruff.setup({})
