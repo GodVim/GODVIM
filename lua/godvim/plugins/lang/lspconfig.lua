@@ -7,6 +7,7 @@ return {
       ts = { "biomejs" },
       tsx = { "biomejs" },
       jsx = { "biomejs" },
+    }
   },
   {
     "williamboman/mason-lspconfig",
@@ -88,3 +89,4 @@ return {
     end,
   }
 }
+
