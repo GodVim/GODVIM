@@ -47,7 +47,7 @@ return {
         "yamlls",
         "pyright",
         "marksman",
---        "jdtls",
+        "jdtls",
       }
 
 
@@ -70,7 +70,7 @@ return {
 --        },
 --      })
 
-      --   lspconfig.jdtls.setup({})
+      lspconfig.jdtls.setup({})
       lspconfig.lua_ls.setup({})
       lspconfig.jsonls.setup({})
       lspconfig.ruff.setup({})
