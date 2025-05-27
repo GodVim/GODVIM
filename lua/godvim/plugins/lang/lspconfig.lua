@@ -1,14 +1,5 @@
 return {
-  {
-    "mfussenegger/nvim-lint",
-    event = "User FilePost",
-    opts = {
-      js = { "biomejs" },
-      ts = { "biomejs" },
-      tsx = { "biomejs" },
-      jsx = { "biomejs" },
-    }
-  },
+
   {
     lazy = true,
     "williamboman/mason-lspconfig",
