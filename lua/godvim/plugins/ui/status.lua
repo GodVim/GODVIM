@@ -7,12 +7,6 @@ return {
       local lib = require("heirline-components.all")
 
       return {
-        tabline = { -- UI upper bar
-          lib.component.tabline_conditional_padding(),
-          lib.component.tabline_buffers(),
-          lib.component.fill { hl = { bg = "tabline_bg" } },
-          lib.component.tabline_tabpages()
-        },
         statusline = {
           hl = { fg = "fg", bg = "bg" },
           lib.component.mode(),
@@ -26,13 +20,7 @@ return {
           lib.component.compiler_state(),
           lib.component.virtual_env(),
           lib.component.nav(),
-        },
-        statuscolumn = {
-          lib.component.foldcolumn(),
-          lib.component.fill(),
-          lib.component.numbercolumn(),
-          lib.component.signcolumn(),
-        },
+        }
       }
     end,
     config = function(_, opts)
