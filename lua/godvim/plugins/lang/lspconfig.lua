@@ -47,7 +47,6 @@ return {
         "yamlls",
         "pyright",
         "marksman",
-        "jdtls",
       }
 
 
