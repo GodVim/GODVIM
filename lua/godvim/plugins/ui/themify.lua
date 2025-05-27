@@ -1,8 +1,8 @@
 return {
 
   "lmantw/themify.nvim",
-  lazy = false, -- load on Neovim startup
   priority = 999,
+  event = "UiEnter",
   opts = {
     {
       "folke/tokyonight.nvim",
