@@ -1,7 +1,7 @@
 return {
-  {
     "rebelot/heirline.nvim",
     event = "UiEnter",
+  priority = "1",
     dependencies = { "Zeioth/heirline-components.nvim" },
     opts = function()
       local lib = require("heirline-components.all")
@@ -45,4 +45,4 @@ return {
       heirline.load_colors(lib.hl.get_colors())
       heirline.setup(opts)
     end,
-  } }
+  } 
