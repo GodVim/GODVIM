@@ -18,8 +18,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    --event = "BufReadPre",
-    event = "FileLoaded",
+    event = "BufReadPre",
     dependencies = {
       "zeioth/garbage-day.nvim",
       {
