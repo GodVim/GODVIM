@@ -1,5 +1,14 @@
 return {
   {
+    "mfussenegger/nvim-lint",
+    event = "User FilePost",
+    opts = {
+      js = { "biomejs" },
+      ts = { "biomejs" },
+      tsx = { "biomejs" },
+      jsx = { "biomejs" },
+  }
+  {
     "williamboman/mason-lspconfig",
      version = "^1.0.0" 
   },
@@ -16,8 +25,8 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    event = "BufReadPre",
-    -- event = "User FilePost",
+    --event = "BufReadPre",
+    event = "User FilePost",
     dependencies = {
       "zeioth/garbage-day.nvim",
       {
