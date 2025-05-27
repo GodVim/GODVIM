@@ -1,6 +1,6 @@
 return  {
   "mfussenegger/nvim-lint",
-  event = "User FilePost",
+  event = "FileLoaded",
   config = function()
     require('lint').linters_by_ft = {
       js = { "biomejs" },
