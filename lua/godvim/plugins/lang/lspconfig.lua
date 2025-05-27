@@ -47,7 +47,7 @@ return {
         "yamlls",
         "pyright",
         "marksman",
-        "jdtls",
+--        "jdtls",
       }
 
 
@@ -56,19 +56,19 @@ return {
       })
 
 
-      require("java").setup({
-        jdk = {
-          auto_install = false,
-        },
-      })
+--      require("java").setup({
+--        jdk = {
+--          auto_install = false,
+--        },
+--      })
 
-      require("lspconfig").jdtls.setup({
-        handlers = {
+--      require("lspconfig").jdtls.setup({
+--        handlers = {
           -- By assigning an empty function, you can remove the notifications
           -- printed to the cmd
-          ["$/progress"] = function(_, result, ctx) end,
-        },
-      })
+--          ["$/progress"] = function(_, result, ctx) end,
+--        },
+--      })
 
       --   lspconfig.jdtls.setup({})
       lspconfig.lua_ls.setup({})
