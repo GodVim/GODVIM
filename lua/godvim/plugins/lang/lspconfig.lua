@@ -10,6 +10,7 @@ return {
     }
   },
   {
+    lazy = true,
     "williamboman/mason-lspconfig",
      version = "^1.0.0" 
   },
