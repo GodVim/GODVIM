@@ -33,7 +33,6 @@ return {
   },
   {
     "echasnovski/mini.tabline",
-    event = "FileLoaded", -- Load only after a real file is opened
     version = false,
     config = function()
       require("mini.tabline").setup()
@@ -41,7 +40,7 @@ return {
   },
   {
     "echasnovski/mini.snippets",
-    event = "FileLoaded",
+    event = "VeryLazy",
     dependencies = {
       "rafamadriz/friendly-snippets",
     },
