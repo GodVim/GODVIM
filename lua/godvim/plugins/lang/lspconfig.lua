@@ -62,7 +62,7 @@ return {
             },
           },
         },
-      }
+      },
     config = function()
       local mason = require("mason")
       local lspconfig = require("lspconfig")
