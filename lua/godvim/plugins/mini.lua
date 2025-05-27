@@ -33,7 +33,7 @@ return {
   },
   {
     "echasnovski/mini.tabline",
-    event = "BufReadPost", -- Load only after a real file is opened
+    event = "User FilePost", -- Load only after a real file is opened
     version = false,
     config = function()
       require("mini.tabline").setup()
