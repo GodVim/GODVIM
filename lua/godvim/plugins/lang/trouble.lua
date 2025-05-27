@@ -6,7 +6,7 @@ return {
         win = { position = "right" },
       },
     },
-  }
+  },
   cmd = "Trouble",
   keys = {
     {
