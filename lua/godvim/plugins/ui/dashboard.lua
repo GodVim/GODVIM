@@ -26,7 +26,7 @@ return {
           { action = "Telescope old_files", desc = " Recent Files", icon = " ", key = "r" },
           { action = "Leet", desc = " Leetcode", icon = " ", key = "c" },
           { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
-          { action = "qa')", desc = " Quit", icon = " ", key = "q" },
+          { action = "qa", desc = " Quit", icon = " ", key = "q" },
         },
         footer = function()
           local stats = require("lazy").stats()
