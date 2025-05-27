@@ -1,6 +1,6 @@
 return {
   "folke/which-key.nvim",
-  event = "BufReadPre",
+  event = "VeryLazy",
   opts = function()
     local wk = require("which-key")
     wk.setup({ preset = "helix" })
