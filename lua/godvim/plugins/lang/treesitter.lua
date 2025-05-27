@@ -1,7 +1,7 @@
 return {
   {
     "folke/todo-comments.nvim",
-    event = "File UserPost",
+    event = "FileLoaded",
     opts = {
     }
   },
