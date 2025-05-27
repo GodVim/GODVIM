@@ -1,6 +1,6 @@
-{
+return {
   "lukas-reineke/indent-blankline.nvim",
-  event = "LazyFile",
+  event = "BufReadPre",
   opts = {
     indent = {
       char = "│",
