@@ -9,13 +9,6 @@ return {
       end,
       desc = "Open terminal",
     },
-    {
-      "<leader>ft",
-      function()
-        require("betterTerm").select()
-      end,
-      desc = "Select terminal",
-    },
   },
   opts = {
     position = "bot",
