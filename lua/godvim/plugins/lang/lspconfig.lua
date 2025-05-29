@@ -41,8 +41,11 @@ return {
         ensure_installed = servers,
       })
 
-
-      require("java").setup({})
+require('java').setup({
+  jdk = {
+    auto_install = false,
+  },
+})
       lspconfig.jdtls.setup({})
 
 
