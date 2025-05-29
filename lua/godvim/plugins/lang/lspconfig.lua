@@ -28,7 +28,7 @@ ereturn {
 
       local servers = {
         "lua_ls",
-        "ruff",
+        --"ruff",
         "jsonls",
         "jdtls",
         "yamlls",
@@ -48,11 +48,10 @@ ereturn {
 
       lspconfig.lua_ls.setup({})
       lspconfig.jsonls.setup({})
-      lspconfig.ruff.setup({})
+     -- lspconfig.ruff.setup({})
       lspconfig.yamlls.setup({})
       lspconfig.pyright.setup({})
       lspconfig.marksman.setup({})
     end,
   }
 }
-
