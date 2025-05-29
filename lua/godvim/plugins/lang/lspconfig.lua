@@ -1,26 +1,13 @@
 return {
-
-  {
-    "mfussenegger/nvim-jdtls",
-    ft = "java",
-    opts = {},
-  },
   {
     lazy = true,
     "williamboman/mason-lspconfig",
-  --   version = "^1.0.0" 
+     version = "^1.0.0" 
   },
---  {
---    "nvim-java/nvim-java",
---    ft = "java",
---    dependencies = {
---      {
---        "nvim-java/nvim-java-core",
---        url = "https://github.com/Kabil777/nvim-java-core.git",
---        branch = "fix/mason-api-update",
---      },
---    },
---  },
+  {
+    "nvim-java/nvim-java",
+    lazy = true,
+  },
   {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
@@ -28,13 +15,13 @@ return {
       "zeioth/garbage-day.nvim",
       {
         "mason-org/mason.nvim",
---         version = "^1.0.0",
---        opts = {
---          registries = {
---            'github:nvim-java/mason-registry@2024-12-24-graceful-raft',
---            'github:mason-org/mason-registry@2025-05-10-new-sprout',
---          },
---        },
+         version = "^1.0.0",
+        opts = {
+          registries = {
+            'github:nvim-java/mason-registry@2024-12-24-graceful-raft',
+            'github:mason-org/mason-registry@2025-05-10-new-sprout',
+          },
+        },
       },
 
     },
@@ -49,8 +36,8 @@ return {
         "lua_ls",
         "ruff",
         "jsonls",
-
-                "yamlls",
+        "jdtls",
+        "yamlls",
         "pyright",
         "marksman",
       }
@@ -60,7 +47,9 @@ return {
         ensure_installed = servers,
       })
 
-      
+
+      require("java").setup({})
+      lspconfig.jdtls.setup({})
 
 
       lspconfig.lua_ls.setup({})
