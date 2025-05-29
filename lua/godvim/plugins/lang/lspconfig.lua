@@ -10,12 +10,12 @@ return {
       {
         "mason-org/mason.nvim",
          --version = "^1.0.0",
-     --   opts = {
-      --    registries = {
-       --     'github:nvim-java/mason-registry@2024-12-24-graceful-raft',
-       --     'github:mason-org/mason-registry@2025-05-10-new-sprout',
-       --   },
-      --  },
+        opts = {
+          registries = {
+            'github:nvim-java/mason-registry@2024-12-24-graceful-raft',
+            'github:mason-org/mason-registry@2025-05-10-new-sprout',
+          },
+        },
       },
 
     },
