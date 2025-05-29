@@ -63,20 +63,6 @@ return {
       
 
 
---      require("java").setup({
---        jdk = {
---          auto_install = false,
---        },
---      })
-
---      require("lspconfig").jdtls.setup({
---        handlers = {
-          -- By assigning an empty function, you can remove the notifications
-          -- printed to the cmd
---          ["$/progress"] = function(_, result, ctx) end,
---        },
---      })
-
       lspconfig.lua_ls.setup({})
       lspconfig.jsonls.setup({})
       lspconfig.ruff.setup({})
