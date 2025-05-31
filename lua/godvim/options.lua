@@ -19,7 +19,7 @@ opt.smoothscroll = true
 opt.smartindent = true
 opt.ignorecase = true
 opt.smartcase = true
-opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
+--opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
 
 opt.updatetime = 200
 opt.clipboard:append("unnamedplus")
