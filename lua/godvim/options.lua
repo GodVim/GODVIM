@@ -9,7 +9,7 @@ local o = vim.o
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.foldcolumn = '1'
 
---vim.wo.statuscolumn = "%=%l%=%s%C"
+vim.wo.statuscolumn = "%f\ [%l,%c]"
 
 opt.tabstop = 2
 opt.shiftwidth = 2
