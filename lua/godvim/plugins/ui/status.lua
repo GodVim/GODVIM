@@ -30,7 +30,7 @@ return {
       auto = true,                        -- Collapse segment if no other signs
       click = "v:lua.ScSa"                -- Note: same click handler as Diagnostic signs
     },
-  }
+  }}
       end,
   },
   {
