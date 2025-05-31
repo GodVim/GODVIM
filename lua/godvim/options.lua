@@ -2,7 +2,6 @@ vim.loader.enable()
 local opt = vim.opt
 local o = vim.o
 
-opt.relativenumber = true
 opt.foldlevel = 99
 o.foldcolumn = '1'
 --o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
