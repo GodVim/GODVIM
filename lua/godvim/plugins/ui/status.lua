@@ -17,8 +17,8 @@ return {
   bt_ignore = nil,       -- Lua table with 'buftype' values for which 'statuscolumn' will be unset
   -- Default segments (fold -> sign -> line number + separator), explained below
   segments = {
-    { text = { "%C" }, click = "v:lua.ScFa" },
-    { text = { "%s" }, click = "v:lua.ScSa" },
+--    { text = { "%C" }, click = "v:lua.ScFa" },
+--    { text = { "%s" }, click = "v:lua.ScSa" },
     {
       text = { builtin.lnumfunc, " " },
       condition = { true, builtin.not_empty },
@@ -29,12 +29,12 @@ return {
                           -- "a" for Alt, "c" for Ctrl and "m" for Meta.
   clickhandlers = {       -- builtin click handlers, keys are pattern matched
     Lnum                    = builtin.lnum_click,
-    FoldClose               = builtin.foldclose_click,
-    FoldOpen                = builtin.foldopen_click,
-    FoldOther               = builtin.foldother_click,
-    DapBreakpointRejected   = builtin.toggle_breakpoint,
-    DapBreakpoint           = builtin.toggle_breakpoint,
-    DapBreakpointCondition  = builtin.toggle_breakpoint,
+--    FoldClose               = builtin.foldclose_click,
+--    FoldOpen                = builtin.foldopen_click,
+--    FoldOther               = builtin.foldother_click,
+--    DapBreakpointRejected   = builtin.toggle_breakpoint,
+--    DapBreakpoint           = builtin.toggle_breakpoint,
+--    DapBreakpointCondition  = builtin.toggle_breakpoint,
     ["diagnostic/signs"]    = builtin.diagnostic_click,
     gitsigns                = builtin.gitsigns_click,
   },
