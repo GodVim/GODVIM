@@ -45,7 +45,7 @@ return {
       { "<leader>e", "<cmd>lua require('mini.files').open()<cr>", desc = "File Explorer" },
     })
     return {
-      preset = "modern"
+      preset = "helix"
     }
   end
 }
