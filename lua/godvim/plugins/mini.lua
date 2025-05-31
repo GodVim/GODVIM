@@ -1,5 +1,11 @@
 return {
   {
+    "echasnovski/mini.ai",
+    event = "InsertEnter",
+    version = false,
+    opts = {},
+  },
+  {
     "echasnovski/mini.icons",
     lazy = true,
     version = false,
