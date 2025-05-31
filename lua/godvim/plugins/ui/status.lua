@@ -5,35 +5,21 @@ return {
     opts = function()
       local builtin = require("statuscol.builtin")
       return {
-  relculright = true,
-  segments = {
-    {
-      text = { builtin.foldfunc },
-      click = "v:lua.ScFa" -- Example: vim.g.ScFa = function() vim.cmd("normal! za") end
-    },
-    {
-      -- Segment for Diagnostic signs (e.g., from LSP)
-      sign = { name = { "Diagnostic" } }, -- Only show signs named "Diagnostic"
-      maxwidth = 2,                       -- Segment max width
-      auto = true,                        -- Collapse segment if no diagnostic signs
-      click = "v:lua.ScSa"                -- Example: vim.g.ScSa = function() vim.diagnostic.open_float() end
-    },
-    {
-      text = { builtin.lnumfunc },
-      click = "v:lua.ScLa"                -- Example: vim.g.ScLa = function() print("Line number clicked") end
-    },
-    {
-      -- Segment for other signs (e.g., gitsigns, bookmarks)
-      sign = { name = { ".*" } },         -- Match any other sign name (regex)
-      maxwidth = 2,                       -- Segment max width
-      colwidth = 1,                       -- Hint for sign column width within this segment
-      auto = true,                        -- Collapse segment if no other signs
-      click = "v:lua.ScSa"                -- Uses the same click handler as Diagnostic signs
-    },
-  }
-}
-    
-      end,
+        relculright = true,
+        segments = {
+          { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+          {
+            sign = { name = { "Diagnostic" }, maxwidth = 2, auto = true },           
+            click = "v:lua.ScSa"          
+          },
+          { text = { builtin.lnumfunc }, click = "v:lua.ScLa"  },
+          {
+            sign = { name = { ".*" }, maxwidth = 2, colwidth = 1, auto = true },
+            click = "v:lua.ScSa" 
+          },
+        }
+      }
+    end,
   },
   {
     "rebelot/heirline.nvim",
