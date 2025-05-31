@@ -16,6 +16,8 @@ opt.smartindent = true
 opt.ignorecase = true
 opt.smartcase = true
 
+opt.number = true
+
 opt.updatetime = 200
 opt.clipboard:append("unnamedplus")
 
