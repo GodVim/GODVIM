@@ -1,4 +1,4 @@
-local map = vim.keymap.set
+wlocal map = vim.keymap.set
 
 -- Map Esc to escape from terminal insert mode to normal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
@@ -26,3 +26,6 @@ map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 map('n', '<leader>td', function()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { silent = true, noremap = true })
+
+map('n', 'zR', require('ufo').openAllFolds)
+map('n', 'zM', require('ufo').closeAllFolds)
