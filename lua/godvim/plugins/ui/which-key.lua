@@ -3,7 +3,6 @@ return {
   event = "VeryLazy",
   opts = function()
     local wk = require("which-key")
-    wk.setup({ preset = "helix" })
 
     wk.add({
       ----- Groups -----
@@ -45,5 +44,8 @@ return {
       { "<leader>a", "<cmd>Themify<cr>",                          desc = "Themes" },
       { "<leader>e", "<cmd>lua require('mini.files').open()<cr>", desc = "File Explorer" },
     })
+    return {
+      preset = "modern"
+    }
   end
 }
