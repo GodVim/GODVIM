@@ -6,8 +6,10 @@ local o = vim.o
 --o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 --o.foldlevelstart = 99
 --o.foldenable = true
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.foldcolumn = '1'
 
-vim.wo.statuscolumn = "%=%l%=%s%C"
+--vim.wo.statuscolumn = "%=%l%=%s%C"
 
 opt.tabstop = 2
 opt.shiftwidth = 2
