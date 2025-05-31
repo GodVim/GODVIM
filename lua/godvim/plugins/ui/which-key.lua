@@ -20,6 +20,7 @@ return {
       { "<leader>bf", "<cmd>lua require('conform').format({ async = true })<cr>", desc = "Format Buffer" },
 
       ----- Telescope -----
+      { "<leader>fc", "<cmd>Themify<cr>",                                         desc = "Themes" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>",                            desc = "Files" },
       { "<leader>fg", "<cmd>Telescope live_grep<cr>",                             desc = "Grep" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>",                               desc = "Buffers" },
@@ -41,7 +42,6 @@ return {
 
       ----- random stuff -----
 
-      { "<leader>a", "<cmd>Themify<cr>",                          desc = "Themes" },
       { "<leader>e", "<cmd>lua require('mini.files').open()<cr>", desc = "File Explorer" },
     })
     return {
