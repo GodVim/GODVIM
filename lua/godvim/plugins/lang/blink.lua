@@ -1,14 +1,4 @@
 return {
-  {
-    "folke/lazydev.nvim",
-    ft = "lua",
-    opts = {
-      library = {
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-      },
-    },
-  },
-  {
     "Saghen/blink.cmp",
     dependencies = {
       "mikavilpas/blink-ripgrep.nvim",
@@ -74,14 +64,8 @@ return {
           "lsp",
           "path",
           "buffer",
-          "lazydev",
         },
         providers = {
-          lazydev = {
-            name = "LazyDev",
-            module = "lazydev.integrations.blink",
-            score_offset = 100,
-          },
           ripgrep = {
             module = "blink-ripgrep",
             name = "Ripgrep",
@@ -97,5 +81,4 @@ return {
         },
       },
     },
-  },
 }
