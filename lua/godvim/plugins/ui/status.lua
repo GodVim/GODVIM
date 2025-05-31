@@ -1,7 +1,13 @@
 return {
+  {
+    "luukvbaal/statuscol.nvim",
+    opts = {},
+    event = "UiEnter",
+  },
+  {
     "rebelot/heirline.nvim",
     event = "UiEnter",
-  priority = "1",
+    priority = "1",
     dependencies = { "Zeioth/heirline-components.nvim" },
     opts = function()
       local lib = require("heirline-components.all")
@@ -34,3 +40,4 @@ return {
       heirline.setup(opts)
     end,
   } 
+}
