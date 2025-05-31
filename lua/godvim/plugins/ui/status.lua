@@ -1,7 +1,7 @@
 return {
   {
     "folke/snacks.nvim",
-    event = "UiEnter"m
+    event = "UiEnter",
     ---@type snacks.Config
     opts = {
       statuscolumn = {
