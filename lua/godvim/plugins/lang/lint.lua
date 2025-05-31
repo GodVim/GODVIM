@@ -1,6 +1,6 @@
 return  {
   "mfussenegger/nvim-lint",
-  ft = { "js", "ts", "tsx", "jsx" },
+  event = "InsertLeave",
   config = function()
     require('lint').linters_by_ft = {
       js = { "biomejs" },
