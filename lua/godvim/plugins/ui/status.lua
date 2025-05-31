@@ -5,7 +5,6 @@ return {
     opts = function()
       local builtin = require("statuscol.builtin")
       return {
-local cfg = {
   setopt = true,         -- Whether to set the 'statuscolumn' option, may be set to false for those who
                          -- want to use the click handlers in their own 'statuscolumn': _G.Sc[SFL]a().
                          -- Although I recommend just using the segments field below to build your
