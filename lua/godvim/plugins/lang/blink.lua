@@ -12,9 +12,8 @@ return {
     ---@type blink.cmp.Config
     opts = {
       keymap = {
-        preset = "super-tab",
-        ['<C-k>'] = { 'select_prev', 'fallback' },
-        ['<C-j>'] = { 'select_next', 'fallback' },
+        preset = "default",
+        ['Enter'] = { "accept", "fallback" },
       },
       snippets = { preset = "mini_snippets" },
       appearance = { nerd_font_variant = "mono" },
