@@ -11,7 +11,7 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-      keymap = { preset = "enter" },
+      keymap = { preset = "super-tab" },
       snippets = { preset = "mini_snippets" },
       appearance = { nerd_font_variant = "mono" },
       cmdline = {
