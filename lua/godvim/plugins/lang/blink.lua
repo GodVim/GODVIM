@@ -10,11 +10,11 @@ return {
     version = "*",
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
-    opts = {
+    opts = {e
       keymap = {
         preset = "super-tab",
-        ['<M-k>'] = { 'select_prev', 'fallback' },
-        ['<M-j>'] = { 'select_next', 'fallback' },
+        ['<C-k>'] = { 'select_prev', 'fallback' },
+        ['<C-j>'] = { 'select_next', 'fallback' },
       },
       snippets = { preset = "mini_snippets" },
       appearance = { nerd_font_variant = "mono" },
