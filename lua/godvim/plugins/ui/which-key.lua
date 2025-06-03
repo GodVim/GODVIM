@@ -25,7 +25,7 @@ return {
       { "<leader>fg", "<cmd>Telescope live_grep<cr>",                             desc = "Grep" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>",                               desc = "Buffers" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>",                             desc = "Help" },
-      { "<leader>fr", '<cmd>lua require("grug-far").open()<cr>',                       desc = "Replace" },
+      { "<leader>fr", '<cmd>lua require("grug-far").open({ transient = true })<cr>',                       desc = "Replace" },
       { "<leader>ft", "<cmd>TodoTelescope<cr>",                                   desc = "Todo" },
 
       ----- Todos -----
