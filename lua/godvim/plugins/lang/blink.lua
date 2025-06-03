@@ -12,8 +12,7 @@ return {
     ---@type blink.cmp.Config
     opts = {
       keymap = {
-        preset = "default",
-        ['Enter'] = { "accept", "fallback" },
+        preset = "super-tab",
       },
       snippets = { preset = "mini_snippets" },
       appearance = { nerd_font_variant = "mono" },
