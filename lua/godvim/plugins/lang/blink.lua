@@ -10,7 +10,7 @@ return {
     version = "*",
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
-    opts = {e
+    opts = {
       keymap = {
         preset = "super-tab",
         ['<C-k>'] = { 'select_prev', 'fallback' },
