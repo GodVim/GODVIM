@@ -60,6 +60,9 @@ return {
         },
       },
       sources = {
+  per_filetype = {
+    codecompanion = { "codecompanion" },
+  },
         default = {
           "snippets",
           "ripgrep",
