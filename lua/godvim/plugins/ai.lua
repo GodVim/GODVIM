@@ -4,10 +4,10 @@ return {
   opts = {
     strategies = {
       chat = {
-        adapter = "anthropic",
+        adapter = "copilot",
       },
       inline = {
-        adapter = "anthropic",
+        adapter = "copilot",
       },
     },
     adapters = {
@@ -35,4 +35,9 @@ return {
     })
   end,
 },
+  {
+    "copilot.vim",
+    cmd ="Copilot",
+    opts={}
+  }
 }
