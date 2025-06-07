@@ -36,7 +36,7 @@ return {
   end,
 },
   {
-    "copilot.vim",
+    "github/copilot.vim",
     cmd ="Copilot",
     opts={}
   }
