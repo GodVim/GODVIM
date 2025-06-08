@@ -1,4 +1,4 @@
-sreturn {
+return {
   {
     "luukvbaal/statuscol.nvim",
     event="UiEnter",
