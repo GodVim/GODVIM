@@ -26,12 +26,6 @@ return {
     opts = {},
   },
   {
-    "echasnovski/mini.notify",
-    event = "BufReadPost",
-    version = false,
-    opts = {},
-  },
-  {
     "echasnovski/mini.comment",
     event = "InsertEnter",
     version = false,
