@@ -23,12 +23,11 @@ return {
   },
   {
     "rebelot/heirline.nvim",
-    event = "BufReadPre",
+    event = "UiEnter"
     priority = "1",
     dependencies = {
       "Zeioth/heirline-components.nvim",
-  "lmantw/themify.nvim"
-
+      "lmantw/themify.nvim"
     },
     opts = function()
       local lib = require("heirline-components.all")
