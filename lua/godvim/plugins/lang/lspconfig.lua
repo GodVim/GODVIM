@@ -1,34 +1,35 @@
 return {
+  { "neovim/nvim-lspconfig", event = "BufReadPre" },
+  { "zeioth/garbage-day.nvim", event = "LspAttach" },
+  {"mason-org/mason-lspconfig.nvim", lazy = true, version = "^1.0.0"},
   {
     "mason-org/mason.nvim",
     event = "BufReadPre",
     version = "^1.0.0",
     config = function()
-        local mason = require("mason")
+      local mason = require("mason")
 
-        mason.setup({
-          registries = {
-            "github:nvim-java/mason-registry@2024-12-24-graceful-raft",
-            "github:mason-org/mason-registry@2025-05-10-new-sprout"
-          }
-        })
-
-        local servers = {
-          "lua_ls",
-          --"ruff",
-          "jsonls",
-          "jdtls",
-          "yamlls",
-          "pyright",
-          "marksman"
+      mason.setup({
+        registries = {
+          "github:nvim-java/mason-registry@2024-12-24-graceful-raft",
+          "github:mason-org/mason-registry@2025-05-10-new-sprout"
         }
+      })
 
-        require("mason-lspconfig").setup({
-          ensure_installed = servers
-        })
+      local servers = {
+        "lua_ls",
+        "jsonls",
+        "jdtls",
+        "yamlls",
+        "pyright",
+        "marksman"
+      }
+
+      require("mason-lspconfig").setup({
+        ensure_installed = servers
+      })
     end,
   },
-  {"mason-org/mason-lspconfig.nvim", lazy = true, version = "^1.0.0"},
   {
     "nvim-java/nvim-java",
     lazy = true,
@@ -42,21 +43,16 @@ return {
       lspconfig.jdtls.setup({})
     end
   },
-    {
-        "neovim/nvim-lspconfig",
-        event = "BufReadPre",
-        dependencies = {
-            "zeioth/garbage-day.nvim"
-        },
-        config = function()
-            local lspconfig = require("lspconfig")
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      local lspconfig = require("lspconfig")
 
-            lspconfig.lua_ls.setup({})
-            lspconfig.jsonls.setup({})
-            -- lspconfig.ruff.setup({})
-            lspconfig.yamlls.setup({})
-            lspconfig.pyright.setup({})
-            lspconfig.marksman.setup({})
-        end
-    }
+      lspconfig.lua_ls.setup({})
+      lspconfig.jsonls.setup({})
+      lspconfig.yamlls.setup({})
+      lspconfig.pyright.setup({})
+      lspconfig.marksman.setup({})
+    end
+  }
 }
