@@ -27,8 +27,8 @@ map('n', '<leader>td', function()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { silent = true, noremap = true })
 
-map('n', 'zR', require('ufo').openAllFolds)
-map('n', 'zM', require('ufo').closeAllFolds)
+map('n', 'zR', "<cmd>lua require('ufo').openAllFolds<cr>")
+map('n', 'zM', "<cmd>lua require('ufo').closeAllFolds<cr>")
 
 vim.keymap.set({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
