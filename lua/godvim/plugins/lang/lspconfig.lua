@@ -45,14 +45,46 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    ft = "lua",
     config = function()
       local lspconfig = require("lspconfig")
 
       lspconfig.lua_ls.setup({})
-      lspconfig.jsonls.setup({})
-      lspconfig.yamlls.setup({})
-      lspconfig.pyright.setup({})
-      lspconfig.marksman.setup({})
+    end
+  },
+  {
+    "neovim/nvim-lspconfig",
+    ft = "lua",
+    config = function()
+      require("lspconfig").lua_ls.setup({})
+    end
+  },
+  {
+    "neovim/nvim-lspconfig",
+    ft = "json",
+    config = function()
+      require("lspconfig").jsonls.setup({})
+    end
+  },
+  {
+    "neovim/nvim-lspconfig",
+    ft = "yaml",
+    config = function()
+      require("lspconfig").yamlls.setup({})
+    end
+  },
+  {
+    "neovim/nvim-lspconfig",
+    ft = "py",
+    config = function()
+      require("lspconfig").pyright.setup({})
+    end
+  },
+  {
+    "neovim/nvim-lspconfig",
+    ft = "md",
+    config = function()
+      require("lspconfig").marksman.setup({})
     end
   }
 }
