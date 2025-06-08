@@ -23,7 +23,7 @@ return {
   },
   {
     "rebelot/heirline.nvim",
-    event = "UiEnter"
+    event = "UiEnter",
     priority = "1",
     dependencies = {
       "Zeioth/heirline-components.nvim",
