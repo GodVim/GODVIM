@@ -1,8 +1,6 @@
 return {
-
   "lmantw/themify.nvim",
-  priority = 999,
-  lazy = false,
+  event ="UiEnter",
   opts = {
     {
       "folke/tokyonight.nvim",
