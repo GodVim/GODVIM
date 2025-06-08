@@ -39,6 +39,7 @@ return {
   },
   {
     "echasnovski/mini.tabline",
+    event = "BufReadPre",
     version = false,
     config = function()
       require("mini.tabline").setup()
