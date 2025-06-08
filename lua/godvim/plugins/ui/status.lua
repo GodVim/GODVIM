@@ -1,7 +1,7 @@
 return {
   {
     "luukvbaal/statuscol.nvim",
-    event = "BufReadPre",
+    event = { "BufReadPre", "BufNewFile" },
     opts = function()
       local builtin = require("statuscol.builtin")
       return {
@@ -23,7 +23,7 @@ return {
   },
   {
     "rebelot/heirline.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = "BufReadPre",
     priority = "1",
     dependencies = {
       "Zeioth/heirline-components.nvim",
