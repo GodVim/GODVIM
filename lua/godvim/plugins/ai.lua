@@ -1,6 +1,7 @@
 return {
 {
   "olimorris/codecompanion.nvim",
+  cmd="CodeCompanion",
   opts = {
     strategies = {
       chat = {
@@ -36,6 +37,7 @@ return {
   ft = { "markdown", "codecompanion" }
 },
   {
+    lazy = true
   "echasnovski/mini.diff",
   config = function()
     local diff = require("mini.diff")
