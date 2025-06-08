@@ -1,6 +1,5 @@
 return {
   'kevinhwang91/nvim-ufo',
-  event = "BufReadPre",
   cmd = {"UfoEnable"},
   config = function()
     require('ufo').setup({
