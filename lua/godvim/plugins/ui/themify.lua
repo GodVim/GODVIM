@@ -1,6 +1,7 @@
 return {
   "lmantw/themify.nvim",
   lazy = true,
+  event = "Themify",
   opts = {
     {
       "folke/tokyonight.nvim",
