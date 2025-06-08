@@ -46,7 +46,7 @@ return {
   },
   {
     "echasnovski/mini.snippets",
-    event = "VeryLazy",
+    event = "InsertEnter",
     dependencies = {
       "rafamadriz/friendly-snippets",
     },
