@@ -1,11 +1,5 @@
 return {
   {
-    "folke/todo-comments.nvim",
-    event = "BufReadPost",
-    opts = {
-    }
-  },
-  {
     "windwp/nvim-ts-autotag",
     ft = { "astro", "html", "javascript", "jsx", "markdown", "svelte", "tsx", "typescript", "xml" },
     opts = {}
