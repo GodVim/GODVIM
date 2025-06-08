@@ -3,6 +3,8 @@ return {
   lazy = true,
   cmd = "Themify",
   opts = {
+    async = true,
+    activity = true,
     {
       "folke/tokyonight.nvim",
       blacklist = { "tokyonight-day", "tokyonight-storm" },
