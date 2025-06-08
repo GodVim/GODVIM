@@ -1,6 +1,6 @@
 return {
   "lmantw/themify.nvim",
-  event ="UiEnter",
+  event ="VimEnter",
   opts = {
     {
       "folke/tokyonight.nvim",
