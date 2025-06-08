@@ -1,7 +1,14 @@
 return {
   { "mason-org/mason.nvim", lazy = true, version = "^1.0.0" },
   { "mason-org/mason-lspconfig.nvim", lazy = true, version = "^1.0.0" },
-  { "nvim-java/nvim-java", lazy = true, },
+  { "nvim-java/nvim-java", lazy = true, ft="java",config=function()require('java').setup({
+  jdk = {
+    auto_install = false,
+  },
+})
+      lspconfig.jdtls.setup({})
+    end,
+    },
   {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
@@ -41,12 +48,6 @@ return {
         ensure_installed = servers,
       })
 
-require('java').setup({
-  jdk = {
-    auto_install = false,
-  },
-})
-      lspconfig.jdtls.setup({})
 
 
       lspconfig.lua_ls.setup({})
