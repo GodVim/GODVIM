@@ -17,10 +17,6 @@ return {
       "rose-pine/neovim",
       blacklist = { "rose-pine-dawn", "rose-pine-moon" },
     },
-    {
-      "loctvl842/monokai-pro.nvim",
-      blacklist = { "monokai-pro-spectrum", "monokai-pro-octagon", "monokai-pro-machine", "monokai-pro-light" }, 
-    },
     "default"
   }
 }
