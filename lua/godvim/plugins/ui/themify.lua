@@ -7,11 +7,6 @@ return {
       blacklist = { "tokyonight-day", "tokyonight-storm" },
     },
     {
-      "everviolet/nvim",
-      branch = "mega",
-      blacklist = { "evergarden-winter", "evergarden-spring" },
-    },
-    {
       "catppuccin/nvim",
       blacklist = { "catppuccin-latte", "catppuccin-mocha" },
     },
@@ -19,9 +14,10 @@ return {
       "rose-pine/neovim",
       blacklist = { "rose-pine-dawn", "rose-pine-moon" },
     },
-    "navarasu/onedark.nvim",
-    "EdenEast/nightfox.nvim",
-    "loctvl842/monokai-pro.nvim",
+    {
+      "loctvl842/monokai-pro.nvim",
+      blacklist = { "monokai-pro-spectrum", "monokai-pro-octagon", "monokai-pro-machine", "monokai-pro-light" }, 
+    },
     "default"
   }
 }
