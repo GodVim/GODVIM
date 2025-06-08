@@ -1,7 +1,7 @@
-return {
+sreturn {
   {
     "luukvbaal/statuscol.nvim",
-    event="BufReadPre",
+    event="UiEnter",
     opts = function()
       local builtin = require("statuscol.builtin")
       return {
