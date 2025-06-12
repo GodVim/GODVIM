@@ -1,7 +1,7 @@
 return {
   {
     "windwp/nvim-ts-autotag",
-    ft = { "astro", "html", "javascript", "jsx", "markdown", "svelte", "tsx", "typescript", "xml" },
+    ft = { "astro", "javascript", "markdown", "svelte", "typescript" },
     opts = {}
   },
   {
@@ -13,11 +13,10 @@ return {
         enable = true,
       },
       indent = { enable = true },
-      -- enable autotagging (w/ nvim-ts-autotag plugin)
       autotag = {
         enable = true,
       },
-      -- ensure these language parsers are installed
+
       ensure_installed = {
         "json",
         "yaml",
