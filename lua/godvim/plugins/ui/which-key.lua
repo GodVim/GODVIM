@@ -33,7 +33,7 @@ return {
       { "<leader>tl", "<cmd>Trouble todo<cr>",                                    desc = "Outline todos" },
 
       ----- Code -----
-      { "<leader>cr", "<cmd>RunCode<cr>",                                         desc = "Run" },
+      { "<leader>cr", "<cmd>OverseerRun<cr>",                                     desc = "Run" },
       {
         "<leader>ca",
         "<cmd>lua require('actions-preview').code_actions()<cr>",
