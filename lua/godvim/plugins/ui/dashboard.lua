@@ -23,7 +23,6 @@ return {
         center = {
           { action = "Telescope find_files", desc = " Find File", icon = " ", key = "f" },
           { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
-          { action = 'Telescope projects', desc = " Projects", icon = " ", key = "p" },
           { action = "Telescope old_files", desc = " Recent Files", icon = " ", key = "r" },
           { action = "Leet", desc = " Leetcode", icon = " ", key = "c" },
           { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
