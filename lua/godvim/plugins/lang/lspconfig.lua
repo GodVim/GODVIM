@@ -30,44 +30,29 @@ return {
         "yamlls",
         "pyright",
         "marksman",
-        "jdtls", -- Mason-lspconfig will ensure jdtls is installed
       }
 
       require("mason-lspconfig").setup({
         ensure_installed = servers, -- Ensures these servers are installed
-        -- This 'handlers' table is crucial. It tells mason-lspconfig how to
-        -- configure each server.
         handlers = {
-          -- Default handler: For most servers, we just call lspconfig.<server>.setup({})
-          -- This will automatically activate the server when the relevant filetype is opened.
           function(server_name)
             require("lspconfig")[server_name].setup({})
           end,
-          -- Specific handler for jdtls:
-          -- We explicitly *don't* want mason-lspconfig to call jdtls.setup({})
-          -- here because nvim-java will handle it with its own custom setup.
-          -- You could also just omit "jdtls" from the `servers` list if you
-          -- prefer nvim-java to be the sole manager of jdtls installation/setup.
-          -- However, keeping it in `ensure_installed` ensures mason manages the binary.
-          -- The nvim-java plugin below will then provide the specific `jdtls.setup` call.
         },
       })
     end,
   },
 
-  -- nvim-java: Specialized setup for Java (including jdtls)
   {
     "nvim-java/nvim-java",
     lazy = true,
-    ft = "java", -- Only load this plugin when a Java file is opened
+    ft = "java",
     config = function()
       require("java").setup({
         jdk = {
-          auto_install = false, -- As per your original config
+          auto_install = false,
         },
       })
-      -- This is where `jdtls` is specifically configured when a Java file is opened.
-      -- This setup will take precedence or integrate with mason-lspconfig's installation.
       require("lspconfig").jdtls.setup({})
     end,
   },
