@@ -1,5 +1,6 @@
 return {
     "ibhagwan/fzf-lua",
+    cmd = "FzfLua",
     opts = {
       oldfiles = {
         -- In Telescope, when I used <leader>fr, it would load old buffers.
