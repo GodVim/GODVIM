@@ -6,7 +6,7 @@ return {
   {
     "mason-org/mason.nvim",
     event = "BufReadPre", -- Load Mason early so it can manage installations
-    version = "^1.0.0",
+  --  version = "^1.0.0",
     config = function()
       require("mason").setup({
         registries = {
@@ -21,7 +21,7 @@ return {
   {
     "mason-org/mason-lspconfig.nvim",
     lazy = true, -- This plugin will be loaded when lspconfig is activated
-    version = "^1.0.0",
+--    version = "^1.0.0",
     config = function()
       local servers = {
         "lua_ls",
