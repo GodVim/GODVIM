@@ -59,11 +59,11 @@ autocmd({ "BufReadPost", "BufNewFile", "BufWritePost" }, {
 
     -- For any file exept empty buffer, or the greeter (alpha)
     if not (empty_buffer or greeter) then
-      utils.trigger_event("User BaseFile")
+      trigger_event("User BaseFile")
 
       -- Is the buffer part of a git repo?
       if git_repo then
-        utils.trigger_event("User BaseGitFile")
+        trigger_event("User BaseGitFile")
       end
     end
   end,
@@ -76,11 +76,11 @@ autocmd({ "VimEnter" }, {
     -- If nvim is opened passing a filename, trigger the event inmediatelly.
     if #vim.fn.argv() >= 1 then
       -- In order to avoid visual glitches.
-      utils.trigger_event("User BaseDefered", true)
-      utils.trigger_event("BufEnter", true) -- also, initialize tabline_buffers.
+      trigger_event("User BaseDefered", true)
+      trigger_event("BufEnter", true) -- also, initialize tabline_buffers.
     else                                    -- Wait some ms before triggering the event.
       vim.defer_fn(function()
-        utils.trigger_event("User BaseDefered")
+        trigger_event("User BaseDefered")
       end, 70)
     end
   end,
@@ -100,11 +100,7 @@ autocmd("BufWritePre", {
   end,
 })
 
-vim.api.nvim_set_hl(0, 'HighlightURL', { underline = true })
-autocmd({ "VimEnter", "FileType", "BufEnter", "WinEnter" }, {
-  desc = "URL Highlighting",
-  callback = function() utils.set_url_effect() end,
-})
+
 
 -- Write all buffers
 cmd("WriteAllBuffers", function()
