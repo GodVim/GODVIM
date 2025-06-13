@@ -6,7 +6,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPre", "BufNewFile" },
+    event = "User BaseDefered",
     build = ":TSUpdate",
     opts = {
       sync_install = true,
