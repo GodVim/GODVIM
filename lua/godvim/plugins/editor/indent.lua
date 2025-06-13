@@ -4,6 +4,8 @@ return {
     opts ={},
     event = "InsertEnter"
   },
+}
+if false then return 
 {
     disabled = true,
   "lukas-reineke/indent-blankline.nvim",
@@ -35,4 +37,4 @@ return {
   },
   main = "ibl",
 }
-}
+end
