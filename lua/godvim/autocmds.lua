@@ -1,1 +1,1 @@
-
+vim.deprecate = function() end
