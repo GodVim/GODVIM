@@ -34,13 +34,7 @@ return {
 
       require("mason-lspconfig").setup({
         automatic_enable = true,
-
-        ensure_installed = servers, -- Ensures these servers are installed
---        handlers = {
---          function(server_name)
---            require("lspconfig")[server_name].setup({})
---          end,
---        },
+        ensure_installed = servers,
       })
     end,
   },
