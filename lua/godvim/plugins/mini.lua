@@ -20,6 +20,12 @@ return {
     opts = {},
   },
   {
+    "echasnovski/mini.notify",
+    event = "VeryLazy",
+    version = false,
+    opts = {},
+  },
+  {
     "echasnovski/mini.tabline",
     event = "BufReadPre",
     version = false,
