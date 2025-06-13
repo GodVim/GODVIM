@@ -10,8 +10,8 @@ return {
     config = function()
       require("mason").setup({
         registries = {
-          "github:nvim-java/mason-registry@2024-12-24-graceful-raft",
-          "github:mason-org/meson-registry@2025-05-10-new-sprout",
+          "github:nvim-java/mason-registry",
+          "github:mason-org/mason-registry",
         },
       })
     end,
