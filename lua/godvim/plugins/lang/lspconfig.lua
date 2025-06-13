@@ -28,10 +28,6 @@ return {
         "jsonls",
         "yamlls",
         "pyright",
-        "biome",
-        "isort",
-        "mypy",
-        "google-java-format",
         "marksman",
       }
 
