@@ -1,6 +1,6 @@
 return {
   -- General LSP-related plugins
-  { "neovim/nvim-lspconfig", event = "User BaseFile" }, -- Load lspconfig plugin early
+  { "neovim/nvim-lspconfig", event = "BufReadPre" }, -- Load lspconfig plugin early
 
   -- Mason: Manages LSP server installations (and other tools)
   {
@@ -27,7 +27,7 @@ return {
   -- Mason LSPConfig: Bridges Mason installations with nvim-lspconfig setup
   {
     "mason-org/mason-lspconfig.nvim",
-    event = "User BaseFile",
+    event = "BufRead",
     version = "^1.0.0",
     config = function()
       local servers = {
