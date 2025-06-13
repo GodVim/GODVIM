@@ -221,42 +221,6 @@ return {
         }
       }
 
-      -- Add Overseer status
-      section.right[14] = {
-        Overseer = {
-          provider = function()
-            -- Check if overseer.status module exists and can provide status
-            local overseer_status = require("overseer.status")
-            if overseer_status and type(overseer_status.get_statusline) == "function" then
-              -- Get the statusline string from Overseer
-              local status = overseer_status.get_statusline()
-              -- Overseer's get_statusline might return an empty string or '0',
-              -- so we only display if there's actual activity.
-              if status and status ~= "" and status ~= "0" then
-                return "  " .. status .. " " -- Icon for tasks/processes
-              end
-            end
-            return "" -- Return empty string if no tasks or Overseer is not ready
-          end,
-          -- Only show if there is actually a status to display
-          condition = function()
-            local overseer_status = pcall(require, "overseer.status")
-            if overseer_status then
-                local status_func = require("overseer.status").get_statusline
-                if type(status_func) == "function" then
-                    local status = status_func()
-                    return status ~= "" and status ~= "0"
-                end
-            end
-            return false
-          end,
-          highlight = {catppuccin_mocha_colors.lavender, catppuccin_mocha_colors.line_bg, "bold"}
-        }
-      }
-      -- Adjust subsequent indices if needed, or place it strategically.
-      -- If you want to keep the numbering sequential without gaps,
-      -- you'd shift everything after it. For simplicity, just adding it to 14.
-
       section.short_line_left[15] = {
         BufferType = {
           provider = "FileTypeName",
