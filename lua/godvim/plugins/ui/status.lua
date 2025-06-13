@@ -3,7 +3,7 @@ return {
   "nvimdev/modeline.nvim",
   opts = {},
   event = "UiEnter"
-}
+},
   {
     'nvimdev/galaxyline.nvim',
     event = "BufWrite",
