@@ -34,7 +34,7 @@ function run_cmd(cmd, show_error)
   -- Return the cleaned result if the command succeeded, or nil if it failed
   return (success and cleaned_result) or nil
 end
-end
+
 function trigger_event(event, is_urgent)
   -- define behavior
   local function trigger()
@@ -45,7 +45,7 @@ function trigger_event(event, is_urgent)
     else
       vim.api.nvim_exec_autocmds(event, { modeline = false })
     end
-  end
+end
 
 -- STOLEN FROM NORMALNVIM
 autocmd({ "BufReadPost", "BufNewFile", "BufWritePost" }, {
