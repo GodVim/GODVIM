@@ -11,12 +11,11 @@ return {
       { "<leader>s",  group = "Sessions" },
       { "<leader>f",  group = "Find" },
       { "<leader>d",  group = "Debug" },
-      { "<leader>t",  group = "Todos" },
 
       ----- Buffers -----
-      { "<leader>bd", "<cmd>bdelete<cr>",                                         desc = "Close buffer" },
+      { "<leader>bd", "<cmd>bdelete!<cr>",                                        desc = "Close buffer" },
       { "<leader>bn", "<cmd>enew<cr>",                                            desc = "New buffer" },
-      { "<leader>bb", "<cmd>Telescope buffers<cr>",                               desc = "Switch buffer" },
+      { "<leader>bb", "<cmd>FzfLua buffers<cr>",                                  desc = "Switch buffer" },
       { "<leader>bf", "<cmd>lua require('conform').format({ async = true })<cr>", desc = "Format Buffer" },
 
       ----- Telescope -----
@@ -27,10 +26,6 @@ return {
       { "<leader>fh", "<cmd>FzfLua helptags<cr>",                             desc = "Help" },
       { "<leader>ft", "<cmd>TodoTelescope<cr>",                                   desc = "Todo" },
 
-      ----- Todos -----
-      { "<leader>ts", "<cmd>TodoQuickFix<cr>",                                    desc = "List todos" },
-      { "<leader>tl", "<cmd>Trouble todo<cr>",                                    desc = "Outline todos" },
-
       ----- Code -----
       { "<leader>cr", "<cmd>OverseerRun<cr>",                                     desc = "Run" },
       {
@@ -40,8 +35,8 @@ return {
       },
 
       ----- random stuff -----
-
-      { "<leader>e", "<cmd>lua require('mini.files').open()<cr>", desc = "File Explorer" },
+      { "<leader>t", "<cmd>FloatermToggle<cr>",                                   desc = "Terminal" },
+      { "<leader>e", "<cmd>lua require('mini.files').open()<cr>",                 desc = "File Explorer" },
     })
     return {
       preset = "helix"

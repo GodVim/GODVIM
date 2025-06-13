@@ -1,6 +1,6 @@
 return {
   -- General LSP-related plugins
-  { "neovim/nvim-lspconfig", event = "BufReadPre" }, -- Load lspconfig plugin early
+  { "neovim/nvim-lspconfig", event = "BufRead" }, -- Load lspconfig plugin early
 
   -- Mason: Manages LSP server installations (and other tools)
   {
