@@ -5,7 +5,14 @@ return {
   -- Mason: Manages LSP server installations (and other tools)
   {
     "mason-org/mason.nvim",
-    event = "BufReadPre", -- Load Mason early so it can manage installations
+    cmd = {
+      "Mason",
+      "MasonInstall",
+      "MasonUninstall",
+      "MasonUninstallAll",
+      "MasonLog",
+      "MasonUpdate",
+    },
     version = "^1.0.0",
     config = function()
       require("mason").setup({
@@ -20,7 +27,7 @@ return {
   -- Mason LSPConfig: Bridges Mason installations with nvim-lspconfig setup
   {
     "mason-org/mason-lspconfig.nvim",
-    lazy = true, -- This plugin will be loaded when lspconfig is activated
+    event = "User BaseFile",
     version = "^1.0.0",
     config = function()
       local servers = {
@@ -40,7 +47,6 @@ return {
 
   {
     "nvim-java/nvim-java",
-    lazy = true,
     ft = "java",
     config = function()
       require("java").setup({
