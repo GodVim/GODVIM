@@ -1,6 +1,6 @@
 return {
  {
-    'Coding4Hours/galaxyline.nvim',
+    'nvimdev/galaxyline.nvim',
   config = function()
    local cmd = vim.cmd
 local fn = vim.fn
