@@ -1,4 +1,4 @@
-ereturn {
+return {
   {
     'nvimdev/galaxyline.nvim',
     event = "User BaseFile",
