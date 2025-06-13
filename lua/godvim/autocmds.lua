@@ -57,3 +57,13 @@ autocmd({ "VimEnter", "FileType", "BufEnter", "WinEnter" }, {
   desc = "URL Highlighting",
   callback = function() utils.set_url_effect() end,
 })
+
+-- Write all buffers
+cmd("WriteAllBuffers", function()
+  vim.cmd("wa")
+end, { desc = "Write all changed buffers" })
+
+-- Close all notifications
+cmd("CloseNotifications", function()
+  require("notify").dismiss({ pending = true, silent = true })
+end, { desc = "Dismiss all notifications" })
