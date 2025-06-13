@@ -2,10 +2,6 @@ vim.loader.enable()
 local opt = vim.opt
 local o = vim.o
 
-vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-
-
 o.cmdheight = 0
 opt.tabstop = 2
 opt.shiftwidth = 2
