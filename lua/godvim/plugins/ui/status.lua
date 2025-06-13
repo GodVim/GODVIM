@@ -1,14 +1,7 @@
 return {
   {
-  "nvimdev/modeline.nvim",
-  config = function()
-      require("modeline").setup()
-    end,
-  event = "UiEnter"
-},
-  {
     'nvimdev/galaxyline.nvim',
-    event = "BufWrite",
+    event = "BufReadPost",
     config = function()
       local cmd = vim.cmd
       local fn = vim.fn
