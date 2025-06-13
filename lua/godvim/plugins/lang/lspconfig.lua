@@ -11,7 +11,7 @@ return {
       require("mason").setup({
         registries = {
           "github:nvim-java/mason-registry@2024-12-24-graceful-raft",
-          "github:mason-org/mason-registry@2025-05-10-new-sprout",
+          "github:mason-org/meson-registry@2025-05-10-new-sprout",
         },
       })
     end,
@@ -28,6 +28,10 @@ return {
         "jsonls",
         "yamlls",
         "pyright",
+        "biome",
+        "isort",
+        "mypy",
+        "google-java-format",
         "marksman",
       }
 
