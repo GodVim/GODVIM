@@ -1,14 +1,4 @@
-return {
-  {
-    "nvimdev/indentmini.nvim",
-    opts ={},
-    event = "InsertEnter"
-  },
-}
-if false then return 
-{
-    disabled = true,
-  "lukas-reineke/indent-blankline.nvim",
+if false then return {  "lukas-reineke/indent-blankline.nvim",
   event = "BufReadPre",
   opts = {
     indent = {
@@ -38,3 +28,11 @@ if false then return
   main = "ibl",
 }
 end
+
+return {
+  {
+    "nvimdev/indentmini.nvim",
+    opts ={},
+    event = "InsertEnter"
+  }
+}
