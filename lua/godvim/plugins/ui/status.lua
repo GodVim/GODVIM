@@ -1,6 +1,12 @@
 return {
   {
+  "nvimdev/modeline.nvim",
+  opts = {},
+  event = "UiEnter"
+}
+  {
     'nvimdev/galaxyline.nvim',
+    event = "BufWrite",
     config = function()
       local cmd = vim.cmd
       local fn = vim.fn
@@ -237,7 +243,6 @@ return {
           highlight = {catppuccin_mocha_colors.fg, catppuccin_mocha_colors.purple}
         }
       }
-    end,
-    event = "UiEnter"
+    end
   }
 }
