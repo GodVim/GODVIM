@@ -46,6 +46,7 @@ function trigger_event(event, is_urgent)
       vim.api.nvim_exec_autocmds(event, { modeline = false })
     end
 end
+end
 
 -- STOLEN FROM NORMALNVIM
 autocmd({ "BufReadPost", "BufNewFile", "BufWritePost" }, {
