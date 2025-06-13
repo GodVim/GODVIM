@@ -62,7 +62,6 @@ return {
         return false
       end
 
-      -- Left section remains the same
       section.left[1] = {
         FirstElement = {
           provider = function()
@@ -74,30 +73,32 @@ return {
       section.left[2] = {
         ViMode = {
           provider = function()
+            -- auto change color according the vim mode
             local mode_color = {
-              n = catppuccin_mocha_colors.red,
-              i = catppuccin_mocha_colors.green,
-              v = catppuccin_mocha_colors.blue,
-              [" "] = catppuccin_mocha_colors.blue,
-              V = catppuccin_mocha_colors.blue,
-              c = catppuccin_mocha_colors.red,
-              no = catppuccin_mocha_colors.red,
-              s = catppuccin_mocha_colors.peach,
-              S = catppuccin_mocha_colors.peach,
-              [" "] = catppuccin_mocha_colors.peach,
-              ic = catppuccin_mocha_colors.yellow,
-              R = catppuccin_mocha_colors.purple,
-              Rv = catppuccin_mocha_colors.purple,
-              cv = catppuccin_mocha_colors.red,
-              ce = catppuccin_mocha_colors.red,
-              r = catppuccin_mocha_colors.teal,
-              rm = catppuccin_mocha_colors.teal,
-              ["r?"] = catppuccin_mocha_colors.teal,
-              ["!"] = catppuccin_mocha_colors.red,
-              t = catppuccin_mocha_colors.red
+              n = catppuccin_mocha_colors.red,       -- original: magenta
+              i = catppuccin_mocha_colors.green,     -- original: green
+              v = catppuccin_mocha_colors.blue,      -- original: blue
+              [" "] = catppuccin_mocha_colors.blue,  -- original: blue
+              V = catppuccin_mocha_colors.blue,      -- original: blue
+              c = catppuccin_mocha_colors.red,       -- original: red
+              no = catppuccin_mocha_colors.red,      -- original: magenta
+              s = catppuccin_mocha_colors.peach,     -- original: orange
+              S = catppuccin_mocha_colors.peach,     -- original: orange
+              [" "] = catppuccin_mocha_colors.peach, -- original: orange
+              ic = catppuccin_mocha_colors.yellow,   -- original: yellow
+              R = catppuccin_mocha_colors.purple,    -- original: purple
+              Rv = catppuccin_mocha_colors.purple,   -- original: purple
+              cv = catppuccin_mocha_colors.red,      -- original: red
+              ce = catppuccin_mocha_colors.red,      -- original: red
+              r = catppuccin_mocha_colors.teal,      -- original: cyan
+              rm = catppuccin_mocha_colors.teal,     -- original: cyan
+              ["r?"] = catppuccin_mocha_colors.teal, -- original: cyan
+              ["!"] = catppuccin_mocha_colors.red,   -- original: red
+              t = catppuccin_mocha_colors.red        -- original: red
             }
             cmd("hi GalaxyViMode guifg=" .. mode_color[fn.mode()])
             return "   "
+            -- return '    '
           end,
           highlight = {catppuccin_mocha_colors.red, catppuccin_mocha_colors.line_bg, "bold"}
         }
@@ -119,42 +120,6 @@ return {
         }
       }
 
-      -- 4. LSP Diagnostics
-      section.left[5] = {
-        DiagnosticError = {
-          provider = "DiagnosticError",
-          icon = " ",
-          highlight = {catppuccin_mocha_colors.red, catppuccin_mocha_colors.line_bg}
-        }
-      }
-
-      section.left[6] = {
-        DiagnosticWarn = {
-          provider = "DiagnosticWarn",
-          icon = " ",
-          highlight = {catppuccin_mocha_colors.yellow, catppuccin_mocha_colors.line_bg}
-        }
-      }
-
-      -- 3. LSP Client Name (NEW)
-      section.mid[1] = {
-        LspClient = {
-          provider = "GetLspClient",
-          icon = "  ",
-          highlight = {catppuccin_mocha_colors.sky, catppuccin_mocha_colors.line_bg}
-        }
-      }
-
-      -- Right section is updated with LSP client and re-ordered for clarity
-      local checkwidth = function()
-        local squeeze_width = fn.winwidth(0) / 2
-        if squeeze_width > 40 then
-          return true
-        end
-        return false
-      end
-
-      -- 1. Git Information
       section.right[1] = {
         GitIcon = {
           provider = function()
@@ -174,7 +139,14 @@ return {
         }
       }
 
-      -- 2. Git Diffs
+      local checkwidth = function()
+        local squeeze_width = fn.winwidth(0) / 2
+        if squeeze_width > 40 then
+          return true
+        end
+        return false
+      end
+
       section.right[3] = {
         DiffAdd = {
           provider = "DiffAdd",
@@ -187,7 +159,7 @@ return {
         DiffModified = {
           provider = "DiffModified",
           condition = checkwidth,
-          icon = "柳 ",
+          icon = "柳",
           highlight = {catppuccin_mocha_colors.yellow, catppuccin_mocha_colors.line_bg}
         }
       }
@@ -200,12 +172,10 @@ return {
         }
       }
 
-
-      -- 5. Line and File Information
       section.right[6] = {
         LineInfo = {
           provider = "LineColumn",
-          separator = " ",
+          separator = "",
           separator_highlight = {catppuccin_mocha_colors.blue, catppuccin_mocha_colors.line_bg},
           highlight = {catppuccin_mocha_colors.fg, catppuccin_mocha_colors.line_bg}
         }
@@ -213,13 +183,13 @@ return {
       section.right[7] = {
         FileSize = {
           provider = "FileSize",
+          separator = " ",
           condition = buffer_not_empty,
+          separator_highlight = {catppuccin_mocha_colors.blue, catppuccin_mocha_colors.line_bg},
           highlight = {catppuccin_mocha_colors.fg, catppuccin_mocha_colors.line_bg}
         }
       }
 
-
-      -- Unchanged sections
       section.left[10] = {
         LeftEnd = {
           provider = function()
@@ -228,6 +198,27 @@ return {
           separator = " ",
           separator_highlight = {catppuccin_mocha_colors.bg, catppuccin_mocha_colors.line_bg},
           highlight = {catppuccin_mocha_colors.line_bg, catppuccin_mocha_colors.line_bg}
+        }
+      }
+      section.right[11] = {
+        DiagnosticError = {
+          provider = "DiagnosticError",
+          icon = "  ",
+          highlight = {catppuccin_mocha_colors.red, catppuccin_mocha_colors.line_bg}
+        }
+      }
+      section.right[12] = {
+        Space = {
+          provider = function()
+            return " "
+          end
+        }
+      }
+      section.right[13] = {
+        DiagnosticWarn = {
+          provider = "DiagnosticWarn",
+          icon = "  ",
+          highlight = {catppuccin_mocha_colors.yellow, catppuccin_mocha_colors.line_bg}
         }
       }
 
