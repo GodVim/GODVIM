@@ -9,6 +9,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     build = ":TSUpdate",
     opts = {
+      sync_install = true,
       highlight = {
         enable = true,
       },
