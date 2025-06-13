@@ -1,5 +1,5 @@
 return {
-  'nvimdev/lspsaga.nvim',
-  event = 'LspAttach',
-  opts = {}, 
+  "rachartier/tiny-code-action.nvim",
+  event = "LspAttach",
+  opts = {},
 }
