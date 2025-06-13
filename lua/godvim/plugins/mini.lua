@@ -13,12 +13,12 @@ return {
       require("mini.icons").setup()
     end,
   },
---  {
---    "echasnovski/mini.pairs",
---    event = "InsertEnter",
---    version = false,
---    opts = {},
---  },
+  {
+    "echasnovski/mini.pairs",
+    event = "InsertEnter",
+    version = false,
+    opts = {},
+  },
   {
     "echasnovski/mini.comment",
     event = "InsertEnter",
