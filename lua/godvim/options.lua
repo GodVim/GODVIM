@@ -22,3 +22,4 @@ opt.clipboard:append("unnamedplus")
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
+vim.opt.history = 50 -- Number of commands to remember in a history table (per buffer).
