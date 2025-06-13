@@ -2,11 +2,10 @@ vim.loader.enable()
 local opt = vim.opt
 local o = vim.o
 
-opt.foldlevel = 99
-o.foldcolumn = '1'
---o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
---o.foldlevelstart = 99
-o.foldenable = true
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+
+
 o.cmdheight = 0
 opt.tabstop = 2
 opt.shiftwidth = 2
