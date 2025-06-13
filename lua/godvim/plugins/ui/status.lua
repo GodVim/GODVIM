@@ -1,7 +1,7 @@
 return {
   {
     'nvimdev/galaxyline.nvim',
-    event = "BufRead",
+    event = { "BufRead", "BufNewFile" },
     config = function()
       local cmd = vim.cmd
       local fn = vim.fn
