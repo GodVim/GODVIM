@@ -1,7 +1,7 @@
 return {
   {
     'nvimdev/galaxyline.nvim',
-    event = "BufReadPost",
+    event = "User Basefile",
     config = function()
       local cmd = vim.cmd
       local fn = vim.fn
