@@ -1,7 +1,7 @@
-return {
+ereturn {
   {
     'nvimdev/galaxyline.nvim',
-    event = "User Basefile",
+    event = "User BaseFile",
     config = function()
       local cmd = vim.cmd
       local fn = vim.fn
