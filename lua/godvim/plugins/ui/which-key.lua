@@ -4,14 +4,6 @@ return {
   opts = function()
     local wk = require("which-key")
 
-    function echo() 
-    vim.api.nvim_echo({
-  {
-    "Use :%s/find/replace/gcI!\n",
-    "ErrorMsg",
-  },
-}, true, {})
-    end
     wk.add({
       ----- Groups -----
       { "<leader>c",  group = "Code" },
@@ -33,7 +25,6 @@ return {
       { "<leader>fg", "<cmd>Telescope live_grep<cr>",                             desc = "Grep" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>",                               desc = "Buffers" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>",                             desc = "Help" },
-      { "<leader>fr", echo(),                                                     desc = "Replace" },
       { "<leader>ft", "<cmd>TodoTelescope<cr>",                                   desc = "Todo" },
 
       ----- Todos -----
