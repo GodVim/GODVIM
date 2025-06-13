@@ -14,12 +14,6 @@ return {
     end,
   },
   {
-    "echasnovski/mini.pairs",
-    event = "InsertEnter",
-    version = false,
-    opts = {},
-  },
-  {
     "echasnovski/mini.comment",
     event = "InsertEnter",
     version = false,
