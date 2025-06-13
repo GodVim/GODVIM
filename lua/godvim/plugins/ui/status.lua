@@ -1,7 +1,9 @@
 return {
   {
   "nvimdev/modeline.nvim",
-  opts = {},
+  config = function()
+      require("modeline").setup()
+    end,
   event = "UiEnter"
 },
   {
