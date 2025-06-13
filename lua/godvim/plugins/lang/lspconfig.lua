@@ -1,7 +1,6 @@
 return {
   -- General LSP-related plugins
   { "neovim/nvim-lspconfig", event = "BufReadPre" }, -- Load lspconfig plugin early
-  { "zeioth/garbage-day.nvim", event = "LspAttach" },
 
   -- Mason: Manages LSP server installations (and other tools)
   {
