@@ -21,9 +21,9 @@ return {
         header = vim.split(logo, "\n"),
         -- stylua: ignore
         center = {
-          { action = "Telescope find_files", desc = " Find File", icon = " ", key = "f" },
+          { action = "FzfLua files", desc = " Find File", icon = " ", key = "f" },
           { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
-          { action = "Telescope old_files", desc = " Recent Files", icon = " ", key = "r" },
+          { action = "FzfLua oldfiles", desc = " Recent Files", icon = " ", key = "r" },
           { action = "Leet", desc = " Leetcode", icon = " ", key = "c" },
           { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
           { action = "qa", desc = " Quit", icon = " ", key = "q" },

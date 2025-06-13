@@ -21,10 +21,10 @@ return {
 
       ----- Telescope -----
       { "<leader>fc", "<cmd>Themify<cr>",                                         desc = "Themes" },
-      { "<leader>ff", "<cmd>Telescope find_files<cr>",                            desc = "Files" },
-      { "<leader>fg", "<cmd>Telescope live_grep<cr>",                             desc = "Grep" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>",                               desc = "Buffers" },
-      { "<leader>fh", "<cmd>Telescope help_tags<cr>",                             desc = "Help" },
+      { "<leader>ff", "<cmd>FzfLua files<cr>",                                    desc = "Files" },
+      { "<leader>fg", "<cmd>FzfLua grep<cr>",                                     desc = "Grep" },
+      { "<leader>fb", "<cmd>FzfLua buffers<cr>",                                  desc = "Buffers" },
+      { "<leader>fh", "<cmd>FzfLua helptags<cr>",                             desc = "Help" },
       { "<leader>ft", "<cmd>TodoTelescope<cr>",                                   desc = "Todo" },
 
       ----- Todos -----
