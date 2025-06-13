@@ -1,3 +1,6 @@
+
+local autocmd = vim.api.nvim_create_autocmd
+local cmd = vim.api.nvim_create_user_command
 vim.deprecate = function() end
 
 -- STOLEN FROM NORMALNVIM
