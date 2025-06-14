@@ -1,7 +1,6 @@
 return {
    "m4xshen/hardtime.nvim",
-   event = "UiEnter",
-   dependencies = { "MunifTanjim/nui.nvim" },
+   event = "User BaseFile",
    opts = {
       disabled_keys = {
          ["<Up>"] = false,
