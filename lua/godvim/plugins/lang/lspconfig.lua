@@ -35,6 +35,8 @@ return {
         "jsonls",
         "yamlls",
         "pyright",
+        "biome",
+        "eslint",
         "marksman",
       }
 
