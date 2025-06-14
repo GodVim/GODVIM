@@ -20,6 +20,12 @@ return {
     opts = {},
   },
   {
+    "echasnovski/mini.surround",
+    event = "InsertEnter",
+    version = false,
+    opts = {},
+  },
+  {
     "echasnovski/mini.notify",
     event = "VeryLazy",
     version = false,
