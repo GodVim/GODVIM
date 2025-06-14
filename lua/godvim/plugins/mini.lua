@@ -21,13 +21,13 @@ return {
   },
   {
     "echasnovski/mini.notify",
-    event = "BufRead",
+    event = "VeryLazy",
     version = false,
     opts = {},
   },
   {
     "echasnovski/mini.tabline",
-    event = "BufRead",
+    event = "BufReadPost",
     version = false,
     config = function()
       require("mini.tabline").setup()

@@ -4,7 +4,8 @@ return {
     "mikavilpas/blink-ripgrep.nvim",
   },
   event = {
-    "BufRead",
+    "CursorMoved",
+    "InsertEnter",
     "CmdlineChanged",
   },
   version = "*",
