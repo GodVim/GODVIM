@@ -50,7 +50,7 @@ return {
         },
       },
       sources = {
-        default = { "snippets", "ripgrep", "lsp" },
+        default = { "snippets", "lsp", "ripgrep" },
         providers = {
           ripgrep = {
             module = "blink-ripgrep",
