@@ -42,7 +42,7 @@ return {
 
       require("mason-lspconfig").setup({
         automatic_enable = true,
-        ensure_installed = servers,
+        ensure_installed = servers
       })
     end,
   },
