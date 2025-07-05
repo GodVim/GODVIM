@@ -2,7 +2,7 @@ return {
   "zbirenbaum/copilot.lua",
   ft = { "astro", "ts" },
   build = ":Copilot auth",
-  event = "BufReadPost",
+  cmd = "Copilot",
   opts = {
     suggestion = {
       enabled = not vim.g.ai_cmp,
