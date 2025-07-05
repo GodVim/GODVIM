@@ -2,7 +2,7 @@
 return {
   {
     'echasnovski/mini.statusline', -- This is the correct repository for mini.statusline
-    branch = 'main', -- Or a specific tag like 'v0.12.0' for stability
+    version = false,
     config = function()
       local M = require('mini.statusline')
       local H = M.helpers
