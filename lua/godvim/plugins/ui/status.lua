@@ -1,11 +1,13 @@
--- lazy.nvim example for mini.statusline with Rose Pine, no M.helpers
+-- lazy.nvim configuration for mini.statusline with Rosé Pine
 return {
   {
     'echasnovski/mini.statusline',
-    version = false,
+    verion = false, -- Or a specific tag like 'v0.12.0' for stability and features
 
     config = function()
+      -- Require mini.statusline and its helpers
       local M = require('mini.statusline')
+      local H = M.helpers
 
       -- Rosé Pine 'main' palette (hex codes from rosepinetheme.com/palette/ingredients/)
       local RP = {
@@ -25,10 +27,10 @@ return {
         highlight_med = '#403d52',
         highlight_high = '#524f67',
 
-        -- Mappings for easier replacement
-        bg = '#191724',    -- base
-        fg = '#e0def4',    -- text
-        line_bg = '#1f1d2e', -- surface
+        -- Mappings for easy replacement (based on your previous galaxyline config)
+        bg = '#191724',     -- base
+        fg = '#e0def4',     -- text
+        line_bg = '#1f1d2e', -- surface (for statusline background)
         fg_green = '#31748f', -- pine
         yellow = '#f6c177',   -- gold
         cyan = '#9ccfd8',     -- foam
@@ -36,189 +38,209 @@ return {
         green = '#31748f',    -- pine
         orange = '#f6c177',   -- gold
         purple = '#c4a7e7',   -- iris
-        magenta = '#eb6f92',  -- love
+        magenta = '#eb6f92',  -- love (used for modes like Normal, Cmdline)
         gray = '#6e6a86',     -- muted
-        blue = '#9ccfd8',     -- foam
-        red = '#eb6f92'       -- love
+        blue = '#9ccfd8',     -- foam (used for Visual mode, FileIcon)
+        red = '#eb6f92'       -- love (used for errors)
       }
 
-      -- === Custom Statusline Components (replacing M.helpers) ===
-
-      -- Helper for applying highlights (similar to M.helpers.attr)
-      local apply_hl = function(text, fg, bg, bold)
-          local hl_group = ('MiniStatuslineCustom%s%s%s'):format(fg, bg, bold and 'Bold' or '')
-          vim.cmd(string.format('highlight %s guifg=%s guibg=%s %s', hl_group, fg, bg, bold and 'gui=bold' or ''))
-          return string.format('%%#%s#%s', hl_group, text)
-      end
-
-      -- 1. ViMode
-      local get_vim_mode = function()
-        local mode = vim.fn.mode()
+      -- Function to dynamically get mode color
+      local get_mode_color = function()
         local mode_colors = {
-          n = RP.love, i = RP.pine, v = RP.iris, [' '] = RP.iris, V = RP.iris,
-          c = RP.love, no = RP.love, s = RP.gold, S = RP.gold, [' '] = RP.gold,
-          ic = RP.yellow, R = RP.iris, Rv = RP.iris, cv = RP.love, ce = RP.love,
-          r = RP.foam, rm = RP.foam, ['r?'] = RP.foam, ['!'] = RP.love, t = RP.love
+          n = RP.love,      -- Normal
+          i = RP.pine,      -- Insert
+          v = RP.iris,      -- Visual
+          V = RP.iris,      -- Visual Line
+          ['\22'] = RP.iris, -- Visual Block (Ctrl-V)
+          c = RP.love,      -- Command-line
+          no = RP.love,     -- Normal Operator Pending
+          s = RP.gold,      -- Select
+          S = RP.gold,      -- Select Line
+          ['\19'] = RP.gold, -- Select Block (Ctrl-S)
+          R = RP.iris,      -- Replace
+          Rv = RP.iris,     -- Virtual Replace
+          cv = RP.love,     -- Ex Command-line
+          ce = RP.love,     -- Ex Command-line
+          r = RP.foam,      -- Prompt
+          rm = RP.foam,     -- More Prompt
+          ['r?'] = RP.foam, -- Confirm
+          ['!'] = RP.love,  -- Shell
+          t = RP.love,      -- Terminal
         }
-        local color = mode_colors[mode] or RP.text
-        return apply_hl('  ', color, RP.line_bg, true)
+        return mode_colors[vim.fn.mode()] or RP.text
       end
 
-      -- 2. FileIcon and FileName
-      local get_file_info = function()
-        local filename = vim.fn.expand('%:t')
-        if filename == '' then
-          return '' -- No file in current buffer
-        end
-
-        local file_icon = ''
-        local icon_color = RP.foam
+      -- Function to get file icon color (requires nvim-web-devicons)
+      local get_file_icon_color = function()
         if pcall(require, 'nvim-web-devicons') then
-            local devicons = require('nvim-web-devicons')
-            local icon, color = devicons.get_icon_by_filetype(vim.bo.filetype, { default = true })
-            if icon then
-                file_icon = icon .. ' '
-                icon_color = color or RP.foam
-            end
+          local devicons = require('nvim-web-devicons')
+          local _, color = devicons.get_icon_color_by_filetype(vim.bo.filetype, { default = true })
+          return color or RP.foam
         end
-
-        local filename_text = vim.fn.fnamemodify(vim.fn.bufname(), ':t')
-        if vim.bo.modified then
-            filename_text = filename_text .. ' +'
-        end
-
-        local icon_part = apply_hl(file_icon, icon_color, RP.line_bg)
-        local name_part = apply_hl(filename_text, RP.iris, RP.line_bg, true)
-
-        return icon_part .. name_part
+        return RP.foam -- Default if devicons not loaded
       end
 
-      -- 3. LSP Diagnostics
-      local get_lsp_diagnostics = function()
-        local diag = vim.diagnostic.get(0)
-        local errors = 0
-        local warns = 0
+      -- Define Left section groups
+      local left_groups = {
+        -- FirstElement: just a colored block for aesthetic padding
+        H.group({
+          H.section.raw(' ', { H.attr.fg(RP.blue), H.attr.bg(RP.line_bg) })
+        }),
 
-        for _, d in ipairs(diag) do
-          if d.severity == vim.diagnostic.severity.ERROR then
-            errors = errors + 1
-          elseif d.severity == vim.diagnostic.severity.WARN then
-            warns = warns + 1
-          end
-        end
+        -- ViMode: dynamically colored mode indicator
+        H.group({
+          H.section.raw(
+            '  ', -- Icon for ViMode
+            { H.attr.fg(get_mode_color()), H.attr.bg(RP.line_bg), H.attr.bold() }
+          )
+        }),
 
-        local parts = {}
-        if errors > 0 then
-          table.insert(parts, apply_hl(' ' .. errors, RP.love, RP.line_bg))
-        end
-        if warns > 0 then
-          table.insert(parts, apply_hl(' ' .. warns, RP.gold, RP.line_bg))
-        end
+        -- FileIcon & FileName
+        H.group({
+          H.section.file_icon({
+            { H.attr.fg(get_file_icon_color()), H.attr.bg(RP.line_bg) }
+          }),
+          H.section.filename({
+            trunc_width = 0, -- No truncation for filename
+            show_modified = true, -- Show '+' if modified
+            draw_empty_filename = false,
+            format = {
+              not_readable = '(%s)',
+              not_loaded = '[%s]',
+              unnamed = '[No Name]',
+              default = '%s'
+            },
+            { H.attr.fg(RP.iris), H.attr.bg(RP.line_bg), H.attr.bold() }
+          })
+        }),
 
-        return table.concat(parts, ' ')
-      end
+        -- LSP Diagnostics (Error)
+        H.group({
+          H.section.diagnostics({
+            error_icon = ' ',
+            format = function(diagnostics)
+              return diagnostics.error > 0 and diagnostics.error_icon .. diagnostics.error or ''
+            end,
+            { H.attr.fg(RP.love), H.attr.bg(RP.line_bg) }
+          })
+        }),
 
-      -- 4. LSP Client
-      local get_lsp_client = function()
-        local clients = vim.lsp.buf_get_clients(0)
-        if #clients == 0 then
-          return ''
-        end
-        local client_names = {}
-        for _, client in ipairs(clients) do
-          table.insert(client_names, client.name)
-        end
-        return apply_hl('  ' .. table.concat(client_names, ', '), RP.foam, RP.line_bg)
-      end
+        -- LSP Diagnostics (Warn)
+        H.group({
+          H.section.diagnostics({
+            warn_icon = ' ',
+            format = function(diagnostics)
+              return diagnostics.warn > 0 and diagnostics.warn_icon .. diagnostics.warn or ''
+            end,
+            { H.attr.fg(RP.gold), H.attr.bg(RP.line_bg) }
+          })
+        }),
 
-      -- 5. Git Information
-      local get_git_info = function()
-        local branch = vim.fn.systemlist('git rev-parse --abbrev-ref HEAD 2>/dev/null')[1]
-        if not branch or branch == '' then
-            return '' -- Not a git repo
-        end
+        -- LSP Client Name
+        H.group({
+          H.section.lsp_client({
+            icon = '  ',
+            format = function(lsp_client)
+              return lsp_client.name
+            end,
+            { H.attr.fg(RP.foam), H.attr.bg(RP.line_bg) }
+          })
+        }),
+      }
 
-        local diff_add = tonumber(vim.fn.systemlist('git diff --numstat --cached | awk \'{print $1}\'')[1] or '0')
-        local diff_mod = tonumber(vim.fn.systemlist('git diff --numstat --cached | awk \'{print $2}\'')[1] or '0')
-        local diff_del = tonumber(vim.fn.systemlist('git diff --numstat --cached | awk \'{print $3}\'')[1] or '0')
+      -- Define Right section groups
+      local right_groups = {
+        -- Git Branch and Icon
+        H.group({
+          H.section.git({
+            icon = ' ',
+            format = function(git)
+              -- Only show if in a Git workspace
+              return git.has_git and git.icon .. git.branch or ''
+            end,
+            { H.attr.fg(RP.rose), H.attr.bg(RP.line_bg), H.attr.bold() }
+          })
+        }),
 
-        local parts = {}
-        table.insert(parts, apply_hl(' ' .. branch, RP.rose, RP.line_bg, true))
+        -- Git Diffs (Add)
+        H.group({
+          H.section.diff({
+            add_icon = ' ',
+            format = function(diff)
+              return diff.add > 0 and diff.add_icon .. diff.add or ''
+            end,
+            { H.attr.fg(RP.pine), H.attr.bg(RP.line_bg) }
+          })
+        }),
 
-        if diff_add > 0 then
-          table.insert(parts, apply_hl(' ' .. diff_add, RP.pine, RP.line_bg))
-        end
-        if diff_mod > 0 then
-          table.insert(parts, apply_hl('柳 ' .. diff_mod, RP.gold, RP.line_bg))
-        end
-        if diff_del > 0 then
-          table.insert(parts, apply_hl(' ' .. diff_del, RP.love, RP.line_bg))
-        end
+        -- Git Diffs (Modified)
+        H.group({
+          H.section.diff({
+            change_icon = '柳 ',
+            format = function(diff)
+              return diff.change > 0 and diff.change_icon .. diff.change or ''
+            end,
+            { H.attr.fg(RP.gold), H.attr.bg(RP.line_bg) }
+          })
+        }),
 
-        return table.concat(parts, ' ')
-      end
+        -- Git Diffs (Removed)
+        H.group({
+          H.section.diff({
+            delete_icon = ' ',
+            format = function(diff)
+              return diff.delete > 0 and diff.delete_icon .. diff.delete or ''
+            end,
+            { H.attr.fg(RP.love), H.attr.bg(RP.line_bg) }
+          })
+        }),
 
-      -- 6. Line and Column Info
-      local get_line_col_info = function()
-        local line = vim.fn.line('.')
-        local col = vim.fn.col('.')
-        local total_lines = vim.fn.line('$')
-        local percent = math.floor((line / total_lines) * 100)
-        return apply_hl(string.format(' %d:%d %d%% ', line, col, percent), RP.text, RP.line_bg)
-      end
+        -- Line and Column Info
+        H.group({
+          H.section.file_info({
+            format = { 'ln:%l', 'col:%c', '%p%%' }, -- Display line, col, and percentage
+            delimiter = ' ', -- Space between elements
+            { H.attr.fg(RP.fg), H.attr.bg(RP.line_bg) }
+          })
+        }),
 
-      -- 7. File Size (simple)
-      local get_file_size = function()
-          local filesize = vim.fn.getfsize(vim.fn.bufname())
-          if filesize > 0 then
-              local size_mb = filesize / (1024 * 1024)
-              if size_mb >= 1 then
-                  return apply_hl(string.format(' %.1fMB ', size_mb), RP.text, RP.line_bg)
-              else
-                  local size_kb = filesize / 1024
-                  return apply_hl(string.format(' %dKB ', size_kb), RP.text, RP.line_bg)
-              end
-          end
-          return ''
-      end
+        -- File Size
+        H.group({
+          H.section.file_info({
+            format = { 'size:%s' }, -- Only file size
+            condition = function() return vim.fn.getfsize(vim.fn.bufname()) > 0 end, -- Only show if file has size
+            { H.attr.fg(RP.fg), H.attr.bg(RP.line_bg) }
+          })
+        })
+      }
 
       -- ==== Mini.statusline setup ====
       M.setup({
-        -- Each element in 'content' is a function that returns a formatted string
-        -- These functions will be called on each statusline redraw.
+        -- 'content' is a table where each element is a group of sections.
+        -- Use H.fill() to push content to the left/right.
         content = {
-          -- Left section
-          function() return apply_hl(' ', RP.foam, RP.line_bg) end, -- FirstElement (padding)
-          get_vim_mode,
-          get_file_info,
-          get_lsp_diagnostics,
-          get_lsp_client,
-
-          -- Spacer to push right elements to the right
-          function() return M.sections.fill() end, -- This is still a helper to fill space
-
-          -- Right section
-          get_git_info,
-          get_file_size,
-          get_line_col_info,
+          left_groups,
+          H.fill(), -- This acts as a dynamic spacer
+          right_groups
         },
         -- Content for inactive windows
         inactive = {
-          function()
-            local filename = vim.fn.expand('%:t')
-            if filename == '' then
-              return ''
-            end
-            return apply_hl(' ' .. filename .. ' ', RP.subtle, RP.surface)
-          end,
+          H.group({
+            H.section.filename({
+              draw_empty_filename = false,
+              format = { default = '%s' },
+              { H.attr.fg(RP.subtle), H.attr.bg(RP.surface) } -- Faded colors for inactive
+            })
+          })
         },
       })
 
-      -- Set cmdheight to 0 to make the statusline global if you desire
+      -- Set cmdheight to 0 to make the statusline global if desired
       vim.opt.laststatus = 3
       vim.opt.cmdheight = 0
 
-      -- Define default highlight groups for mini.statusline (can be overridden by apply_hl)
+      -- Define specific highlight groups for mini.statusline
+      -- These ensure consistency, especially if inline highlighting isn't always used.
       vim.cmd(string.format('highlight MiniStatuslineModeNormal guifg=%s guibg=%s', RP.love, RP.line_bg))
       vim.cmd(string.format('highlight MiniStatuslineModeInsert guifg=%s guibg=%s', RP.pine, RP.line_bg))
       vim.cmd(string.format('highlight MiniStatuslineModeVisual guifg=%s guibg=%s', RP.iris, RP.line_bg))
