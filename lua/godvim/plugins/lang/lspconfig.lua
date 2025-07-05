@@ -36,6 +36,7 @@ return {
         "yamlls",
         "pyright",
         "biome",
+        "tailwindcss-language-server",
         "eslint",
         "marksman",
       }
