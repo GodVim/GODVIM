@@ -30,7 +30,7 @@ return {
       { "<leader>cr", "<cmd>OverseerRun<cr>",                                     desc = "Run" },
       {
         "<leader>ca",
-        "<cmd>lua require('actions-preview').code_actions()<cr>",
+        "<cmd>lua require('tiny-code-action').code_action()<cr>",
         desc = "Code Action",
       },
 
