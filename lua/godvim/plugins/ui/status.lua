@@ -5,7 +5,7 @@ return {
     version = false
   },
   {
-    'echasnovski/mini.git',
+    'echasnovski/mini-git',
     lazy = true,
     version = false
   },
