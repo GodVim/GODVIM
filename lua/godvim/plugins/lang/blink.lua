@@ -2,6 +2,7 @@ return {
   "Saghen/blink.cmp",
   dependencies = {
     "mikavilpas/blink-ripgrep.nvim",
+    "giuxtaposition/blink-cmp-copilot",
   },
   event = {
     "VeryLazy",
@@ -50,8 +51,14 @@ return {
         },
       },
       sources = {
-        default = { "snippets", "lsp", "ripgrep" },
+        default = { "copilot", "snippets", "lsp", "ripgrep" },
         providers = {
+           copilot = {
+            name = "copilot",
+            module = "blink-cmp-copilot",
+            score_offset = 100,
+            async = true,
+          },
           ripgrep = {
             module = "blink-ripgrep",
             name = "Ripgrep",
