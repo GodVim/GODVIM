@@ -1,4 +1,4 @@
--- lazy.nvim example
+-- lazy.nvim example for mini.statusline with Rose Pine
 return {
   {
     'echasnovski/mini.statusline', -- This is the correct repository for mini.statusline
@@ -6,59 +6,93 @@ return {
     config = function()
       local M = require('mini.statusline')
       local H = M.helpers
-      -- Assuming you have Catppuccin loaded globally or access to its palette
-      local catppuccin = require('catppuccin')
-      local C = catppuccin.get_palette 'mocha'
 
-      -- Helper to get mode color (similar to Galaxyline's logic)
+      -- Rosé Pine 'main' palette (hex codes from rosepinetheme.com/palette/ingredients/)
+      local RP = {
+        base = '#191724',
+        surface = '#1f1d2e',
+        overlay = '#26233a',
+        muted = '#6e6a86',
+        subtle = '#908caa',
+        text = '#e0def4',
+        love = '#eb6f92',
+        gold = '#f6c177',
+        rose = '#ebbcba',
+        pine = '#31748f',
+        foam = '#9ccfd8',
+        iris = '#c4a7e7',
+        highlight_low = '#21202e',
+        highlight_med = '#403d52',
+        highlight_high = '#524f67',
+
+        -- Mappings for easier replacement from previous config
+        bg = '#191724',    -- base
+        fg = '#e0def4',    -- text
+        line_bg = '#1f1d2e', -- surface (slightly lighter than base for distinction)
+        fg_green = '#31748f', -- pine (closest to a vibrant green for diff adds)
+        yellow = '#f6c177',   -- gold
+        cyan = '#9ccfd8',     -- foam
+        darkblue = '#31748f', -- pine (can be used for some blue elements)
+        green = '#31748f',    -- pine
+        orange = '#f6c177',   -- gold
+        purple = '#c4a7e7',   -- iris
+        magenta = '#eb6f92',  -- love (closest for red/magenta like modes)
+        gray = '#6e6a86',     -- muted
+        blue = '#9ccfd8',     -- foam (common blue for file icon/separator)
+        red = '#eb6f92'       -- love
+      }
+
+
+      -- Helper to get mode color
       local get_mode_highlight = function()
         local mode_colors = {
-          n = C.red,
-          i = C.green,
-          v = C.blue,
-          [' '] = C.blue,
-          V = C.blue,
-          c = C.red,
-          no = C.red,
-          s = C.peach,
-          S = C.peach,
-          [' '] = C.peach,
-          ic = C.yellow,
-          R = C.purple,
-          Rv = C.purple,
-          cv = C.red,
-          ce = C.red,
-          r = C.teal,
-          rm = C.teal,
-          ['r?'] = C.teal,
-          ['!'] = C.red,
-          t = C.red
+          n = RP.love,      -- Red/Love
+          i = RP.pine,      -- Green/Pine
+          v = RP.iris,      -- Blue/Iris
+          [' '] = RP.iris,
+          V = RP.iris,
+          c = RP.love,
+          no = RP.love,
+          s = RP.gold,      -- Peach/Gold
+          S = RP.gold,
+          [' '] = RP.gold,
+          ic = RP.yellow,
+          R = RP.iris,      -- Purple/Iris
+          Rv = RP.iris,
+          cv = RP.love,
+          ce = RP.love,
+          r = RP.foam,      -- Teal/Foam
+          rm = RP.foam,
+          ['r?'] = RP.foam,
+          ['!'] = RP.love,
+          t = RP.love
         }
-        return mode_colors[vim.fn.mode()] or C.text
+        return mode_colors[vim.fn.mode()] or RP.text
       end
 
       -- Helper to get file icon color
       local get_file_icon_color = function()
-        return C.blue -- Default color for this example
+        -- You can integrate nvim-web-devicons here if desired
+        return RP.foam -- Using 'foam' for file icons
       end
 
       -- Define Left section groups
       local left_groups = {
         -- FirstElement (just a space for padding/color block)
         H.group({
-          H.section.raw(' ', { H.attr.fg(C.blue), H.attr.bg(C.mantle) })
+          H.section.raw(' ', { H.attr.fg(RP.foam), H.attr.bg(RP.line_bg) })
         }),
         -- ViMode
         H.group({
           H.section.raw(
             '  ',
-            { H.attr.fg(get_mode_highlight()), H.attr.bg(C.mantle), H.attr.bold() }
+            { H.attr.fg(get_mode_highlight()), H.attr.bg(RP.line_bg), H.attr.bold() }
           )
         }),
         -- FileIcon & FileName
         H.group({
           H.section.file_icon({
-            { H.attr.fg(get_file_icon_color()), H.attr.bg(C.mantle) }
+            { H.attr.fg(get_file_icon_color()), H.attr.bg(RP.line_bg) }
           }),
           H.section.filename({
             trunc_width = 0, -- Don't truncate
@@ -70,7 +104,7 @@ return {
               unnamed = '[No Name]',
               default = '%s'
             },
-            { H.attr.fg(C.purple), H.attr.bg(C.mantle), H.attr.bold() }
+            { H.attr.fg(RP.iris), H.attr.bg(RP.line_bg), H.attr.bold() }
           })
         }),
         -- LSP Diagnostics
@@ -86,13 +120,13 @@ return {
               if diagnostics.error ~= 0 then
                 table.insert(parts, H.section.raw(
                   diagnostics.error_icon .. diagnostics.error,
-                  { H.attr.fg(C.red), H.attr.bg(C.mantle) }
+                  { H.attr.fg(RP.love), H.attr.bg(RP.line_bg) }
                 ))
               end
               if diagnostics.warn ~= 0 then
                 table.insert(parts, H.section.raw(
                   diagnostics.warn_icon .. diagnostics.warn,
-                  { H.attr.fg(C.yellow), H.attr.bg(C.mantle) }
+                  { H.attr.fg(RP.gold), H.attr.bg(RP.line_bg) }
                 ))
               end
               return table.concat(parts, ' ')
@@ -106,7 +140,7 @@ return {
             format = function(lsp_client)
               return lsp_client.name
             end,
-            { H.attr.fg(C.sky), H.attr.bg(C.mantle) }
+            { H.attr.fg(RP.foam), H.attr.bg(RP.line_bg) }
           })
         })
       }
@@ -123,7 +157,7 @@ return {
               end
               return ''
             end,
-            { H.attr.fg(C.peach), H.attr.bg(C.mantle), H.attr.bold() }
+            { H.attr.fg(RP.rose), H.attr.bg(RP.line_bg), H.attr.bold() }
           })
         }),
         -- Git Diffs
@@ -135,13 +169,13 @@ return {
             format = function(diff)
               local parts = {}
               if diff.add ~= 0 then
-                table.insert(parts, H.section.raw(diff.add_icon .. diff.add, { H.attr.fg(C.green), H.attr.bg(C.mantle) }))
+                table.insert(parts, H.section.raw(diff.add_icon .. diff.add, { H.attr.fg(RP.pine), H.attr.bg(RP.line_bg) }))
               end
               if diff.change ~= 0 then
-                table.insert(parts, H.section.raw(diff.change_icon .. diff.change, { H.attr.fg(C.yellow), H.attr.bg(C.mantle) }))
+                table.insert(parts, H.section.raw(diff.change_icon .. diff.change, { H.attr.fg(RP.gold), H.attr.bg(RP.line_bg) }))
               end
               if diff.delete ~= 0 then
-                table.insert(parts, H.section.raw(diff.delete_icon .. diff.delete, { H.attr.fg(C.red), H.attr.bg(C.mantle) }))
+                table.insert(parts, H.section.raw(diff.delete_icon .. diff.delete, { H.attr.fg(RP.love), H.attr.bg(RP.line_bg) }))
               end
               return table.concat(parts, ' ')
             end
@@ -160,7 +194,7 @@ return {
               'pos: %p%%'
             },
             -- This will apply to all parts within file_info by default
-            { H.attr.fg(C.text), H.attr.bg(C.mantle) }
+            { H.attr.fg(RP.text), H.attr.bg(RP.line_bg) }
           })
         })
       }
@@ -178,7 +212,7 @@ return {
             H.section.filename({
               draw_empty_filename = false,
               format = { default = '%s' },
-              { H.attr.fg(C.overlay0), H.attr.bg(C.mantle) } -- Faded colors for inactive
+              { H.attr.fg(RP.subtle), H.attr.bg(RP.surface) } -- Faded colors for inactive
             })
           })
         },
@@ -189,12 +223,26 @@ return {
       vim.opt.cmdheight = 0
 
       -- Define highlight groups for mini.statusline if you want more granular control
-      vim.cmd(string.format('highlight MiniStatuslineModeNormal guifg=%s guibg=%s', C.red, C.mantle))
-      vim.cmd(string.format('highlight MiniStatuslineModeInsert guifg=%s guibg=%s', C.green, C.mantle))
-      vim.cmd(string.format('highlight MiniStatuslineDevinfo guifg=%s guibg=%s', C.peach, C.mantle))
-      vim.cmd(string.format('highlight MiniStatuslineFilename guifg=%s guibg=%s', C.purple, C.mantle))
-      vim.cmd(string.format('highlight MiniStatuslineFileinfo guifg=%s guibg=%s', C.text, C.mantle))
-      vim.cmd(string.format('highlight MiniStatuslineInactive guifg=%s guibg=%s', C.overlay0, C.mantle))
+      -- These highlight groups will be defined based on your Rosé Pine palette
+      vim.cmd(string.format('highlight MiniStatuslineModeNormal guifg=%s guibg=%s', RP.love, RP.line_bg))
+      vim.cmd(string.format('highlight MiniStatuslineModeInsert guifg=%s guibg=%s', RP.pine, RP.line_bg))
+      vim.cmd(string.format('highlight MiniStatuslineModeVisual guifg=%s guibg=%s', RP.iris, RP.line_bg))
+      vim.cmd(string.format('highlight MiniStatuslineModeReplace guifg=%s guibg=%s', RP.rose, RP.line_bg)) -- Using rose for replace
+      vim.cmd(string.format('highlight MiniStatuslineModeCmdline guifg=%s guibg=%s', RP.love, RP.line_bg)) -- Command line
+      vim.cmd(string.format('highlight MiniStatuslineDevinfo guifg=%s guibg=%s', RP.rose, RP.line_bg))
+      vim.cmd(string.format('highlight MiniStatuslineFilename guifg=%s guibg=%s', RP.iris, RP.line_bg))
+      vim.cmd(string.format('highlight MiniStatuslineFileinfo guifg=%s guibg=%s', RP.text, RP.line_bg))
+      vim.cmd(string.format('highlight MiniStatuslineInactive guifg=%s guibg=%s', RP.subtle, RP.surface))
+
+      -- Additional highlights for diagnostics (if not handled purely by section.diagnostics)
+      vim.cmd(string.format('highlight MiniStatuslineDiagnosticError guifg=%s guibg=%s', RP.love, RP.line_bg))
+      vim.cmd(string.format('highlight MiniStatuslineDiagnosticWarn guifg=%s guibg=%s', RP.gold, RP.line_bg))
+      vim.cmd(string.format('highlight MiniStatuslineLspClient guifg=%s guibg=%s', RP.foam, RP.line_bg))
+      vim.cmd(string.format('highlight MiniStatuslineGitBranch guifg=%s guibg=%s', RP.rose, RP.line_bg))
+      vim.cmd(string.format('highlight MiniStatuslineDiffAdd guifg=%s guibg=%s', RP.pine, RP.line_bg))
+      vim.cmd(string.format('highlight MiniStatuslineDiffChange guifg=%s guibg=%s', RP.gold, RP.line_bg))
+      vim.cmd(string.format('highlight MiniStatuslineDiffDelete guifg=%s guibg=%s', RP.love, RP.line_bg))
+
     end,
   },
 }
