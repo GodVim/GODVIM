@@ -1,252 +1,223 @@
+-- lazy.nvim example
 return {
   {
-    'nvimdev/galaxyline.nvim',
-    event = { "BufReadPost", "BufNewFile" },
+    lazy = false,
+    'echasnovski/mini.statusline', -- This is the *correct* repository for mini.statusline
+    version = false,
     config = function()
-      local cmd = vim.cmd
-      local fn = vim.fn
-      local gl = require("galaxyline")
-      local section = gl.section
-      gl.short_line_list = {"LuaTree", "packager", "Floaterm"}
+      -- Mini.statusline setup
+      -- You only 'require' and 'setup' the 'mini.statusline' module
+      require('mini.statusline').setup({
+        -- Your custom content goes here
+        content = function()
+          local M = require('mini.statusline')
+          local H = M.helpers
+          -- Assuming you have Catppuccin loaded globally or access to its palette
+          local catppuccin = require('catppuccin')
+          local C = catppuccin.get_palette 'mocha'
 
-      -- Catppuccin Mocha palette
-      local catppuccin_mocha_colors = {
-        rosewater = "#F5E0DC",
-        flamingo = "#F2CDCD",
-        pink = "#F5C2E7",
-        mauve = "#CBA6F7",
-        red = "#F38BA8",
-        maroon = "#EBA0AC",
-        peach = "#FAB387",
-        yellow = "#F9E2AF",
-        green = "#A6E3BD",
-        teal = "#94E2D5",
-        sky = "#89DCEB",
-        sapphire = "#74C7EC",
-        blue = "#89B4FA",
-        lavender = "#B4BEFE",
-        text = "#CDD6F4",
-        subtext1 = "#BAC2DE",
-        subtext0 = "#A6ADC8",
-        overlay2 = "#9399B2",
-        overlay1 = "#7F849C",
-        overlay0 = "#6C7086",
-        surface2 = "#585B70",
-        surface1 = "#45475A",
-        surface0 = "#313244",
-        base = "#1E1E2E",
-        mantle = "#181825",
-        crust = "#11111B",
-
-        -- Mapping to existing nord_colors keys for easy replacement
-        bg = "#1E1E2E",          -- base
-        fg = "#CDD6F4",          -- text
-        line_bg = "#181825",     -- mantle (slightly darker for line background)
-        fg_green = "#A6E3BD",    -- green
-        yellow = "#F9E2AF",      -- yellow
-        cyan = "#94E2D5",        -- teal (closest)
-        darkblue = "#74C7EC",    -- sapphire (closest)
-        green = "#A6E3BD",       -- green
-        orange = "#FAB387",      -- peach
-        purple = "#CBA6F7",      -- mauve
-        magenta = "#F38BA8",     -- red (closest to original magenta use case)
-        gray = "#585B70",        -- surface2
-        blue = "#89B4FA",        -- blue
-        red = "#F38BA8"          -- red
-      }
-
-      local buffer_not_empty = function()
-        if fn.empty(fn.expand("%:t")) ~= 1 then
-          return true
-        end
-        return false
-      end
-
-      -- Left section remains the same
-      section.left[1] = {
-        FirstElement = {
-          provider = function()
-            return "  "
-          end,
-          highlight = {catppuccin_mocha_colors.blue, catppuccin_mocha_colors.line_bg}
-        }
-      }
-      section.left[2] = {
-        ViMode = {
-          provider = function()
-            local mode_color = {
-              n = catppuccin_mocha_colors.red,
-              i = catppuccin_mocha_colors.green,
-              v = catppuccin_mocha_colors.blue,
-              [" "] = catppuccin_mocha_colors.blue,
-              V = catppuccin_mocha_colors.blue,
-              c = catppuccin_mocha_colors.red,
-              no = catppuccin_mocha_colors.red,
-              s = catppuccin_mocha_colors.peach,
-              S = catppuccin_mocha_colors.peach,
-              [" "] = catppuccin_mocha_colors.peach,
-              ic = catppuccin_mocha_colors.yellow,
-              R = catppuccin_mocha_colors.purple,
-              Rv = catppuccin_mocha_colors.purple,
-              cv = catppuccin_mocha_colors.red,
-              ce = catppuccin_mocha_colors.red,
-              r = catppuccin_mocha_colors.teal,
-              rm = catppuccin_mocha_colors.teal,
-              ["r?"] = catppuccin_mocha_colors.teal,
-              ["!"] = catppuccin_mocha_colors.red,
-              t = catppuccin_mocha_colors.red
+          -- Helper to get mode color (similar to Galaxyline's logic)
+          local get_mode_highlight = function()
+            local mode_colors = {
+              n = C.red,
+              i = C.green,
+              v = C.blue,
+              [' '] = C.blue,
+              V = C.blue,
+              c = C.red,
+              no = C.red,
+              s = C.peach,
+              S = C.peach,
+              [' '] = C.peach,
+              ic = C.yellow,
+              R = C.purple,
+              Rv = C.purple,
+              cv = C.red,
+              ce = C.red,
+              r = C.teal,
+              rm = C.teal,
+              ['r?'] = C.teal,
+              ['!'] = C.red,
+              t = C.red
             }
-            cmd("hi GalaxyViMode guifg=" .. mode_color[fn.mode()])
-            return "   "
-          end,
-          highlight = {catppuccin_mocha_colors.red, catppuccin_mocha_colors.line_bg, "bold"}
-        }
-      }
-      section.left[3] = {
-        FileIcon = {
-          provider = "FileIcon",
-          condition = buffer_not_empty,
-          highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, catppuccin_mocha_colors.line_bg}
-        }
-      }
-      section.left[4] = {
-        FileName = {
-          provider = "FileName",
-          condition = buffer_not_empty,
-          separator = " ",
-          separator_highlight = {catppuccin_mocha_colors.purple, catppuccin_mocha_colors.bg},
-          highlight = {catppuccin_mocha_colors.purple, catppuccin_mocha_colors.line_bg, "bold"}
-        }
-      }
+            return mode_colors[vim.fn.mode()] or C.text
+          end
 
-      -- 4. LSP Diagnostics
-      section.left[5] = {
-        DiagnosticError = {
-          provider = "DiagnosticError",
-          icon = " ",
-          highlight = {catppuccin_mocha_colors.red, catppuccin_mocha_colors.line_bg}
-        }
-      }
+          -- Helper to get file icon color
+          local get_file_icon_color = function()
+            -- You can extend this with nvim-web-devicons logic if it's loaded
+            -- For example:
+            -- local devicons = require('nvim-web-devicons')
+            -- local icon, color = devicons.get_icon_color_by_filetype(vim.bo.filetype, { default = true })
+            -- return color or C.blue
+            return C.blue -- Default color for this example
+          end
 
-      section.left[6] = {
-        DiagnosticWarn = {
-          provider = "DiagnosticWarn",
-          icon = " ",
-          highlight = {catppuccin_mocha_colors.yellow, catppuccin_mocha_colors.line_bg}
-        }
-      }
+          -- Left section:
+          local left_groups = {
+            -- FirstElement (just a space for padding/color block)
+            H.group({
+              H.section.raw(' ', { H.attr.fg(C.blue), H.attr.bg(C.mantle) })
+            }),
+            -- ViMode
+            H.group({
+              H.section.raw(
+                '  ',
+                { H.attr.fg(get_mode_highlight()), H.attr.bg(C.mantle), H.attr.bold() }
+              )
+            }),
+            -- FileIcon & FileName
+            H.group({
+              H.section.file_icon({
+                { H.attr.fg(get_file_icon_color()), H.attr.bg(C.mantle) }
+              }),
+              H.section.filename({
+                trunc_width = 0, -- Don't truncate
+                show_modified = false,
+                draw_empty_filename = false,
+                format = {
+                  not_readable = '(%s)',
+                  not_loaded = '[%s]',
+                  unnamed = '[No Name]',
+                  default = '%s'
+                },
+                { H.attr.fg(C.purple), H.attr.bg(C.mantle), H.attr.bold() }
+              })
+            }),
+            -- LSP Diagnostics
+            H.group({
+              H.section.diagnostics({
+                error_icon = ' ',
+                warn_icon = ' ',
+                info_icon = ' ',
+                hint_icon = ' ',
+                truncate = false,
+                format = function(diagnostics)
+                  local parts = {}
+                  if diagnostics.error ~= 0 then
+                    table.insert(parts, H.section.raw(
+                      diagnostics.error_icon .. diagnostics.error,
+                      { H.attr.fg(C.red), H.attr.bg(C.mantle) }
+                    ))
+                  end
+                  if diagnostics.warn ~= 0 then
+                    table.insert(parts, H.section.raw(
+                      diagnostics.warn_icon .. diagnostics.warn,
+                      { H.attr.fg(C.yellow), H.attr.bg(C.mantle) }
+                    ))
+                  end
+                  return table.concat(parts, ' ')
+                end
+              })
+            }),
+            -- LSP Client Name
+            H.group({
+              H.section.lsp_client({
+                icon = '  ',
+                format = function(lsp_client)
+                  return lsp_client.name
+                end,
+                { H.attr.fg(C.sky), H.attr.bg(C.mantle) }
+              })
+            })
+          }
 
-      -- 3. LSP Client Name (NEW)
-      section.mid[1] = {
-        LspClient = {
-          provider = "GetLspClient",
-          icon = "  ",
-          highlight = {catppuccin_mocha_colors.sky, catppuccin_mocha_colors.line_bg}
-        }
-      }
+          -- Right section:
+          local right_groups = {
+            -- Git Information
+            H.group({
+              H.section.git({
+                icon = ' ',
+                format = function(git)
+                  if git.has_git then
+                    return git.icon .. git.branch
+                  end
+                  return ''
+                end,
+                { H.attr.fg(C.peach), H.attr.bg(C.mantle), H.attr.bold() }
+              })
+            }),
+            -- Git Diffs
+            H.group({
+              H.section.diff({
+                add_icon = ' ',
+                change_icon = '柳 ',
+                delete_icon = ' ',
+                format = function(diff)
+                  local parts = {}
+                  if diff.add ~= 0 then
+                    table.insert(parts, H.section.raw(diff.add_icon .. diff.add, { H.attr.fg(C.green), H.attr.bg(C.mantle) }))
+                  end
+                  if diff.change ~= 0 then
+                    table.insert(parts, H.section.raw(diff.change_icon .. diff.change, { H.attr.fg(C.yellow), H.attr.bg(C.mantle) }))
+                  end
+                  if diff.delete ~= 0 then
+                    table.insert(parts, H.section.raw(diff.delete_icon .. diff.delete, { H.attr.fg(C.red), H.attr.bg(C.mantle) }))
+                  end
+                  return table.concat(parts, ' ')
+                end
+              })
+            }),
+            -- Line and File Information
+            H.group({
+              H.section.file_info({
+                truncate = false,
+                format = {
+                  'size: %s',
+                  'lines: %s',
+                  'cols: %s',
+                  'ln: %l',
+                  'col: %c',
+                  'pos: %p%%'
+                },
+                -- This will apply to all parts within file_info by default
+                { H.attr.fg(C.text), H.attr.bg(C.mantle) }
+              })
+            })
+          }
 
-      -- Right section is updated with LSP client and re-ordered for clarity
-      local checkwidth = function()
-        local squeeze_width = fn.winwidth(0) / 2
-        if squeeze_width > 40 then
-          return true
-        end
-        return false
-      end
+          -- Combine groups for the active statusline
+          return M.combine_groups({
+            left_groups,
+            H.fill(), -- Spacer
+            right_groups
+          })
+        end,
+        -- Content for inactive windows (optional)
+        inactive = function()
+          local M = require('mini.statusline')
+          local H = M.helpers
+          local catppuccin = require('catppuccin')
+          local C = catppuccin.get_palette 'mocha'
+          return M.combine_groups({
+            H.group({
+              H.section.filename({
+                draw_empty_filename = false,
+                format = { default = '%s' },
+                { H.attr.fg(C.overlay0), H.attr.bg(C.mantle) } -- Faded colors for inactive
+              })
+            })
+          })
+        end,
+      })
 
-      -- 1. Git Information
-      section.right[1] = {
-        GitIcon = {
-          provider = function()
-            return " "
-          end,
-          condition = require("galaxyline.provider_vcs").check_git_workspace,
-          highlight = {catppuccin_mocha_colors.peach, catppuccin_mocha_colors.line_bg}
-        }
-      }
-      section.right[2] = {
-        GitBranch = {
-          provider = "GitBranch",
-          condition = require("galaxyline.provider_vcs").check_git_workspace,
-          separator = "",
-          separator_highlight = {catppuccin_mocha_colors.purple, catppuccin_mocha_colors.bg},
-          highlight = {catppuccin_mocha_colors.peach, catppuccin_mocha_colors.line_bg, "bold"}
-        }
-      }
+      -- Set cmdheight to 0 to make the statusline global if you desire
+      vim.opt.laststatus = 3
+      vim.opt.cmdheight = 0
 
-      -- 2. Git Diffs
-      section.right[3] = {
-        DiffAdd = {
-          provider = "DiffAdd",
-          condition = checkwidth,
-          icon = " ",
-          highlight = {catppuccin_mocha_colors.green, catppuccin_mocha_colors.line_bg}
-        }
-      }
-      section.right[4] = {
-        DiffModified = {
-          provider = "DiffModified",
-          condition = checkwidth,
-          icon = "柳 ",
-          highlight = {catppuccin_mocha_colors.yellow, catppuccin_mocha_colors.line_bg}
-        }
-      }
-      section.right[5] = {
-        DiffRemove = {
-          provider = "DiffRemove",
-          condition = checkwidth,
-          icon = " ",
-          highlight = {catppuccin_mocha_colors.red, catppuccin_mocha_colors.line_bg}
-        }
-      }
-
-
-      -- 5. Line and File Information
-      section.right[6] = {
-        LineInfo = {
-          provider = "LineColumn",
-          separator = " ",
-          separator_highlight = {catppuccin_mocha_colors.blue, catppuccin_mocha_colors.line_bg},
-          highlight = {catppuccin_mocha_colors.fg, catppuccin_mocha_colors.line_bg}
-        }
-      }
-      section.right[7] = {
-        FileSize = {
-          provider = "FileSize",
-          condition = buffer_not_empty,
-          highlight = {catppuccin_mocha_colors.fg, catppuccin_mocha_colors.line_bg}
-        }
-      }
-
-
-      -- Unchanged sections
-      section.left[10] = {
-        LeftEnd = {
-          provider = function()
-            return " "
-          end,
-          separator = " ",
-          separator_highlight = {catppuccin_mocha_colors.bg, catppuccin_mocha_colors.line_bg},
-          highlight = {catppuccin_mocha_colors.line_bg, catppuccin_mocha_colors.line_bg}
-        }
-      }
-
-      section.short_line_left[15] = {
-        BufferType = {
-          provider = "FileTypeName",
-          separator = " ",
-          separator_highlight = {catppuccin_mocha_colors.purple, catppuccin_mocha_colors.bg},
-          highlight = {catppuccin_mocha_colors.fg, catppuccin_mocha_colors.purple}
-        }
-      }
-      section.short_line_right[16] = {
-        BufferIcon = {
-          provider = "BufferIcon",
-          separator = " ",
-          separator_highlight = {catppuccin_mocha_colors.purple, catppuccin_mocha_colors.bg},
-          highlight = {catppuccin_mocha_colors.fg, catppuccin_mocha_colors.purple}
-        }
-      }
-    end
-  }
+      -- Define highlight groups for mini.statusline if you want more granular control
+      vim.cmd(string.format('highlight MiniStatuslineModeNormal guifg=%s guibg=%s', C.red, C.mantle))
+      vim.cmd(string.format('highlight MiniStatuslineModeInsert guifg=%s guibg=%s', C.green, C.mantle))
+      vim.cmd(string.format('highlight MiniStatuslineDevinfo guifg=%s guibg=%s', C.peach, C.mantle))
+      vim.cmd(string.format('highlight MiniStatuslineFilename guifg=%s guibg=%s', C.purple, C.mantle))
+      vim.cmd(string.format('highlight MiniStatuslineFileinfo guifg=%s guibg=%s', C.text, C.mantle))
+      vim.cmd(string.format('highlight MiniStatuslineInactive guifg=%s guibg=%s', C.overlay0, C.mantle))
+    end,
+  },
 }
+
+
+
+
+
+
