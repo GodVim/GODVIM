@@ -1,5 +1,6 @@
 return {
     "ibhagwan/fzf-lua",
+    lazy = true,
     cmd = "FzfLua",
     opts = {
       oldfiles = {
