@@ -1,5 +1,6 @@
 -- This configuration sets up the 'alpha-nvim' start screen.
--- 'alpha-nvim' is a highly customizable start screen for Neovim.
+-- 'alpha-nvim' is a faster and more lightweight alternative to dashboard-nvim
+-- for creating highly customizable Neovim start screens.
 
 return {
   "goolord/alpha-nvim",
@@ -11,13 +12,14 @@ return {
   config = function()
     -- Require the main 'alpha' module.
     local alpha = require("alpha")
-    -- Require the 'dashboard' theme for 'alpha'.
-    -- This theme provides a structured layout similar to a dashboard,
-    -- allowing us to customize its sections.
+    -- Require the 'dashboard' theme for 'alpha'. This theme provides a
+    -- structured layout similar to a dashboard, allowing us to customize its sections.
     local dashboard = require("alpha.themes.dashboard")
 
     -- Define the ASCII logo for the header.
     -- The logo is split into a table of strings, where each string is a line.
+    -- The original 'string.rep("\n", 8)' for top padding is handled by alpha's
+    -- layout system, so it's removed from the logo string itself.
     local logo = [[
 ███╗    ██╗███████╗ ██████╗ ██╗    ██╗██╗███╗    ███╗
 ████╗   ██║██╔════╝██╔═══██╗██║    ██║██║████╗ ████║
@@ -28,6 +30,7 @@ return {
     ]]
 
     -- Assign the logo to the header section of the dashboard theme.
+    -- 'vim.split(logo, "\n")' converts the multi-line string into a table of lines.
     dashboard.section.header.val = vim.split(logo, "\n")
 
     -- Define the buttons for the center section.
@@ -77,13 +80,28 @@ return {
       else
         -- Fallback if lazy.nvim is not loaded or stats are unavailable.
         return { "⚡ Neovim loaded. (Lazy stats unavailable)" }
+      -- You can also add more details or a different message if lazy is not loaded
       end
     end
 
     -- Explicitly set the theme to "dashboard" within the dashboard.config.
-    -- While passing dashboard.config implicitly uses the dashboard theme,
-    -- this makes it explicit in the configuration table itself, fulfilling the request.
+    -- This ensures the dashboard theme's default layout and styling are applied.
     dashboard.config.theme = "dashboard"
+
+    -- Set up an autocommand to show alpha-nvim when a 'lazy' buffer is closed.
+    -- This replicates the behavior from your original dashboard-nvim setup.
+    vim.api.nvim_create_autocmd("BufWinLeave", {
+      pattern = "lazy", -- Trigger when leaving a buffer with filetype 'lazy'
+      callback = function()
+        -- Check if there are no other open buffers.
+        -- This prevents alpha from appearing unnecessarily if you're just switching windows.
+        if #vim.api.nvim_list_bufs(false) == 1 then -- Only the alpha buffer itself might be left
+          vim.schedule(function()
+            alpha.start() -- Start alpha-nvim
+          end)
+        end
+      end,
+    })
 
     -- Finally, set up 'alpha-nvim' with the configured dashboard theme.
     -- By passing 'dashboard.config', we use the layout and default settings
