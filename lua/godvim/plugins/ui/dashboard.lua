@@ -1,58 +1,86 @@
+-- This configuration sets up the 'alpha-nvim' start screen.
+-- 'alpha-nvim' is a highly customizable start screen for Neovim.
+
 return {
-  "nvimdev/dashboard-nvim",
-  lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
-  opts = function()
+  "goolord/alpha-nvim",
+  -- 'alpha-nvim' is typically not lazy-loaded because it serves as the initial
+  -- screen when Neovim starts or when all buffers are closed.
+  -- Setting lazy = false is essential for a start screen plugin to function correctly.
+  lazy = false,
+  -- The 'config' function is executed when the plugin is loaded.
+  config = function()
+    -- Require the main 'alpha' module.
+    local alpha = require("alpha")
+    -- Require the 'dashboard' theme for 'alpha'. This theme provides a
+    -- structured layout similar to a dashboard.
+    local dashboard = require("alpha.themes.dashboard")
+
+    -- Define the ASCII logo for the header.
+    -- The logo is split into a table of strings, where each string is a line.
     local logo = [[
-███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+███╗    ██╗███████╗ ██████╗ ██╗    ██╗██╗███╗    ███╗
+████╗   ██║██╔════╝██╔═══██╗██║    ██║██║████╗ ████║
+██╔██╗  ██║█████╗  ██║    ██║██║    ██║██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║    ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
 ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+    ]]
 
-      ]]
+    -- Assign the logo to the header section of the dashboard theme.
+    dashboard.section.header.val = vim.split(logo, "\n")
 
-    logo = string.rep("\n", 8) .. logo .. "\n\n"
-
-    local opts = {
-      theme = "doom",
-      config = {
-        header = vim.split(logo, "\n"),
-        -- stylua: ignore
-        center = {
-          { action = "FzfLua files", desc = " Find File", icon = " ", key = "f" },
-          { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
-          { action = "FzfLua oldfiles", desc = " Recent Files", icon = " ", key = "r" },
-          { action = "Leet", desc = " Leetcode", icon = " ", key = "c" },
-          { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
-          { action = "qa", desc = " Quit", icon = " ", key = "q" },
-        },
-        footer = function()
-          local stats = require("lazy").stats()
-          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
-        end,
-      },
+    -- Define the buttons for the center section.
+    -- These are the same actions and descriptions as in your original dashboard-nvim config.
+    local buttons_raw = {
+      { action = "FzfLua files", desc = " Find File", icon = " ", key = "f" },
+      { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
+      { action = "FzfLua oldfiles", desc = " Recent Files", icon = " ", key = "r" },
+      { action = "Leet", desc = " Leetcode", icon = " ", key = "c" },
+      { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
+      { action = "qa", desc = " Quit", icon = " ", key = "q" },
     }
 
-    for _, button in ipairs(opts.config.center) do
-      button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
-      button.key_format = "  %s"
-    end
+    -- Process the raw buttons to fit 'alpha-nvim's button structure.
+    -- 'alpha-nvim' buttons typically use 'text', 'action', and 'shortcut'.
+    -- The original padding logic is applied to maintain similar visual alignment.
+    local mapped_buttons = {}
+    for _, button in ipairs(buttons_raw) do
+      -- The description part is padded to a length of 43 characters,
+      -- similar to the original dashboard-nvim configuration.
+      local full_desc = button.desc
+      local padded_desc = full_desc .. string.rep(" ", math.max(0, 43 - #full_desc))
+      -- The final text combines the icon and the padded description.
+      local text = button.icon .. padded_desc
 
-    -- open dashboard after closing lazy
-    if vim.o.filetype == "lazy" then
-      vim.api.nvim_create_autocmd("WinClosed", {
-        pattern = tostring(vim.api.nvim_get_current_win()),
-        once = true,
-        callback = function()
-          vim.schedule(function()
-            vim.api.nvim_exec_autocmds("UIEnter", { group = "dashboard" })
-          end)
-        end,
+      table.insert(mapped_buttons, {
+        text = text,              -- The display text for the button.
+        action = button.action,   -- The Neovim command or function to execute.
+        shortcut = button.key,    -- The keybinding for the button.
+        -- 'alpha-nvim's dashboard theme automatically formats the shortcut,
+        -- so a separate 'key_format' is generally not needed here.
       })
     end
+    -- Assign the processed buttons to the buttons section of the dashboard theme.
+    dashboard.section.buttons.val = mapped_buttons
 
-    return opts
+    -- Define the footer section.
+    -- This function dynamically generates the footer content, showing Lazy.nvim statistics.
+    -- The operations within this function are very fast and do not impact startup time significantly.
+    dashboard.section.footer.val = function()
+      -- Ensure 'lazy.nvim' is loaded before trying to get its stats.
+      if package.loaded["lazy"] then
+        local stats = require("lazy").stats()
+        -- Calculate startup time in milliseconds, rounded to two decimal places.
+        local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+        -- Return a table containing the footer line.
+        return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+      else
+        -- Fallback if lazy.nvim is not loaded or stats are unavailable.
+        return { "⚡ Neovim loaded. (Lazy stats unavailable)" }
+      end
+    end
+
+    -- Finally, set up 'alpha-nvim' with the configured dashboard theme.
+    alpha.setup(dashboard.config)
   end,
 }
