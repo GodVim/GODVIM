@@ -13,6 +13,7 @@ return {
       "MasonLog",
       "MasonUpdate",
     },
+    version = "^1.0.0",
     config = function()
       require("mason").setup({
         registries = {
@@ -27,6 +28,7 @@ return {
   {
     "mason-org/mason-lspconfig.nvim",
     event = "VeryLazy",
+    version = "^1.0.0",
     config = function()
       local servers = {
         "lua_ls",
@@ -47,7 +49,7 @@ return {
   },
 
   {
-    "zeioth/nvim-java",
+    "nvim-java/nvim-java",
     ft = "java",
     config = function()
       require("java").setup({
