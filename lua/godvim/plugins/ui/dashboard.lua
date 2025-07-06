@@ -26,9 +26,6 @@ return {
 ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
     ]]
 
-    -- Assign the logo to the header section of the dashboard theme.
-    dashboard.section.header.val = vim.split(logo, "\n")
-
     -- Define the buttons for the center section.
     -- These are the same actions and descriptions as in your original dashboard-nvim config.
     local buttons_raw = {
@@ -60,27 +57,39 @@ return {
         -- so a separate 'key_format' is generally not needed here.
       })
     end
-    -- Assign the processed buttons to the buttons section of the dashboard theme.
-    dashboard.section.buttons.val = mapped_buttons
 
-    -- Define the footer section.
-    -- This function dynamically generates the footer content, showing Lazy.nvim statistics.
-    -- The operations within this function are very fast and do not impact startup time significantly.
-    dashboard.section.footer.val = function()
-      -- Ensure 'lazy.nvim' is loaded before trying to get its stats.
-      if package.loaded["lazy"] then
-        local stats = require("lazy").stats()
-        -- Calculate startup time in milliseconds, rounded to two decimal places.
-        local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-        -- Return a table containing the footer line.
-        return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
-      else
-        -- Fallback if lazy.nvim is not loaded or stats are unavailable.
-        return { "⚡ Neovim loaded. (Lazy stats unavailable)" }
-      end
-    end
+    -- Construct the dashboard configuration using the 'with_val' method for sections.
+    -- This ensures that each section is properly initialized and its value is set,
+    -- preventing potential 'nil' errors during rendering.
+    local config = {
+      -- Header section with the ASCII logo.
+      header = dashboard.section.header:with_val(vim.split(logo, "\n")),
+      -- Buttons section with the processed action buttons.
+      buttons = dashboard.section.buttons:with_val(mapped_buttons),
+      -- Footer section with dynamic Lazy.nvim statistics.
+      footer = dashboard.section.footer:with_val(function()
+        -- Ensure 'lazy.nvim' is loaded before trying to get its stats.
+        if package.loaded["lazy"] then
+          local stats = require("lazy").stats()
+          -- Calculate startup time in milliseconds, rounded to two decimal places.
+          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+          -- Return a table containing the footer line.
+          return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+        else
+          -- Fallback if lazy.nvim is not loaded or stats are unavailable.
+          return { "⚡ Neovim loaded. (Lazy stats unavailable)" }
+        end
+      end),
+      -- The 'layout' field is part of dashboard.config and defines the order
+      -- of sections. It's often good practice to explicitly include it,
+      -- though the default dashboard theme usually provides one.
+      layout = dashboard.config.layout,
+      -- You can also add other dashboard theme configurations here if needed,
+      -- for example, padding, alignment, etc.
+      -- theme = "dashboard", -- This is implicitly handled by using dashboard.config
+    }
 
     -- Finally, set up 'alpha-nvim' with the configured dashboard theme.
-    alpha.setup(dashboard.config)
+    alpha.setup(config)
   end,
 }
