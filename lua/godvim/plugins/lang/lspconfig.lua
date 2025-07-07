@@ -14,19 +14,11 @@ return {
       "MasonUpdate",
     },
     version = "^1.0.0",
-    opts_extend = { "ensure_installed" },
     opts = {
       registries = {
         "github:nvim-java/mason-registry",
         "github:mason-org/mason-registry",
       },
-      ensure_installed = {
-        "jsonls",
-        "biome",
-        "astro",
-        "prettier",
-        "tailwindcss",
-      }
     }
   },
 
@@ -36,7 +28,13 @@ return {
     version = "^1.0.0",
     opts = {
       automatic_enable = true,
-
+      ensure_installed = {
+        "jsonls",
+        "biome",
+        "astro",
+        "prettier",
+        "tailwindcss",
+      }
     }
   },
 
