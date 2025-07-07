@@ -33,11 +33,14 @@ return {
       local servers = {
         "lua_ls",
         "jsonls",
-        "yamlls",
-        "pyright",
-        "biome",
-        "tailwindcss-language-server",
         "eslint",
+        "biome",
+        "astro-language-server",
+        "markdown-toc",
+        "prettier",
+        "shfmt",
+        "stylua",
+        "tailwindcss",
         "marksman",
       }
 
