@@ -29,17 +29,11 @@ return {
     opts = {
       automatic_enable = true,
       ensure_installed = {
-        "lua_ls",
         "jsonls",
-        "eslint",
         "biome",
         "astro-language-server",
-        "markdown-toc",
         "prettier",
-        "shfmt",
-        "stylua",
         "tailwindcss",
-        "marksman",
       }
     }
   },
