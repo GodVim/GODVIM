@@ -5,7 +5,7 @@ return {
     "giuxtaposition/blink-cmp-copilot",
   },
   event = {
-    "VeryLazy",
+    "InsertEnter",
     "CmdlineChanged",
   },
   version = "*",
