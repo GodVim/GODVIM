@@ -1,6 +1,6 @@
 return {
   "zbirenbaum/copilot.lua",
-  ft = { "astro", "ts" },
+  event = "InsertEnter",
   build = ":Copilot auth",
   cmd = "Copilot",
   opts = {
