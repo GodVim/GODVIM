@@ -14,23 +14,12 @@ return {
       "MasonUpdate",
     },
     version = "^1.0.0",
-    config = function()
-      require("mason").setup({
-        registries = {
-          "github:nvim-java/mason-registry",
-          "github:mason-org/mason-registry",
-        },
-      })
-    end,
-  },
-
-  -- Mason LSPConfig: Bridges Mason installations with nvim-lspconfig setup
-  {
-    "mason-org/mason-lspconfig.nvim",
-    event = "VeryLazy",
-    version = "^1.0.0",
-    config = function()
-      local servers = {
+    opts = {
+      registries = {
+        "github:nvim-java/mason-registry",
+        "github:mason-org/mason-registry",
+      },
+      ensure_installed = {
         "lua_ls",
         "jsonls",
         "eslint",
@@ -43,12 +32,16 @@ return {
         "tailwindcss",
         "marksman",
       }
+    }
+  },
 
-      require("mason-lspconfig").setup({
-        automatic_enable = true,
-        ensure_installed = servers
-      })
-    end,
+  {
+    "mason-org/mason-lspconfig.nvim",
+    event = "VeryLazy",
+    version = "^1.0.0",
+    opts = {
+      automatic_enable = true
+    }
   },
 
   {
