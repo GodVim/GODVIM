@@ -3,7 +3,6 @@ return {
   dependencies = {
     {
   "zbirenbaum/copilot.lua",
-  event = "InsertEnter",
   build = ":Copilot auth",
   cmd = "Copilot",
   opts = {
