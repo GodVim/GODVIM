@@ -32,11 +32,9 @@ return {
         "jsonls",
         "biome",
         "astro",
-        "markdown-toc",
-        "prettier",
-        "stylua",
+        "prettierd",
         "tailwindcss",
-        "marksman",
+        "markdown",
       }
     }
   },
