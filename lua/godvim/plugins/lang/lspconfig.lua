@@ -32,9 +32,8 @@ return {
         "jsonls",
         "biome",
         "astro",
-        "prettierd",
         "tailwindcss",
-        "markdown",
+        "marksman",
       }
     }
   },
