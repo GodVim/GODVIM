@@ -23,7 +23,7 @@ return {
       { "<leader>ff", "<cmd>FzfLua files<cr>",                                    desc = "Files" },
       { "<leader>fg", "<cmd>FzfLua grep<cr>",                                     desc = "Grep" },
       { "<leader>fb", "<cmd>FzfLua buffers<cr>",                                  desc = "Buffers" },
-      { "<leader>fh", "<cmd>FzfLua helptags<cr>",                             desc = "Help" },
+      { "<leader>fh", "<cmd>FzfLua helptags<cr>",                                 desc = "Help" },
       { "<leader>ft", "<cmd>TodoTelescope<cr>",                                   desc = "Todo" },
 
       ----- Code -----
@@ -33,6 +33,7 @@ return {
         "<cmd>lua require('tiny-code-action').code_action()<cr>",
         desc = "Code Action",
       },
+      { "<leader>cr", vim.lsp.buf.rename, desc = "Rename"},
 
       ----- random stuff -----
       { "<leader>t", "<cmd>FloatermToggle<cr>",                                   desc = "Terminal" },
