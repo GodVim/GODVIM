@@ -24,7 +24,7 @@ return {
 
   {
     "mason-org/mason-lspconfig.nvim",
-    event = "BufReadPost",
+    event = "VeryLazy",
     version = "^1.0.0",
     opts = {
       automatic_enable = true,
