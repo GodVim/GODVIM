@@ -1,7 +1,7 @@
 return {
   {
     "windwp/nvim-ts-autotag",
-    ft = { "astro", "javascript", "markdown", "svelte", "typescript" },
+    event = "InsertEnter",
     opts = {}
   },
   {
