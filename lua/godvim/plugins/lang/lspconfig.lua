@@ -1,6 +1,6 @@
 return {
   -- General LSP-related plugins
-  { "neovim/nvim-lspconfig", event = "VeryLazy" }, -- Load lspconfig plugin early
+  { "neovim/nvim-lspconfig", event = "InsertEnter" }, -- Load lspconfig plugin early
 
   -- Mason: Manages LSP server installations (and other tools)
   {
@@ -24,7 +24,7 @@ return {
 
   {
     "mason-org/mason-lspconfig.nvim",
-    event = "VeryLazy",
+    event = "InsertEnter",
     version = "^1.0.0",
     opts = {
       automatic_enable = true,
