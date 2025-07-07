@@ -19,6 +19,15 @@ return {
         "github:nvim-java/mason-registry",
         "github:mason-org/mason-registry",
       },
+    }
+  },
+
+  {
+    "mason-org/mason-lspconfig.nvim",
+    event = "VeryLazy",
+    version = "^1.0.0",
+    opts = {
+      automatic_enable = true,
       ensure_installed = {
         "lua_ls",
         "jsonls",
@@ -32,15 +41,6 @@ return {
         "tailwindcss",
         "marksman",
       }
-    }
-  },
-
-  {
-    "mason-org/mason-lspconfig.nvim",
-    event = "VeryLazy",
-    version = "^1.0.0",
-    opts = {
-      automatic_enable = true
     }
   },
 
