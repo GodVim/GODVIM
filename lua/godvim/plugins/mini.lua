@@ -33,7 +33,7 @@ return {
   },
   {
     "echasnovski/mini.tabline",
-    event = "BufReadPost",
+    event = "UiEnter",
     version = false,
     config = function()
       require("mini.tabline").setup()
