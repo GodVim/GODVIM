@@ -41,29 +41,29 @@ vim.api.nvim_create_augroup("FileEnterOnDoubleEvent", { clear = true })
 
 vim.g.ui_entered_flag = false
 
-local function trigger_file_enter_event(bufnr)
-  if vim.api.nvim_buf_is_valid(bufnr) and
-     vim.api.nvim_buf_is_loaded(bufnr) and
-     vim.bo[bufnr].buftype == '' and -- Ensure it's a normal file buffer
-     vim.api.nvim_buf_get_name(bufnr) ~= '' then -- Ensure it has a file name
-    vim.api.nvim_exec_autocmds("User", { pattern = "FileEnter", bufnr = bufnr })
+local function trigger_file_enter_event(buffer)
+  if vim.api.nvim_buf_is_valid(buffer) and
+     vim.api.nvim_buf_is_loaded(buffer) and
+     vim.bo[buffer].buftype == '' and -- Ensure it's a normal file buffer
+     vim.api.nvim_buf_get_name(buffer) ~= '' then -- Ensure it has a file name
+    vim.api.nvim_exec_autocmds("User", { pattern = "FileEnter", buffer = buffer })
 
-    vim.b[bufnr].buf_read_post_flag = nil
+    vim.b[buffer].buf_read_post_flag = nil
   end
 end
 
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = "FileEnterOnDoubleEvent",
   callback = function(args)
-    local bufnr = args.buf
-    local bufname = vim.api.nvim_buf_get_name(bufnr)
-    local buftype = vim.bo[bufnr].buftype
+    local buffer = args.buf
+    local bufname = vim.api.nvim_buf_get_name(buffer)
+    local buftype = vim.bo[buffer].buftype
 
     if buftype == '' and bufname ~= '' then
-      vim.b[bufnr].buf_read_post_flag = true
+      vim.b[buffer].buf_read_post_flag = true
 
       if vim.g.ui_entered_flag then
-        trigger_file_enter_event(bufnr)
+        trigger_file_enter_event(buffer)
       end
     end
   end,
@@ -76,13 +76,13 @@ vim.api.nvim_create_autocmd("UiEnter", {
   callback = function()
     -- Set the global flag to indicate that UiEnter has fired.
 
-    for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
-      if vim.api.nvim_buf_is_loaded(bufnr) and
-         vim.b[bufnr] and
-         vim.b[bufnr].buf_read_post_flag and
-         vim.bo[bufnr].buftype == '' and
-         vim.api.nvim_buf_get_name(bufnr) ~= '' then
-        trigger_file_enter_event(bufnr)
+    for _, buffer in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.api.nvim_buf_is_loaded(buffer) and
+         vim.b[buffer] and
+         vim.b[buffer].buf_read_post_flag and
+         vim.bo[buffer].buftype == '' and
+         vim.api.nvim_buf_get_name(buffer) ~= '' then
+        trigger_file_enter_event(buffer)
       end
     end
   end,
