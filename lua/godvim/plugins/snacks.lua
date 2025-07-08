@@ -1,6 +1,6 @@
 return {
   "folke/snacks.nvim",
-  lazy = false,
+  event = "UiEnter",
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
