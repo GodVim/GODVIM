@@ -111,3 +111,21 @@ end, { desc = "Write all changed buffers" })
 cmd("CloseNotifications", function()
   require("notify").dismiss({ pending = true, silent = true })
 end, { desc = "Dismiss all notifications" })
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+  pattern = "*",
+  callback = function(event)
+    vim.schedule(function()
+      vim.lsp.inlay_hint.enable(false, { bufnr = event.buf })
+    end)
+  end,
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = utils.augroup("enable_inlay_hints"),
+  pattern = "*",
+  callback = function(event)
+    vim.schedule(function()
+      vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+    end)
+  end,
+})
