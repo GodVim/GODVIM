@@ -1,6 +1,7 @@
 return {
   "folke/snacks.nvim",
-  event = "BufReadPre",
+  lazy = false,
+--  event = "BufReadPre",
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
