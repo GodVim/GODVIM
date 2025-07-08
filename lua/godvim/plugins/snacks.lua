@@ -10,5 +10,6 @@ return {
     scroll = { enabled = true },
     lazygit = { enabled = true },
     rename =  { enabled = true },
+    dashboard = { enabled = true },
   }
 }
