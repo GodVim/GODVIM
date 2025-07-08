@@ -33,7 +33,7 @@ return {
   },
   {
     "echasnovski/mini.tabline",
-    event = "User FileEnter",
+    event = "UserFileEnter",
     version = false,
     config = function()
       require("mini.tabline").setup()
