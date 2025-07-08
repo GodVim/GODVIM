@@ -15,19 +15,17 @@ return {
       ----- Buffers -----
       { "<leader>bd", "<cmd>bdelete!<cr>",                                        desc = "Close buffer" },
       { "<leader>bn", "<cmd>enew<cr>",                                            desc = "New buffer" },
-      { "<leader>bb", "<cmd>FzfLua buffers<cr>",                                  desc = "Switch buffer" },
-      { "<leader>bf", "<cmd>lua require('conform').format({ async = true })<cr>", desc = "Format Buffer" },
+      { "<leader>bb", "<cmd>lua Snacks.picker.buffers()<cr>",                     desc = "Switch buffer" },
 
       ----- Telescope -----
       { "<leader>fc", "<cmd>Themify<cr>",                                         desc = "Themes" },
-      { "<leader>ff", "<cmd>FzfLua files<cr>",                                    desc = "Files" },
-      { "<leader>fg", "<cmd>FzfLua grep<cr>",                                     desc = "Grep" },
-      { "<leader>fb", "<cmd>FzfLua buffers<cr>",                                  desc = "Buffers" },
-      { "<leader>fh", "<cmd>FzfLua helptags<cr>",                                 desc = "Help" },
+      { "<leader>ff", "<cmd>lua Snacks.picker.files()<cr>",                       desc = "Files" },
+      { "<leader>fg", "<cmd>lua Snacks.picker.grep()<cr>",                        desc = "Grep" },
+      { "<leader>fb", "<cmd>lua Snacks.picker.buffers()<cr>",                     desc = "Buffers" },
+      { "<leader>fh", "<cmd>lua Snacks.picker.help()<cr>",                        desc = "Help" },
       { "<leader>ft", "<cmd>TodoTelescope<cr>",                                   desc = "Todo" },
 
       ----- Code -----
-      { "<leader>cr", "<cmd>OverseerRun<cr>",                                     desc = "Run" },
       {
         "<leader>ca",
         "<cmd>lua require('tiny-code-action').code_action()<cr>",
