@@ -62,4 +62,4 @@ vim.api.nvim_create_autocmd("User", {
     local bufnr = args.buf
     local bufname = vim.api.nvim_buf_get_name(bufnr)
   end,
-  })
+})
