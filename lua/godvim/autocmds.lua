@@ -3,38 +3,6 @@ local autocmd = vim.api.nvim_create_autocmd
 local cmd = vim.api.nvim_create_user_command
 vim.deprecate = function() end
 
-function run_cmd(cmd, show_error)
-  -- Split cmd string into a list, if needed.
-  if type(cmd) == "string" then
-    cmd = vim.split(cmd, " ")
-  end
-
-  -- If windows, and prepend cmd.exe
-  if vim.fn.has("win32") == 1 then
-    cmd = vim.list_extend({ "cmd.exe", "/C" }, cmd)
-  end
-
-  -- Execute cmd and store result (output or error message)
-  local result = vim.fn.system(cmd)
-  local success = vim.api.nvim_get_vvar("shell_error") == 0
-
-  -- If the command failed and show_error is true or not provided, print error.
-  if not success and (show_error == nil or show_error) then
-    vim.api.nvim_echo({{
-      ("Error running command %s\nError message:\n%s"):format(
-        table.concat(cmd, " "), -- Convert the cmd back to string.
-        result                  -- Show the error result
-      )}}, true, { err = true }
-    )
-  end
-
-  -- strip out terminal escape sequences and control characters.
-  local cleaned_result = result:gsub("[\27\155][][()#;?%d]*[A-PRZcf-ntqry=><~]", "")
-
-  -- Return the cleaned result if the command succeeded, or nil if it failed
-  return (success and cleaned_result) or nil
-end
-
 function trigger_event(event, is_urgent)
   -- define behavior
   local function trigger()
@@ -47,27 +15,6 @@ function trigger_event(event, is_urgent)
     end
 end
 end
-
--- STOLEN FROM NORMALNVIM
-autocmd({ "BufReadPost", "BufNewFile", "BufWritePost" }, {
-  desc = "Nvim user events for file detection (BaseFile and BaseGitFile)",
-  callback = function(args)
-    local empty_buffer = vim.fn.resolve(vim.fn.expand "%") == ""
-    local greeter = vim.api.nvim_get_option_value("filetype", { buf = args.buf }) == "alpha"
-    local git_repo = vim.fn.executable("git") == 1 and run_cmd(
-      { "git", "-C", vim.fn.fnamemodify(vim.fn.resolve(vim.fn.expand "%"), ":p:h"), "rev-parse" }, false)
-
-    -- For any file exept empty buffer, or the greeter (alpha)
-    if not (empty_buffer or greeter) then
-      trigger_event("User BaseFile")
-
-      -- Is the buffer part of a git repo?
-      if git_repo then
-        trigger_event("User BaseGitFile")
-      end
-    end
-  end,
-})
 
 
 autocmd({ "VimEnter" }, {
@@ -112,23 +59,6 @@ cmd("CloseNotifications", function()
   require("notify").dismiss({ pending = true, silent = true })
 end, { desc = "Dismiss all notifications" })
 
-vim.api.nvim_create_autocmd("InsertEnter", {
-  pattern = "*",
-  callback = function(event)
-    vim.schedule(function()
-      vim.lsp.inlay_hint.enable(false, { bufnr = event.buf })
-    end)
-  end,
-})
-vim.api.nvim_create_autocmd("InsertLeave", {
-  group = utils.augroup("enable_inlay_hints"),
-  pattern = "*",
-  callback = function(event)
-    vim.schedule(function()
-      vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
-    end)
-  end,
-})
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "MiniFilesActionRename",
