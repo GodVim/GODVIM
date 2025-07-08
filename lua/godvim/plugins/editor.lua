@@ -1,21 +1,21 @@
 return {
 
-  {
-  "folke/snacks.nvim",
-  event = "BufReadPost",
-  ---@type snacks.Config
-  opts = {
-    picker = { enabled = true },
-    indent = { enabled = true },
-    input = { enabled = true },
-    scroll = { enabled = true },
-  }
-},
-{
-  "folke/flash.nvim",
-  event = "VeryLazy",
-  ---@type Flash.Config
-  opts = {},
+	{
+		"folke/snacks.nvim",
+		event = "BufReadPost",
+		---@type snacks.Config
+		opts = {
+			picker = { enabled = true },
+			indent = { enabled = true },
+			input = { enabled = true },
+			scroll = { enabled = true },
+		},
+	},
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		---@type Flash.Config
+		opts = {},
   -- stylua: ignore
   keys = {
     { "/", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
@@ -24,5 +24,5 @@ return {
     { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
     { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
   },
-}
+	},
 }
