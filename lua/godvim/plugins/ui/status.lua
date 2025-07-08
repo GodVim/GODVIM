@@ -1,7 +1,7 @@
 return {
   {
     'echasnovski/mini.statusline',
-    event = "UiEnter",
+    event = "BufReadPost",
     version = false,
     opts = {},
   },
