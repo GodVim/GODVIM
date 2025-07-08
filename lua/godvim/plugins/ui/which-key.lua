@@ -3,8 +3,9 @@ return {
   event = "VeryLazy",
   opts = {
       preset = "helix"
-    },
-  keys = {
+    defaults = {},
+    spec = {
+      {
       ----- Groups -----
       { "<leader>c",  group = "Code" },
       { "<leader>b",  group = "Buffers" },
@@ -39,6 +40,8 @@ return {
       { "<leader>t", "<cmd>FloatermToggle<cr>",                                   desc = "Terminal" },
       { "<leader>e", "<cmd>lua require('mini.files').open()<cr>",                 desc = "File Explorer" },
       { "<leader>l", "<cmd>Lazy<cr>",                                             desc = "Lazy" }
+  }
+    }
   }
 --  opts = function()
 --    local wk = require("which-key")
