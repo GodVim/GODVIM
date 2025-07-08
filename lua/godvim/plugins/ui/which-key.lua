@@ -38,7 +38,8 @@ return {
       ----- random stuff -----
       { "<leader>t", "<cmd>FloatermToggle<cr>",                                   desc = "Terminal" },
       { "<leader>e", "<cmd>lua require('mini.files').open()<cr>",                 desc = "File Explorer" },
-      { "<leader>l", "<cmd>Lazy<cr>",                                             desc = "Lazy" }      
+      { "<leader>l", "<cmd>Lazy<cr>",                                             desc = "Lazy" },
+      { "<leader>lg", "<cmd>lua Snacks.lazygit.open()<cr>",                       desc = "Lazygit" },
     }
   }
 }
