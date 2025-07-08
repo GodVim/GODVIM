@@ -42,24 +42,3 @@ autocmd("User", {
 
 
 
-vim.api.nvim_create_augroup("FileEnterOnDoubleEvent", { clear = true })
-
-local function trigger_file_enter_event(bufnr)
-  if vim.api.nvim_buf_is_valid(bufnr) and
-     vim.api.nvim_buf_is_loaded(bufnr) and
-     vim.bo[bufnr].buftype == '' and
-     vim.api.nvim_buf_get_name(bufnr) ~= '' then
-    vim.api.nvim_exec_autocmds("User", { pattern = "FileEnter", buffer = bufnr })
-
-    vim.b[bufnr].buf_read_post_flag = nil
-  end
-end
-
-vim.api.nvim_create_autocmd("User", {
-  group = "FileEnterOnDoubleEvent",
-  pattern = "FileEnter",
-  callback = function(args)
-    local bufnr = args.buf
-    local bufname = vim.api.nvim_buf_get_name(bufnr)
-  end,
-})
