@@ -16,7 +16,6 @@ return {
 		opts = {
 			bigfile = { enabled = true },
 			quickfile = { enabled = true },
-			lazygit = { enabled = true },
 			profiler = { enabled = true },
 			rename = { enabled = true },
       terminal = {
