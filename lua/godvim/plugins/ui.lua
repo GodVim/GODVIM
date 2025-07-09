@@ -65,13 +65,6 @@ return {
 		opts = {},
 	},
 
-	-- Tabline
-	{
-		"echasnovski/mini.tabline",
-		event = "BufReadPost",
-		version = false,
-		opts = {},
-	},
 
 	-- Notifications
   {

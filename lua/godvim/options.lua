@@ -2,6 +2,7 @@ vim.loader.enable()
 local opt = vim.opt
 local o = vim.o
 
+o.showtabline = 2
 o.cmdheight = 0
 opt.tabstop = 2
 opt.shiftwidth = 2

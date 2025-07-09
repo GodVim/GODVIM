@@ -8,7 +8,8 @@ return {
 
   -- Commenting
 	{
-		"echasnovski/mini.comment",
+    "numToStr/Comment.nvim",
+		-- "echasnovski/mini.comment",
 		event = "InsertEnter",
 		version = false,
 		opts = {},
