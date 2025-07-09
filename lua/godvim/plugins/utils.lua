@@ -8,6 +8,7 @@ return {
 			require("mini.icons").setup()
 		end,
 	},
+
 	{
 		"folke/snacks.nvim",
 		event = "BufReadPre",
@@ -18,14 +19,16 @@ return {
 			lazygit = { enabled = true },
 			profiler = { enabled = true },
 			rename = { enabled = true },
+      terminal = {
+        enabled = true,
+        win = {
+          position = "float"
+        }
+      },
 		},
 	},
-	{
-		"nvzone/floaterm",
-		dependencies = "nvzone/volt",
-		opts = {},
-		cmd = "FloatermToggle",
-	},
+
+
 	{ "nvim-lua/plenary.nvim", lazy = true },
 	{
 		"echasnovski/mini.icons",

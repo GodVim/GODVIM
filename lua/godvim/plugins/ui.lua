@@ -74,12 +74,11 @@ return {
 	},
 
 	-- Notifications
-	{
-		"echasnovski/mini.notify",
-		event = "VeryLazy",
-		version = false,
-		opts = {},
-	},
+  {
+    "j-hui/fidget.nvim",
+    event = "VeryLazy",
+    opts = { },
+  },
 
 	-- Utils
 	{
