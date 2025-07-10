@@ -40,11 +40,6 @@ return {
 	  end,
 	},
 
-  -- Right Click Menu
-  {
-    "nvzone/menu",
-    lazy = true,
-  }
   -- Ui Library
 	"nvchad/volt",
 }
