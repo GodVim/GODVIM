@@ -15,15 +15,10 @@ return {
 		---@type snacks.Config
 		opts = {
 			bigfile = { enabled = true },
+      toggle = { enabled = true },
 			quickfile = { enabled = true },
 			profiler = { enabled = true },
 			rename = { enabled = true },
-      terminal = {
-        enabled = true,
-        win = {
-          position = "float"
-        }
-      },
 		},
 	},
 

@@ -16,6 +16,13 @@ return {
 			dashboard = {
 				enabled = true,
 				preset = {
+          header = [[
+       █████╗ ██╗   ██╗██████╗  █████╗           Z
+      ██╔══██╗██║   ██║██╔══██╗██╔══██╗       Z   
+      ███████║██║   ██║██████╔╝███████║    z      
+      ██╔══██║██║   ██║██╔══██╗██╔══██║ z         
+      ██║  ██║╚██████╔╝██║  ██║██║  ██║           
+      ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝          ]], 
 					keys = {
 						{
 							icon = " ",
@@ -69,7 +76,7 @@ return {
 	-- Notifications
   {
     "j-hui/fidget.nvim",
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
     opts = { },
   },
 

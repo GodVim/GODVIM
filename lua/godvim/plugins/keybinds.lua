@@ -8,8 +8,7 @@ return {
 			----- Groups -----
 			{ "<leader>c", group = "Code" },
 			{ "<leader>b", group = "Buffers" },
-			{ "<leader>s", group = "Sessions" },
-			{ "<leader>f", group = "Find" },
+			{ "<leader>s", group = "Search" },
 			{ "<leader>d", group = "Debug" },
 
 			----- Buffers -----
@@ -18,12 +17,12 @@ return {
 			{ "<leader>bb", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Switch buffer" },
 
 			----- Telescope -----
-			{ "<leader>fc", "<cmd>Themify<cr>", desc = "Themes" },
-			{ "<leader>ff", "<cmd>lua Snacks.picker.files()<cr>", desc = "Files" },
-			{ "<leader>fg", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
-			{ "<leader>fb", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
-			{ "<leader>fh", "<cmd>lua Snacks.picker.help()<cr>", desc = "Help" },
-			{ "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+			{ "<leader>sc", "<cmd>Themify<cr>", desc = "Themes" },
+			{ "<leader>sf", "<cmd>lua Snacks.picker.files()<cr>", desc = "Files" },
+			{ "<leader>sg", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
+			{ "<leader>sb", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
+			{ "<leader>sh", "<cmd>lua Snacks.picker.help()<cr>", desc = "Help" },
+      { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
 
 			----- Code -----
 			{
@@ -34,6 +33,10 @@ return {
 			{ "<leader>cr", vim.lsp.buf.rename, desc = "Rename" },
 
 			----- random stuff -----
+      { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
+      { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
+
 			{ "<leader>t", "<cmd>lua Snacks.terminal.toggle()<cr>", desc = "Terminal" },
 			{ "<leader>e", "<cmd>lua require('mini.files').open()<cr>", desc = "File Explorer" },
 			{ "<leader>l", "<cmd>Lazy<cr>", desc = "Lazy" },
