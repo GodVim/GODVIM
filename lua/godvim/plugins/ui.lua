@@ -1,94 +1,45 @@
 return {
-	-- Colorscheme
+	-- Notifications
 	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		config = function()
-			vim.cmd("colorscheme rose-pine")
-		end,
-	},
-
-	-- Dashboard
-	{
-		"folke/snacks.nvim",
-		event = "UiEnter",
-		opts = {
-			dashboard = {
-				enabled = true,
-				preset = {
-          header = [[
-       █████╗ ██╗   ██╗██████╗  █████╗           Z
-      ██╔══██╗██║   ██║██╔══██╗██╔══██╗       Z   
-      ███████║██║   ██║██████╔╝███████║    z      
-      ██╔══██║██║   ██║██╔══██╗██╔══██║ z         
-      ██║  ██║╚██████╔╝██║  ██║██║  ██║           
-      ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝          ]], 
-					keys = {
-						{
-							icon = " ",
-							key = "f",
-							desc = "Find File",
-							action = ":lua Snacks.dashboard.pick('files')",
-						},
-						{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-						{
-							icon = " ",
-							key = "g",
-							desc = "Find Text",
-							action = ":lua Snacks.dashboard.pick('live_grep')",
-						},
-						{
-							icon = " ",
-							key = "r",
-							desc = "Recent Files",
-							action = ":lua Snacks.dashboard.pick('oldfiles')",
-						},
-						{
-							icon = " ",
-							key = "c",
-							desc = "Config",
-							action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
-						},
-						{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
-						{
-							icon = "󰒲 ",
-							key = "l",
-							desc = "Lazy",
-							action = ":Lazy",
-							enabled = package.loaded.lazy ~= nil,
-						},
-						{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
-					},
-				},
-			},
-		},
-	},
-
-	-- Statusline
-	{
-		"echasnovski/mini.statusline",
-		event = "BufReadPost",
-		version = false,
+		"j-hui/fidget.nvim",
+		event = "User FilePost",
 		opts = {},
 	},
 
 
-	-- Notifications
-  {
-    "j-hui/fidget.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    opts = { },
-  },
+  -- Statusline Tabline Lsp
+	{
+		"nvchad/ui",
+    lazy = false,
+		config = function()
+			require("nvchad")
+			dofile(vim.g.base46_cache .. "defaults")
+			dofile(vim.g.base46_cache .. "statusline")
+			dofile(vim.g.base46_cache .. "lsp")
+			dofile(vim.g.base46_cache .. "treesitter")
+			dofile(vim.g.base46_cache .. "colors")
+		end,
+	},
 
-	-- Utils
+  -- Colorscheme
 	{
-		"echasnovski/mini-git",
+		"nvchad/base46",
 		lazy = true,
-		version = false,
+		build = function()
+			require("base46").load_all_highlights()
+		end,
 	},
+  
+  -- Icons
 	{
-		"echasnovski/mini.diff",
-		lazy = true,
-		version = false,
+	  "nvim-tree/nvim-web-devicons",
+    event = "User FilePost",
+	  opts = function()
+	    dofile(vim.g.base46_cache .. "devicons")
+	    return { override = require "nvchad.icons.devicons" }
+	  end,
 	},
+
+  -- Ui Library
+	"nvchad/volt",
 }

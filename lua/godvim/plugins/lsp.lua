@@ -33,7 +33,7 @@ return {
 	-- Mason Lspconfig
 	{
 		"mason-org/mason-lspconfig.nvim",
-		event = "InsertEnter",
+		event = "User FilePost",
 		version = "^1.0.0",
 		opts = {
 			automatic_enable = true,

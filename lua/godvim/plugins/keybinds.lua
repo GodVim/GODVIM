@@ -22,7 +22,8 @@ return {
 			{ "<leader>sg", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
 			{ "<leader>sb", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
 			{ "<leader>sh", "<cmd>lua Snacks.picker.help()<cr>", desc = "Help" },
-      { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
+			{ "<leader>sm", "<cmd>lua Snacks.picker.marks()<cr>", desc = "Marks" },
+			{ "<leader>st", "<cmd>lua require('nvchad.themes').open()<cr>", desc = "Themes" },
 
 			----- Code -----
 			{
@@ -33,9 +34,9 @@ return {
 			{ "<leader>cr", vim.lsp.buf.rename, desc = "Rename" },
 
 			----- random stuff -----
-      { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
-      { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
-      { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
+			{ "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
+			{ "<leader>/", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
+			{ "<leader>:", "<cmd>lua Snacks.picker.command_history()<cr>", desc = "Command History" },
 
 			{ "<leader>t", "<cmd>lua Snacks.terminal.toggle()<cr>", desc = "Terminal" },
 			{ "<leader>e", "<cmd>lua require('mini.files').open()<cr>", desc = "File Explorer" },

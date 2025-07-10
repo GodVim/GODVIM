@@ -1,28 +1,26 @@
 return {
-  -- Pairs
+	-- Pairs
 	{
 		"nvimdev/fnpairs.nvim",
 		opts = {},
 		event = "InsertEnter",
 	},
 
-  -- Commenting
+	-- Commenting
 	{
-    "numToStr/Comment.nvim",
-		-- "echasnovski/mini.comment",
+		"echasnovski/mini.comment",
 		event = "InsertEnter",
 		version = false,
 		opts = {},
 	},
 
-  -- Surround
- 	{
+	-- Surround
+	{
 		"echasnovski/mini.surround",
 		event = "InsertEnter",
 		version = false,
 		opts = {},
 	},
-
 
 	{
 		"echasnovski/mini.snippets",
@@ -30,7 +28,7 @@ return {
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 		},
-		version = false, 
+		version = false,
 		config = function()
 			local gen_loader = require("mini.snippets").gen_loader
 			require("mini.snippets").setup({
@@ -61,7 +59,7 @@ return {
 			"giuxtaposition/blink-cmp-copilot",
 		},
 		event = {
-			"InsertEnter",
+			"User FilePost",
 			"CmdlineChanged",
 		},
 		version = "*",
@@ -74,7 +72,7 @@ return {
 			},
 			completion = {
 				list = {
-					selection = { auto_insert = false }
+					selection = { auto_insert = false },
 				},
 			},
 			sources = {
@@ -97,7 +95,7 @@ return {
 						},
 					},
 				},
-		  },
-		}
+			},
+		},
 	},
 }

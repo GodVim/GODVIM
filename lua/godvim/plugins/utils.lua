@@ -15,13 +15,27 @@ return {
 		---@type snacks.Config
 		opts = {
 			bigfile = { enabled = true },
-      toggle = { enabled = true },
 			quickfile = { enabled = true },
-			profiler = { enabled = true },
+		},
+	},
+
+	{
+		"folke/snacks.nvim",
+		event = "User FilePost",
+		---@type snacks.Config
+		opts = {
 			rename = { enabled = true },
 		},
 	},
 
+	{
+		"folke/snacks.nvim",
+    lazy = false,
+		---@type snacks.Config
+		opts = {
+			profiler = { enabled = true },
+		},
+	},
 
 	{ "nvim-lua/plenary.nvim", lazy = true },
 	{

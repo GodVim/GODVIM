@@ -1,23 +1,24 @@
 return {
 	{
 		"folke/snacks.nvim",
-		event = "BufReadPost",
+		event = "User FilePost",
 		---@type snacks.Config
 		opts = {
-			picker = { enabled = true },
 			indent = { enabled = true },
 			input = { enabled = true },
 		},
-    keys = {
-      -- Normie
-
-
-      -- Search
-    },
+	},
+	{
+		"folke/snacks.nvim",
+		event = "UiEnter",
+		---@type snacks.Config
+		opts = {
+			picker = { enabled = true },
+		},
 	},
 	{
 		"folke/flash.nvim",
-		event = "BufReadPost",
+		event = "User FilePost",
 		---@type Flash.Config
 		opts = {},
     -- stylua: ignore
