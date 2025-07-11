@@ -6,7 +6,7 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPost", "BufNewFile" },
+		event = { "BufReadPre", "BufNewFile" },
 		lazy = true,
 		build = ":TSUpdate",
 		opts = {
@@ -35,6 +35,6 @@ return {
 	{
 		"m-demare/hlargs.nvim",
 		opts = {},
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufNewFile" },
 	},
 }
