@@ -36,12 +36,19 @@ return {
 		event = "User FilePost",
 	--	version = "^1.0.0",
 		opts = {
-			automatic_enable = true,
-		--	handlers = {
-	--			function (server_name) -- default handler (optional)
-        --  require("lspconfig")[server_name].setup({})
-        --end,
-			--},
+			automatic_enable = {
+				"jsonls",
+				"biome",
+				"astro",
+				"tailwindcss",
+				"marksman",
+				"jdtls"
+			},
+			handlers = {
+				function (server_name) -- default handler (optional)
+          require("lspconfig")[server_name].setup({})
+        end,
+			 },
 			ensure_installed = {
 				"jsonls",
 				"biome",
