@@ -39,7 +39,11 @@ return {
 			automatic_enable = true,
 			handlers = {
 				function (server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup {}
+          require("lspconfig")[server_name].setup {
+						    on_attach = function(client, bufnr)
+        navic.attach(client, bufnr)
+    end
+	  }
         end,
 			},
 			ensure_installed = {
