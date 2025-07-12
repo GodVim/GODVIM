@@ -36,7 +36,9 @@ return {
     "LunarVim/breadcrumbs.nvim",
 		event = "LspAttach",
     dependencies = {
-        {"SmiteshP/nvim-navic", lazy = true,},
+        {"SmiteshP/nvim-navic",     lsp = {
+        auto_attach = true,
+    },event = "LspAttach"},
     },
 
 
