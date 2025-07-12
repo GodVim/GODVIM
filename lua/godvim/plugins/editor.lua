@@ -32,7 +32,8 @@ return {
 	},
 	{
   "SmiteshP/nvim-navic",
-		lazy = true,
+
+event="BufReadPost",
   opts = function()
     return {
       separator = " ",
