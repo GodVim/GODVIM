@@ -13,7 +13,7 @@ return {
         event = "UiEnter",
         ---@type snacks.Config
         opts = {
-            picker = {enabled = true}
+            picker = { enabled = true },
         }
     },
   {
@@ -23,7 +23,7 @@ return {
     opts = {
       outline_window = {
         position = "left",
-        size = 0.5
+        width = 20
       },
       keymaps = {
         up_and_jump = "<up>",
