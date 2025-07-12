@@ -56,7 +56,7 @@ return {
 	-- Java Support
 	{
 		"nvim-java/nvim-java",
-		ft = "java",
+		event = "User JavaFilePost",
 		config = function()
 			require("java").setup({
 				jdk = {
