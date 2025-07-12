@@ -48,24 +48,25 @@ return {
 				"astro",
 				"tailwindcss",
 				"marksman",
+				"jdtls"
 			},
 			automatic_installation = true,
 		},
 	},
 
 	-- Java Support
-	{
-		"nvim-java/nvim-java",
-		event = "User JavaFilePost",
-		config = function()
-			require("java").setup({
-				jdk = {
-					auto_install = false,
-				},
-			})
-			require("lspconfig").jdtls.setup({})
-		end,
-	},
+--	{
+--		"nvim-java/nvim-java",--
+--		event = "User JavaFilePost",--
+	--	config = function()
+--			require("java").setup({--
+--				jdk = {
+--					auto_install = false,
+--				},
+--			})
+--			require("lspconfig").jdtls.setup({})
+---		end,
+--	},
 
 	-- Code Actions
 	{
