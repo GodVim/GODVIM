@@ -30,7 +30,7 @@ return {
         }
     },
     {
-        "SmiteshP/nvim-navic",
+        "LunarVim/breadcrumbs.nvim"
         opts = {
             lsp = {
                 auto_attach = true
@@ -38,7 +38,8 @@ return {
         },
         event = "LspAttach",
         dependencies = {
-            "LunarVim/breadcrumbs.nvim"
+            "SmiteshP/nvim-navic",
         }
-    }
+    },
+    
 }
