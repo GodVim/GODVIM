@@ -23,7 +23,7 @@ return {
     opts = {
       outline_window = {
         position = "left",
-        width = 20
+        width = 5
       },
       keymaps = {
         up_and_jump = "<up>",
