@@ -23,7 +23,7 @@ return {
                 auto_attach = true
             }
         },
-        event = "BufReadPre",
+        event = "BufReadPost",
         dependencies = {
             "SmiteshP/nvim-navic",
         }
