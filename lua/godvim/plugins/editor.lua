@@ -17,19 +17,6 @@ return {
         }
     },
     {
-        "folke/flash.nvim",
-        event = "User FilePost",
-        ---@type Flash.Config
-        opts = {},
-        -- stylua: ignore
-        keys = {
-
-            {"/", mode = {"n", "v"}, function()
-                    require("flash").toggle()
-                end, desc = "Toggle Flash Search"}
-        }
-    },
-    {
         "LunarVim/breadcrumbs.nvim",
         opts = {
             lsp = {
