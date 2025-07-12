@@ -38,6 +38,10 @@ return {
       separator = " ",
       highlight = true,
       depth_limit = 5,
+				    lsp = {
+        auto_attach = true,
+        preference = nil,
+    },
       lazy_update_context = true,
     }
   end,
