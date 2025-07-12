@@ -18,14 +18,17 @@ return {
     },
     {
         "LunarVim/breadcrumbs.nvim",
-        opts = {
-            lsp = {
-                auto_attach = true
-            }
-        },
+
         event = "BufReadPre",
         dependencies = {
-            "SmiteshP/nvim-navic",
+            {
+                "SmiteshP/nvim-navic",
+                opts = {
+                    lsp = {
+                        auto_attach = true
+                    }
+                },
+            }
         }
     },
     
