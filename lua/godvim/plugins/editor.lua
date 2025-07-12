@@ -30,4 +30,16 @@ return {
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
 	},
+	{
+  "SmiteshP/nvim-navic",
+		event = "LspAttach",
+  opts = function()
+    return {
+      separator = " ",
+      highlight = true,
+      depth_limit = 5,
+      lazy_update_context = true,
+    }
+  end,
+},
 }
