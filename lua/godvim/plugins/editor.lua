@@ -22,7 +22,8 @@ return {
     cmd = "Outline",
     opts = {
       outline_window = {
-        position = 'left',
+        position = "left",
+        size = 0.5
       },
       keymaps = {
         up_and_jump = "<up>",
