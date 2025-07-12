@@ -24,7 +24,7 @@ return {
 			},
 			max_concurrent_installers = 10,
 			registries = {
-				"github:nvim-java/mason-registry",
+			--	"github:nvim-java/mason-registry",
 				"github:mason-org/mason-registry",
 			},
 		},
@@ -59,5 +59,5 @@ return {
 		"rachartier/tiny-code-action.nvim",
 		event = "LspAttach",
 		opts = {},
-	},
+	}
 }
