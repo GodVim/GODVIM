@@ -21,6 +21,9 @@ return {
     keys = { { "<leader>cs", "<cmd>Outline<cr>", desc = "Toggle Outline" } },
     cmd = "Outline",
     opts = {
+      outline_window = {
+        position = 'left',
+      },
       keymaps = {
         up_and_jump = "<up>",
         down_and_jump = "<down>",
