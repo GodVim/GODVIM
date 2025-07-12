@@ -1,9 +1,13 @@
 return {
 	-- Notifications
 	{
-		"j-hui/fidget.nvim",
+		"echasnovski/mini.notify",
 		event = "User FilePost",
-		opts = {},
+		opts = {
+			  lsp_progress = {
+				enable = false
+			}
+		},
 	},
 
 
