@@ -40,6 +40,6 @@ return {
         dependencies = {
             "SmiteshP/nvim-navic",
         }
-    },
+    }
     
 }
