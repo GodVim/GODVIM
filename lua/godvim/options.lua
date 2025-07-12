@@ -35,3 +35,4 @@ vim.diagnostic.config({
 })
 
 opt.synmaxcol = 500
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
