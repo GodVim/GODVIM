@@ -13,7 +13,7 @@ return {
 			"MasonLog",
 			"MasonUpdate",
 		},
-		version = "^1.0.0",
+		--version = "^1.0.0",
 		opts = {
 			ui = {
 				icons = {
@@ -34,13 +34,13 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		event = "User FilePost",
-		version = "^1.0.0",
+	--	version = "^1.0.0",
 		opts = {
 			automatic_enable = true,
-			handlers = {
-				function (server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup({})
-        end,
+		--	handlers = {
+	--			function (server_name) -- default handler (optional)
+        --  require("lspconfig")[server_name].setup({})
+        --end,
 			},
 			ensure_installed = {
 				"jsonls",
@@ -53,20 +53,6 @@ return {
 			automatic_installation = true,
 		},
 	},
-
-	-- Java Support
---	{
---		"nvim-java/nvim-java",--
---		event = "User JavaFilePost",--
-	--	config = function()
---			require("java").setup({--
---				jdk = {
---					auto_install = false,
---				},
---			})
---			require("lspconfig").jdtls.setup({})
----		end,
---	},
 
 	-- Code Actions
 	{
