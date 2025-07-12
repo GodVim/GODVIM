@@ -1,15 +1,15 @@
 return {
 	-- Pairs
 	{
-		"nvimdev/fnpairs.nvim",
-		opts = {},
+		"echasnovski/mini.pairs",
 		event = "InsertEnter",
+		version = false,
+		opts = {},
 	},
-
 	-- Commenting
 	{
 		"echasnovski/mini.comment",
-		event = "InsertEnter",
+		event = "User FilePost",
 		version = false,
 		opts = {},
 	},
