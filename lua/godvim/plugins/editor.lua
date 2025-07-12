@@ -16,20 +16,15 @@ return {
             picker = {enabled = true}
         }
     },
-    {
-        "LunarVim/breadcrumbs.nvim",
-
-        event = "BufReadPre",
-        dependencies = {
-            {
-                "SmiteshP/nvim-navic",
-                opts = {
-                    lsp = {
-                        auto_attach = true
-                    }
-                },
-            }
-        }
-    },
-    
+  {
+    "hedyhli/outline.nvim",
+    keys = { { "<leader>cs", "<cmd>Outline<cr>", desc = "Toggle Outline" } },
+    cmd = "Outline",
+    opts {
+      keymaps = {
+        up_and_jump = "<up>",
+        down_and_jump = "<down>",
+      },
+    }
+  }
 }
