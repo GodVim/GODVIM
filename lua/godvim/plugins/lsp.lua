@@ -24,7 +24,7 @@ return {
 			},
 			max_concurrent_installers = 10,
 			registries = {
-			--	"github:nvim-java/mason-registry",
+				"github:nvim-java/mason-registry",
 				"github:mason-org/mason-registry",
 			},
 		},
@@ -36,19 +36,12 @@ return {
 		event = "User FilePost",
 	--	version = "^1.0.0",
 		opts = {
-			automatic_enable = {
-				"jsonls",
-				"biome",
-				"astro",
-				"tailwindcss",
-				"marksman",
-				"jdtls"
-			},
-			handlers = {
-				function (server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup({})
-        end,
-			 },
+			automatic_enable = true,
+	--		handlers = {
+	--			function (server_name) -- default handler (optional)
+        --  require("lspconfig")[server_name].setup({})
+        --end,
+	--		 },
 			ensure_installed = {
 				"jsonls",
 				"biome",
