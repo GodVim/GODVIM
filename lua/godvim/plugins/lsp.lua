@@ -1,5 +1,5 @@
 return {
-  -- lsp
+  -- lspconfig
   {
     "neovim/nvim-lspconfig",
     event = "User FilePost",
@@ -19,7 +19,7 @@ return {
     opts = {},
   },
 
-  -- mason shitter
+  -- mason lspconfig
   {
     "williamboman/mason-lspconfig.nvim",
     version = "^1.0.0",
@@ -65,14 +65,10 @@ return {
         "biome",
         "taplo",
       },
-      run_on_start = true,
-    },
-    config = function(_, opts)
-      require("mason-tool-installer").setup(opts)
-    end,
+    }
   },
 
-  -- yeah were using astrolsp
+  -- astrolsp
   {
     "AstroNvim/astrolsp",
     event = "User FilePost",
