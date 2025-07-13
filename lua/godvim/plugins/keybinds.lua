@@ -47,7 +47,6 @@ return {
 	},
 	{
 		"nvim-zh/better-escape.vim",
-		opts = {},
 		event = "CursorMoved"
 	},
 }
