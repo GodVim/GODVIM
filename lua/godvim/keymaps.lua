@@ -2,8 +2,6 @@ local map = vim.keymap.set
 
 -- Map Esc to escape from terminal insert mode to normal mode
 map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
-map("i", "jj", "<Esc>", { noremap = false })
-map("i", "jk", "<Esc>", { noremap = false })
 
 -- Window navigation with Ctrl + hjkl
 map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
