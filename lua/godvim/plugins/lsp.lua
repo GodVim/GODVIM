@@ -1,6 +1,10 @@
 return {
     "AstroNvim/astrolsp",
     event = "User FilePost",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
     opts = {
       ensure_installed = {
         "lua_ls",
