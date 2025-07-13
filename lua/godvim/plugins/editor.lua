@@ -17,7 +17,7 @@ return {
         }
     },
 { -- This plugin
-  "Zeioth/compiler.nvim",
+  "Coding4Hours/compiler.nvim",
   cmd = {"CompilerOpen", "CompilerToggleResults", "CompilerRedo"},
   dependencies = { "stevearc/overseer.nvim" },
   opts = {},
