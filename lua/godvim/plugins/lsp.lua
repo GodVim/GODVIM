@@ -12,10 +12,19 @@ return {
         "tailwindcss",
         "marksman",
         "bashls",
+        -- formatters/linters via mason too (if needed)
+        "biome",
+        "stylua",
+        "prettier",
+        "golangci-lint",
+        "markdownlint",
+        "luacheck",
+        "yamllint",
+        "taplo",
       },
       formatting = {
         format_on_save = true,
-        disabled = { "lua_ls" }, -- Use stylua via conform instead
+        disabled = { "lua_ls" }, -- use stylua via conform instead
       },
       linting = {
         enabled = true,
@@ -30,9 +39,10 @@ return {
           toml = { "taplo" },
         },
       },
-      capabilities = {},
-      handlers = {},
       setup = function()
+        -- This function is called internally by astrolsp after LSP setup
+
+        -- Setup conform.nvim for formatting, controlled by astrolsp
         local conform = require("conform")
         conform.setup({
           format_on_save = {
@@ -58,6 +68,7 @@ return {
           },
         })
 
+        -- Setup nvim-lint, controlled internally by astrolsp
         local lint = require("lint")
         lint.linters_by_ft = {
           javascript = { "biome" },
