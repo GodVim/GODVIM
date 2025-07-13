@@ -25,6 +25,7 @@ return {
             "tailwindcss",
             "marksman",
             "bashls",
+            "astro",
           },
           automatic_installation = true,
           handlers = {
