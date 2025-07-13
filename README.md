@@ -9,7 +9,7 @@ v
 ```
 in neovim, run
 ```lua
-MasonToolsInstal
+MasonToolsInstalL
 ```
 
 ## Credits
