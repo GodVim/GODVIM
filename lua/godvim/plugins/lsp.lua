@@ -11,17 +11,15 @@ return {
   "mason-org/mason-lspconfig.nvim",
   version = "^1.0.0",
   dependencies = { "mason-org/mason.nvim" },
-  config = function()
-    local astrolsp_opts = require("lazy.core.config").plugins["AstroNvim/astrolsp"].opts
-    local ensure_installed = astrolsp_opts.ensure_installed or {}
-
-    require("astrolsp.mason-lspconfig").register_servers()
-
-    require("mason-lspconfig").setup({
-      ensure_installed = ensure_installed,
+  opts = {
+      ensure_installed =  {
+            "lua_ls", "tsserver", "jsonls", "gopls", "jdtls", "yamlls", "tailwindcss",
+            "marksman", "bashls",
+            "biome", "stylua", "prettier", "golangci-lint", "markdownlint",
+            "luacheck", "yamllint", "taplo",
+          },
       automatic_installation = true,
-    })
-  end,
+    }
 },
 
       {
