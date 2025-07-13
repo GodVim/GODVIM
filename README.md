@@ -1,6 +1,6 @@
 # GODVIM
 
-My modular neovim distribution.
+My fast neovim distribution(with extras).
 
 ## Install
 ```bash
