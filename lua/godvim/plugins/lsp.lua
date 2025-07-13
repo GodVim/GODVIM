@@ -52,7 +52,7 @@ return {
 --				function (server_name) -- default handler (optional)
  --         require("lspconfig")[server_name].setup({})
    --     end,
-			 },
+			-- },
 			ensure_installed = {
 				"jsonls",
 				"biome",
