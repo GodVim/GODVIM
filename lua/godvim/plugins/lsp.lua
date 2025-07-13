@@ -5,33 +5,63 @@ return {
       {
         "mason-org/mason.nvim",
         version = "^1.0.0",
-        opts = {}
-      },
-{
-  "mason-org/mason-lspconfig.nvim",
-  version = "^1.0.0",
-  dependencies = { "mason-org/mason.nvim" },
-  opts = {
-      ensure_installed =  {
-            "lua_ls", "tsserver", "jsonls", "gopls", "jdtls", "yamlls", "tailwindcss",
-            "marksman", "bashls",
-            "biome", "stylua", "prettier", "golangci-lint", "markdownlint",
-            "luacheck", "yamllint", "taplo",
+        opts = {
+          ensure_installed = {
+            "stylua",
+            "prettier",
+            "golangci-lint",
+            "markdownlint",
+            "luacheck",
+            "yamllint",
+            "biome",
+            "taplo",
           },
-      automatic_installation = true,
-    }
-},
+        },
+      },
 
+      {
+        "mason-org/mason-lspconfig.nvim",
+        version = "^1.0.0",
+        dependencies = { "mason-org/mason.nvim" },
+        opts = {
+          handlers = {
+            function(server)
+              require("astrolsp").lsp_setup(server)
+            end,
+          },
+          ensure_installed = {
+            -- only LSP servers here
+            "lua_ls",
+            "tsserver",
+            "jsonls",
+            "gopls",
+            "jdtls",
+            "yamlls",
+            "tailwindcss",
+            "marksman",
+            "bashls",
+          },
+          automatic_installation = true,
+        },
+        config = function(_, opts)
+          require("astrolsp.mason-lspconfig").register_servers()
+          require("mason-lspconfig").setup(opts)
+        end,
+      },
+
+      -- AstroLSP config
       {
         "AstroNvim/astrolsp",
         opts = {
-              features = {
-      autoformat = true, -- enable or disable auto formatting on start
-      codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = false, -- enable/disable inlay hints on start
-      semantic_tokens = true, -- enable/disable semantic token highlighting
-    },
+          features = {
+            autoformat = true,
+            codelens = true,
+            inlay_hints = false,
+            semantic_tokens = true,
+          },
           ensure_installed = {
+            -- this is still useful for astrolsp internal tracking,
+            -- but actual install handled by mason/mason-lspconfig as above
             "lua_ls", "tsserver", "jsonls", "gopls", "jdtls", "yamlls", "tailwindcss",
             "marksman", "bashls",
             "biome", "stylua", "prettier", "golangci-lint", "markdownlint",
@@ -76,6 +106,7 @@ return {
                 },
               },
             })
+
             local lint = require("lint")
             lint.linters_by_ft = {
               javascript = { "biome" },
@@ -87,6 +118,7 @@ return {
               yaml = { "yamllint" },
               toml = { "taplo" },
             }
+
             vim.api.nvim_create_autocmd("BufWritePost", {
               callback = function()
                 lint.try_lint()
@@ -97,6 +129,7 @@ return {
       },
     },
     config = function()
+      -- Setup all servers AstroLSP manages after Mason and mason-lspconfig are ready
       local servers = require("astrolsp").config.servers
       for _, server in ipairs(servers) do
         require("astrolsp").lsp_setup(server)
