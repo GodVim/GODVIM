@@ -1,4 +1,4 @@
-ereturn {
+return {
 	-- Notifications
 	{
 		"echasnovski/mini.notify",
