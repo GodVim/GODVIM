@@ -43,7 +43,7 @@ return {
     autosave    = false
   },
 }
-    }
+    },   
   {
     "hedyhli/outline.nvim",
     keys = { { "<leader>cs", "<cmd>Outline<cr>", desc = "Toggle Outline" } },
