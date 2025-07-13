@@ -55,10 +55,7 @@ return {
             "biome",
             "taplo",
           },
-          auto_update = true,
           run_on_start = true,
-          start_delay = 3000, -- delay before starting installation (ms)
-          debounce_hours = 24, -- avoid reinstalling if updated recently
         },
         config = function(_, opts)
           require("mason-tool-installer").setup(opts)
