@@ -1,5 +1,5 @@
 return {
-  -- lsp, boys
+  -- lsp
   {
     "neovim/nvim-lspconfig",
     event = "User FilePost",
