@@ -58,5 +58,7 @@ return {
 		"rachartier/tiny-code-action.nvim",
 		event = "LspAttach",
 		opts = {},
-	}
+	},
+{ 'mfussenegger/nvim-jdtls', lazy = true }
+
 }
