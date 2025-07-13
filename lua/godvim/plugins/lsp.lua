@@ -28,15 +28,12 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        "tsserver",
         "jsonls",
         "gopls",
-        "java-language-server",
         "yamlls",
         "tailwindcss",
         "marksman",
         "bashls",
-        "astro",
       },
       automatic_installation = true,
       handlers = {
@@ -61,6 +58,8 @@ return {
         "stylua",
         "prettier",
         "golangci-lint",
+        "astro",
+        "java-language-server",
         "markdownlint",
         "luacheck",
         "yamllint",
@@ -82,7 +81,7 @@ return {
         semantic_tokens = true,
       },
       ensure_installed = {
-        "lua_ls", "tsserver", "jsonls", "gopls", "java-language-server", "yamlls", "tailwindcss",
+        "lua_ls", "jsonls", "gopls", "java-language-server", "yamlls", "tailwindcss",
         "marksman", "bashls", "biome", "stylua", "prettier", "golangci-lint",
         "markdownlint", "luacheck", "yamllint", "taplo",
       },
