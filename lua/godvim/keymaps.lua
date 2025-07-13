@@ -10,3 +10,15 @@ map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
 map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
+
+-- Open compiler
+vim.api.nvim_set_keymap('n', '<F6>', "<cmd>CompilerOpen<cr>", { noremap = true, silent = true })
+
+-- Redo last selected option
+vim.api.nvim_set_keymap('n', '<S-F6>',
+     "<cmd>CompilerStop<cr>" -- (Optional, to dispose all tasks before redo)
+  .. "<cmd>CompilerRedo<cr>",
+ { noremap = true, silent = true })
+
+-- Toggle compiler results
+vim.api.nvim_set_keymap('n', '<S-F7>', "<cmd>CompilerToggleResults<cr>", { noremap = true, silent = true })
