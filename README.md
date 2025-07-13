@@ -14,4 +14,4 @@ MasonToolsInstal
 
 ## Credits
 - Lazyvim(inspiration)
-- NvChad(stloe the file tree and user file post event)
+- NvChad(stloe the file tree structure and user file post event)
