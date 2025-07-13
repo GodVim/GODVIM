@@ -2,35 +2,20 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      -- mason.nvim core
       {
-        "mason-org/mason.nvim",
+        "williamboman/mason.nvim",
         version = "^1.0.0",
-        opts = {
-          ensure_installed = {
-            "stylua",
-            "prettier",
-            "golangci-lint",
-            "markdownlint",
-            "luacheck",
-            "yamllint",
-            "biome",
-            "taplo",
-          },
-        },
+        opts = {},
       },
 
+      -- mason-lspconfig for LSP servers
       {
-        "mason-org/mason-lspconfig.nvim",
+        "williamboman/mason-lspconfig.nvim",
         version = "^1.0.0",
-        dependencies = { "mason-org/mason.nvim" },
+        dependencies = { "williamboman/mason.nvim" },
         opts = {
-          handlers = {
-            function(server)
-              require("astrolsp").lsp_setup(server)
-            end,
-          },
           ensure_installed = {
-            -- only LSP servers here
             "lua_ls",
             "tsserver",
             "jsonls",
@@ -42,10 +27,41 @@ return {
             "bashls",
           },
           automatic_installation = true,
+          handlers = {
+            function(server)
+              require("astrolsp").lsp_setup(server)
+            end,
+          },
         },
         config = function(_, opts)
           require("astrolsp.mason-lspconfig").register_servers()
           require("mason-lspconfig").setup(opts)
+        end,
+      },
+
+      -- mason-tool-installer for formatters/linters/tools auto install
+      {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        dependencies = { "williamboman/mason.nvim" },
+        opts = {
+          -- List of tools you want installed by mason-tool-installer
+          ensure_installed = {
+            "stylua",
+            "prettier",
+            "golangci-lint",
+            "markdownlint",
+            "luacheck",
+            "yamllint",
+            "biome",
+            "taplo",
+          },
+          auto_update = true,
+          run_on_start = true,
+          start_delay = 3000, -- delay before starting installation (ms)
+          debounce_hours = 24, -- avoid reinstalling if updated recently
+        },
+        config = function(_, opts)
+          require("mason-tool-installer").setup(opts)
         end,
       },
 
@@ -60,8 +76,7 @@ return {
             semantic_tokens = true,
           },
           ensure_installed = {
-            -- this is still useful for astrolsp internal tracking,
-            -- but actual install handled by mason/mason-lspconfig as above
+            -- This is internal for astrolsp; actual install managed by Mason plugins above
             "lua_ls", "tsserver", "jsonls", "gopls", "jdtls", "yamlls", "tailwindcss",
             "marksman", "bashls",
             "biome", "stylua", "prettier", "golangci-lint", "markdownlint",
@@ -129,7 +144,6 @@ return {
       },
     },
     config = function()
-      -- Setup all servers AstroLSP manages after Mason and mason-lspconfig are ready
       local servers = require("astrolsp").config.servers
       for _, server in ipairs(servers) do
         require("astrolsp").lsp_setup(server)
