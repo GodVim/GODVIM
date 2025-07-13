@@ -2,10 +2,15 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "williamboman/mason.nvim",
       {
-        "williamboman/mason-lspconfig.nvim",
-        dependencies = { "williamboman/mason.nvim" },
+        "mason-org/mason.nvim",
+        version = "^1.0.0",
+        opts = {}
+      },
+      {
+        "mason-org/mason-lspconfig.nvim",
+        version = "^1.0.0",
+        dependencies = { "mason-org/mason.nvim" },
         opts = {
           handlers = {
             function(server)
@@ -14,7 +19,6 @@ return {
           },
         },
         config = function(_, opts)
-          -- Register servers AstroLSP manages before Mason setup
           require("astrolsp.mason-lspconfig").register_servers()
           require("mason-lspconfig").setup(opts)
         end,
@@ -23,28 +27,14 @@ return {
         "AstroNvim/astrolsp",
         opts = {
           ensure_installed = {
-            "lua_ls",
-            "tsserver",
-            "jsonls",
-            "gopls",
-            "jdtls",
-            "yamlls",
-            "tailwindcss",
-            "marksman",
-            "bashls",
-            -- add formatters and linters you want mason to install
-            "biome",
-            "stylua",
-            "prettier",
-            "golangci-lint",
-            "markdownlint",
-            "luacheck",
-            "yamllint",
-            "taplo",
+            "lua_ls", "tsserver", "jsonls", "gopls", "jdtls", "yamlls", "tailwindcss",
+            "marksman", "bashls",
+            "biome", "stylua", "prettier", "golangci-lint", "markdownlint",
+            "luacheck", "yamllint", "taplo",
           },
           formatting = {
             format_on_save = true,
-            disabled = { "lua_ls" }, -- use stylua via conform instead
+            disabled = { "lua_ls" },
           },
           linting = {
             enabled = true,
@@ -60,13 +50,9 @@ return {
             },
           },
           setup = function()
-            -- Setup conform.nvim formatting
             local conform = require("conform")
             conform.setup({
-              format_on_save = {
-                timeout_ms = 1000,
-                lsp_fallback = true,
-              },
+              format_on_save = { timeout_ms = 1000, lsp_fallback = true },
               formatters_by_ft = {
                 javascript = { "biome" },
                 typescript = { "biome" },
@@ -85,8 +71,6 @@ return {
                 },
               },
             })
-
-            -- Setup nvim-lint
             local lint = require("lint")
             lint.linters_by_ft = {
               javascript = { "biome" },
@@ -108,7 +92,6 @@ return {
       },
     },
     config = function()
-      -- Setup all servers AstroLSP manages after Mason and mason-lspconfig
       local servers = require("astrolsp").config.servers
       for _, server in ipairs(servers) do
         require("astrolsp").lsp_setup(server)
