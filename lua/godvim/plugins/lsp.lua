@@ -5,6 +5,15 @@ return {
     dependencies = {
       "mfussenegger/nvim-jdtls",
     },
+    config = function()
+      require('spring_boot').init_lsp_commands()
+-- 添加 spring-boot jdtls 扩展 jar 包
+require("lspconfig").jdtls.setup {
+  init_options = {
+    bundles = require("spring_boot").java_extensions(),
+  },
+}
+    end,
     ---@type bootls.Config
     opts = {}
   },
@@ -43,7 +52,6 @@ return {
         "yamlls",
         "tailwindcss",
         "marksman",
-        "jdtls",
         "bashls",
       },
       automatic_installation = true,
