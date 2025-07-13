@@ -1,4 +1,4 @@
-return {
+ereturn {
 	-- Notifications
 	{
 		"echasnovski/mini.notify",
@@ -45,5 +45,8 @@ return {
 	},
 
   -- Ui Library
+	{
 	"nvchad/volt",
+		lazy = true,
+	}
 }
