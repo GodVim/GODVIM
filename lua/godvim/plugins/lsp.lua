@@ -1,4 +1,7 @@
 return {
+  { "AstroNvim/astrocommunity" },
+  { import = "astrocommunity.pack.java" },
+  
   -- lspconfig
   {
     "neovim/nvim-lspconfig",
