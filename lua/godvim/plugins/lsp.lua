@@ -1,7 +1,18 @@
 return {
 	-- Lsp Config
-	{ "neovim/nvim-lspconfig", event = "InsertEnter" },
-
+	{
+		"neovim/nvim-lspconfig",
+		event = "InsertEnter",
+		opts = {
+      setup = {
+        -- disable jdtls config from lspconfig
+        jdtls = function()
+          return true
+        end,
+      },
+    }, 
+  },
+  
 	-- Mason
 	{
 		"mason-org/mason.nvim",
