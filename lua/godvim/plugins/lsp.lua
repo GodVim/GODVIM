@@ -45,7 +45,6 @@ return {
 			ensure_installed = {
 				"jsonls",
 				"biome",
-				"astro",
 				"tailwindcss",
 				"marksman",
 				"jdtls"
