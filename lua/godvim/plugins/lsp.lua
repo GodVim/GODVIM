@@ -13,7 +13,7 @@ return {
 			"MasonLog",
 			"MasonUpdate",
 		},
-		version = "^1.0.0",
+	--	version = "^1.0.0",
 		opts = {
 			ui = {
 				icons = {
@@ -34,19 +34,20 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		event = "User FilePost",
-		version = "^1.0.0",
+		--version = "^1.0.0",
 		opts = {
-			handlers = {
-				function (server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup({})
-        end,
+			automatic_enable = true,
+--			handlers = {
+--				function (server_name) -- default handler (optional)
+ --         require("lspconfig")[server_name].setup({})
+   --     end,
 			 },
 			ensure_installed = {
 				"jsonls",
 				"biome",
 				"tailwindcss",
 				"marksman",
-				"jdtls"
+				"astro"
 			},
 			automatic_installation = true,
 		},
