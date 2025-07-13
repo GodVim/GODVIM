@@ -36,12 +36,6 @@ return {
     }
   },
 
-  behavior = {
-    default     = "float",
-    startinsert = false,
-    wincmd      = false,
-    autosave    = false
-  },
 }
     },   
   {
