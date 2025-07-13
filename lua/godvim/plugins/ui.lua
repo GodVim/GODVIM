@@ -14,7 +14,7 @@ return {
   -- Statusline Tabline Lsp
 	{
 		"nvchad/ui",
-    lazy = false,
+    event="VimEnter",
 		config = function()
 			require("nvchad")
 			dofile(vim.g.base46_cache .. "defaults")
