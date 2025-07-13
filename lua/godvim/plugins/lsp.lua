@@ -1,7 +1,4 @@
 return {
-  { "AstroNvim/astrocommunity" },
-  { import = "astrocommunity.pack.java" },
-  
   -- lspconfig
   {
     "neovim/nvim-lspconfig",
@@ -34,7 +31,7 @@ return {
         "tsserver",
         "jsonls",
         "gopls",
-        "jdtls",
+        "java-language-server",
         "yamlls",
         "tailwindcss",
         "marksman",
@@ -85,7 +82,7 @@ return {
         semantic_tokens = true,
       },
       ensure_installed = {
-        "lua_ls", "tsserver", "jsonls", "gopls", "jdtls", "yamlls", "tailwindcss",
+        "lua_ls", "tsserver", "jsonls", "gopls", "java-language-server", "yamlls", "tailwindcss",
         "marksman", "bashls", "biome", "stylua", "prettier", "golangci-lint",
         "markdownlint", "luacheck", "yamllint", "taplo",
       },
