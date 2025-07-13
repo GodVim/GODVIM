@@ -18,6 +18,7 @@ return {
   {
     "williamboman/mason.nvim",
     version = "^1.0.0",
+    cmd = { "Mason" },
     event = "User FilePost",
     opts = {},
   },
@@ -57,6 +58,7 @@ return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     event = "User FilePost",
+    cmd = { "MasonToolsClean", "MasonToolsInstall", "MasonToolsInstallSync", "MasonToolsUpdate", "MasonToolsUpdateSync" },
     opts = {
       ensure_installed = {
         "stylua",
