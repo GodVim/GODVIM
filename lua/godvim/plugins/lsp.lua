@@ -1,23 +1,4 @@
 return {
-  {
-    "JavaHello/spring-boot.nvim",
-    ft = {"java", "yaml", "jproperties"},
-    dependencies = {
-      "mfussenegger/nvim-jdtls",
-    },
-    config = function()
-      require('spring_boot').init_lsp_commands()
--- 添加 spring-boot jdtls 扩展 jar 包
-require("lspconfig").jdtls.setup {
-  init_options = {
-    bundles = require("spring_boot").java_extensions(),
-  },
-}
-    end,
-    ---@type bootls.Config
-    opts = {}
-  },
-  
   -- lspconfig
   {
     "neovim/nvim-lspconfig",
@@ -99,7 +80,7 @@ require("lspconfig").jdtls.setup {
         semantic_tokens = true,
       },
       ensure_installed = {
-        "lua_ls", "jsonls", "gopls", "jdtls", "yamlls", "tailwindcss",
+        "lua_ls", "jsonls", "gopls", "yamlls", "tailwindcss",
         "marksman", "bashls", "biome", "stylua", "prettier", "golangci-lint",
         "markdownlint", "luacheck", "yamllint", "taplo",
       },
@@ -131,4 +112,26 @@ require("lspconfig").jdtls.setup {
       },
     },
   },
+
+  
+	-- Java Support
+	{
+		"nvim-java/nvim-java",
+		ft = "java",
+		config = function()
+			require("java").setup({
+				jdk = {
+					auto_install = false,
+				},
+			})
+			require("lspconfig").jdtls.setup({})
+		end,
+	},
+
+	-- Code Actions
+	{
+		"rachartier/tiny-code-action.nvim",
+		event = "LspAttach",
+		opts = {},
+	},
 }
