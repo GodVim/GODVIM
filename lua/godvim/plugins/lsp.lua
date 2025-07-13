@@ -50,7 +50,7 @@ return {
     end,
   },
 
-  -- mason shit installer
+  -- mason tool installer
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     event = "User FilePost",
@@ -86,7 +86,6 @@ return {
       },
       formatting = {
         format_on_save = true,
-        disabled = { "lua_ls" }, -- Example: disable lua_ls formatter
         formatters_by_ft = {
           javascript = { "biome" },
           typescript = { "biome" },
