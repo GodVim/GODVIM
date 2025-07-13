@@ -47,7 +47,7 @@ return {
 				"biome",
 				"tailwindcss",
 				"marksman",
-				"astro"
+				"jdtls"
 			},
 			automatic_installation = true,
 		},
@@ -59,6 +59,14 @@ return {
 		event = "LspAttach",
 		opts = {},
 	},
-{ 'mfussenegger/nvim-jdtls', lazy = true }
+{ 'mfussenegger/nvim-jdtls', config = function()
+		
+		if vim.bo.filetype == "java" then
+		require'jdtls'.start_or_attach({
+    cmd = {
+        vim.fn.expand'$HOME/.local/share/nvim/mason/bin/jdtls',
+    }
+				end
+}) }
 
 }
