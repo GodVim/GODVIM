@@ -5,7 +5,7 @@ return {
 		event = "User FilePost",
 		opts = {
 			  lsp_progress = {
-				enable = true
+				enable = false
 			}
 		},
 	},
