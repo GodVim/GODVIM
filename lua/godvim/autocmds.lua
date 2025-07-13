@@ -35,28 +35,6 @@ autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
-  group = vim.api.nvim_create_augroup("NvJavaFilePost", { clear = true }),
-  callback = function(args)
-    local filetype = vim.api.nvim_get_option_value("filetype", { buf = args.buf })
-    local file_name = vim.api.nvim_buf_get_name(args.buf)
-    local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
-
-    if not vim.g.ui_entered and args.event == "UIEnter" then
-      vim.g.ui_entered = true
-    end
-
-    if file_name ~= "" and buftype ~= "nofile" and vim.g.ui_entered and filetype == "java" then
-      vim.api.nvim_exec_autocmds("User", { pattern = "JavaFilePost", modeline = false })
-
-      vim.api.nvim_del_augroup_by_name("NvJavaFilePost")
-
-      vim.schedule(function()
-        vim.api.nvim_exec_autocmds("FileType", {})
-      end)
-    end
-  end,
-})
 
 
 autocmd("User", {
