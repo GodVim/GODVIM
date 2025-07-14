@@ -65,7 +65,7 @@ return {
   end,
 		opts = {},
 		event = "LspAttach",
-}
+},
 	
 	-- Code Actions
 	{
