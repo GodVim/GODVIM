@@ -28,14 +28,6 @@ return {
 		},
 	},
 
-	{
-		"folke/snacks.nvim",
-    lazy = false,
-		---@type snacks.Config
-		opts = {
-			profiler = { enabled = true },
-		},
-	},
 
 	{ "nvim-lua/plenary.nvim", lazy = true },
 	{
