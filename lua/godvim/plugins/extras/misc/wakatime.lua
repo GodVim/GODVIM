@@ -1,5 +1,5 @@
 return {
   'wakatime/vim-wakatime',
   desc = "Track your coding time with WakaTime",
-  event = "VimEnter",
+  event = "UiEnter",
 }
