@@ -66,4 +66,4 @@ map("n", "<leader>t", function() Snacks.terminal.toggle() end, { desc = "Termina
 map("n", "<leader>e", function() require("mini.files").open() end, { desc = "File Explorer" })
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy", silent = true })
 
-map({ "v", "n" }, "gf", require("actions-preview").code_actions)
+map({ "v", "n" }, "gf", "<cmd>lua require(\"actions-preview\").code_actions()<cr>" )
