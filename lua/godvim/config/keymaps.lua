@@ -55,6 +55,7 @@ map("n", "<leader>st", function() require("nvchad.themes").open() end, { desc = 
 -- Code
 map("n", "<leader>cg", "<cmd>Jaq<cr>", { desc = "Run", silent = true })
 map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
+map("n", "<leader>cf", vim.lsp.buf.format, { desc = "Rename" })
 
 -- Random stuff
 map("n", "<leader>,", function() Snacks.picker.buffers() end, { desc = "Buffers" })
