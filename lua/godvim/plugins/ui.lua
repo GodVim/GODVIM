@@ -20,6 +20,9 @@ return {
 			dofile(vim.g.base46_cache .. "defaults")
 			dofile(vim.g.base46_cache .. "statusline")
 			dofile(vim.g.base46_cache .. "tbline")
+						dofile(vim.g.base46_cache .. "syntax")
+			dofile(vim.g.base46_cache .. "blink")
+
 			dofile(vim.g.base46_cache .. "lsp")
 			dofile(vim.g.base46_cache .. "treesitter")
 			dofile(vim.g.base46_cache .. "colors")
