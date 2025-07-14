@@ -34,4 +34,3 @@ vim.diagnostic.config({
 	virtual_text = true,
 })
 
-opt.synmaxcol = 500
