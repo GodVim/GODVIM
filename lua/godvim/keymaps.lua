@@ -1,3 +1,4 @@
+
 local map = vim.keymap.set
 
 -- Map Esc to escape from terminal insert mode to normal mode
@@ -30,6 +31,13 @@ map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
 map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
 map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
 
+map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next Search Result" })
+map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
+map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
+map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev Search Result" })
+map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
+map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
+
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
 -- Buffers
@@ -57,9 +65,30 @@ map("n", "<leader>:", function() Snacks.picker.command_history() end, { desc = "
 
 map("n", "<leader>t", function() Snacks.terminal.toggle() end, { desc = "Terminal" })
 map("n", "<leader>e", function() require("mini.files").open() end, { desc = "File Explorer" })
-map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy", silent = true })"<cmd>lua require(\"actions-preview\").code_actions()<cr>"
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy", silent = true })
 
-map({ "v", "n" }, "gf", "<cmd>lua require(\"actions-preview\").code_actions()<cr>" )
-map("n", "<leader>ca", "<cmd>lua require(\"actions-preview\").code_actions()<cr>", { desc = "Code Action" })
+map("n", "<leader>ca", "<cmd>lua require('actions-preview').code_actions()<cr>", { desc = "Code Action" })
+map({ "v", "n" }, "gf", "<cmd>lua require('actions-preview').code_actions()<cr>")
 
-map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration")
+map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+
+map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+
+
+map("n", "<leader>b", "<cmd>enew<CR>", { desc = "buffer new" })
+
+map("n", "<tab>", function()
+  require("nvchad.tabufline").next()
+end, { desc = "buffer goto next" })
+
+map("n", "<S-tab>", function()
+  require("nvchad.tabufline").prev()
+end, { desc = "buffer goto prev" })
+
+map("n", "<leader>x", function()
+  require("nvchad.tabufline").close_buffer()
+end, { desc = "buffer close" })
+
+map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" })
+
+map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
