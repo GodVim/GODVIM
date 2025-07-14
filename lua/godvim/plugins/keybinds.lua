@@ -18,7 +18,6 @@ return {
 				{ "<leader>bb", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Switch buffer" },
 
 				----- Telescope -----
-				{ "<leader>sc", "<cmd>Themify<cr>", desc = "Themes" },
 				{ "<leader>sf", "<cmd>lua Snacks.picker.files()<cr>", desc = "Files" },
 				{ "<leader>sg", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
 				{ "<leader>sb", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
