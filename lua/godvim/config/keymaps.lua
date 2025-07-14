@@ -68,3 +68,7 @@ map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy", silent = true })"<cmd>lu
 
 map({ "v", "n" }, "gf", "<cmd>lua require(\"actions-preview\").code_actions()<cr>" )
 map("n", "<leader>ca", "<cmd>lua require(\"actions-preview\").code_actions()<cr>", { desc = "Code Action" })
+
+map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration")
+map("n", "gd", vim.lsp.buf.definition, opts "Go to definition")
+
