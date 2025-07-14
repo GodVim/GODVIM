@@ -73,6 +73,3 @@ map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration")
 map("n", "gd", vim.lsp.buf.definition, opts "Go to definition")
 
 
-map("n", "ch", "<cmd>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" })
-
-map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
