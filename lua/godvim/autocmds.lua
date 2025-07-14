@@ -35,11 +35,18 @@ autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
   end,
 })
 
-
-
 autocmd("User", {
 	pattern = "MiniFilesActionRename",
 	callback = function(event)
 		Snacks.rename.on_rename_file(event.data.from, event.data.to)
 	end,
+})
+
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = augroup("highlight_yank"),
+  callback = function()
+    (vim.hl or vim.highlight).on_yank()
+  end,
 })
