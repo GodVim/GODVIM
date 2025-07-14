@@ -12,6 +12,7 @@ opt.smoothscroll = true
 opt.smartindent = true
 opt.ignorecase = true
 opt.smartcase = true
+o.undofile = true
 
 opt.number = true
 opt.signcolumn = "yes"
