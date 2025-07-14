@@ -139,6 +139,7 @@ wk.add({
   -- Code:
   { "<leader>cg",   "<cmd>Jaq<cr>",         desc = "Run" },
   { "<leader>cr",   vim.lsp.buf.rename,     desc = "Rename" },
+  { "<leader>cf",   vim.lsp.buf.format,     desc = "Format" },
   { "<leader>ca",   "<cmd>lua require('actions-preview').code_actions()<cr>", desc = "Code Action" },
 
   -- Misc:
