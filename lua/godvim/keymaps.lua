@@ -63,7 +63,7 @@ map("n", "<leader>:", function() Snacks.picker.command_history() end, { desc = "
 
 map("n", "<leader>t", function() Snacks.terminal.toggle() end, { desc = "Terminal" })
 map("n", "<leader>e", function() require("mini.files").open() end, { desc = "File Explorer" })
-map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy", silent = true })
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy", silent = true })"<cmd>lua require(\"actions-preview\").code_actions()<cr>"
 
 map({ "v", "n" }, "gf", "<cmd>lua require(\"actions-preview\").code_actions()<cr>" )
 map("n", "<leader>ca", "<cmd>lua require(\"actions-preview\").code_actions()<cr>", { desc = "Code Action" })
