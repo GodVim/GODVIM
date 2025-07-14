@@ -18,6 +18,8 @@ return {
     },
     {
         "is0n/jaq-nvim",
+        cmd = { "Jaq" },
+        lazy = true,
         opts = {
             cmds = {
                 external = {
