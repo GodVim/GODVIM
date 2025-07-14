@@ -53,7 +53,6 @@ map("n", "<leader>sm", function() Snacks.picker.marks() end, { desc = "Marks" })
 map("n", "<leader>st", function() require("nvchad.themes").open() end, { desc = "Themes" })
 
 -- Code
-map("n", "<leader>ca", function() require("actions-preview").code_actions() end, { desc = "Code Action" })
 map("n", "<leader>cg", "<cmd>Jaq<cr>", { desc = "Run", silent = true })
 map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
 
@@ -67,3 +66,4 @@ map("n", "<leader>e", function() require("mini.files").open() end, { desc = "Fil
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy", silent = true })
 
 map({ "v", "n" }, "gf", "<cmd>lua require(\"actions-preview\").code_actions()<cr>" )
+map("n", "<leader>ca", "<cmd>lua require(\"actions-preview\").code_actions()<cr>", { desc = "Code Action" })
