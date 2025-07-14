@@ -5,7 +5,7 @@ return {
     event = "User FilePost",
     opts = {
       features = {
-        autoformat = true,
+        autoformat = false,
         codelens = true,
         inlay_hints = false,
         semantic_tokens = true,
