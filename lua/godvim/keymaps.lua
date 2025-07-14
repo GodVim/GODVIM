@@ -38,3 +38,30 @@ map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+
+-- Buffers
+map("n", "<leader>bd", "<cmd>bdelete!<cr>", { desc = "Close buffer", silent = true })
+map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "New buffer", silent = true })
+map("n", "<leader>bb", function() Snacks.picker.buffers() end, { desc = "Switch buffer" })
+
+-- Snacks Picker
+map("n", "<leader>sf", function() Snacks.picker.files() end, { desc = "Files" })
+map("n", "<leader>sg", function() Snacks.picker.grep() end, { desc = "Grep" })
+map("n", "<leader>sb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
+map("n", "<leader>sh", function() Snacks.picker.help() end, { desc = "Help" })
+map("n", "<leader>sm", function() Snacks.picker.marks() end, { desc = "Marks" })
+map("n", "<leader>st", function() require("nvchad.themes").open() end, { desc = "Themes" })
+
+-- Code
+map("n", "<leader>ca", function() require("actions-preview").code_actions() end, { desc = "Code Action" })
+map("n", "<leader>cg", "<cmd>Jaq<cr>", { desc = "Run", silent = true })
+map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
+
+-- Random stuff
+map("n", "<leader>,", function() Snacks.picker.buffers() end, { desc = "Buffers" })
+map("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "Grep" })
+map("n", "<leader>:", function() Snacks.picker.command_history() end, { desc = "Command History" })
+
+map("n", "<leader>t", function() Snacks.terminal.toggle() end, { desc = "Terminal" })
+map("n", "<leader>e", function() require("mini.files").open() end, { desc = "File Explorer" })
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy", silent = true })
