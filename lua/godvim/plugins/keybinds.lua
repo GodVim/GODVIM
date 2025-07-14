@@ -32,6 +32,7 @@ return {
 					"<cmd>lua require('tiny-code-action').code_action()<cr>",
 					desc = "Code Action",
 				},
+				{ "<leader>cg", "<cmd>Jaq<cr>", desc = "Run" },
 				{ "<leader>cr", vim.lsp.buf.rename, desc = "Rename" },
 
 				----- random stuff -----
