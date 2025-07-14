@@ -19,6 +19,7 @@ return {
 			require("nvchad")
 			dofile(vim.g.base46_cache .. "defaults")
 			dofile(vim.g.base46_cache .. "statusline")
+			dofile(vim.g.base46_cache .. "tabufline")
 			dofile(vim.g.base46_cache .. "lsp")
 			dofile(vim.g.base46_cache .. "treesitter")
 			dofile(vim.g.base46_cache .. "colors")
