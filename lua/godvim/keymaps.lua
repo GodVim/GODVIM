@@ -65,3 +65,5 @@ map("n", "<leader>:", function() Snacks.picker.command_history() end, { desc = "
 map("n", "<leader>t", function() Snacks.terminal.toggle() end, { desc = "Terminal" })
 map("n", "<leader>e", function() require("mini.files").open() end, { desc = "File Explorer" })
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy", silent = true })
+
+map({ "v", "n" }, "gf", require("actions-preview").code_actions)
