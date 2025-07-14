@@ -72,7 +72,6 @@ map({ "v", "n" }, "gf", "<cmd>lua require('actions-preview').code_actions()<cr>"
 
 map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
 
-map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 
 
 
