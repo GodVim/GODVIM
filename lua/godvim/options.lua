@@ -31,7 +31,7 @@ opt.whichwrap:append("<>[]hl")
 vim.opt.history = 50 -- Number of commands to remember in a history table (per buffer).
 
 vim.diagnostic.config({
-	virtual_text = false,
+	virtual_text = true,
 })
 
 opt.synmaxcol = 500
