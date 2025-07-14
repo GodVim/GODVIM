@@ -62,6 +62,8 @@ return {
 	{
 		"rachartier/tiny-code-action.nvim",
 		event = "LspAttach",
-		opts = {},
+		opts = {
+			  picker = { "select" },
+		},
 	},
 }
