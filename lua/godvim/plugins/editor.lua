@@ -75,7 +75,7 @@
 				----- Code -----
 				{
 					"<leader>ca",
-					"<cmd>lua require('tiny-code-action').code_action()<cr>",
+					"<cmd>lua require('actions-preview').code_actions()<cr>",
 					desc = "Code Action",
 				},
 				{ "<leader>cg", "<cmd>Jaq<cr>", desc = "Run" },
