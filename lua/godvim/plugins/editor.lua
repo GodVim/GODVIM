@@ -71,7 +71,8 @@
 				{ "<leader>sh", "<cmd>lua Snacks.picker.help()<cr>", desc = "Help" },
 				{ "<leader>sm", "<cmd>lua Snacks.picker.marks()<cr>", desc = "Marks" },
 				{ "<leader>st", "<cmd>lua require('nvchad.themes').open()<cr>", desc = "Themes" },
-	
+				{ "<leader>sd", "<cmd>lua Snacks.picker.diagnostics()<cr>", desc = "Diagnostics" },
+
 				----- Code -----
 				{
 					"<leader>ca",
