@@ -40,7 +40,23 @@ return {
 			})
 		end,
 	},
-	
+	{
+  "Exafunction/codeium.nvim",
+  cmd = "Codeium",
+  event = "InsertEnter",
+  build = ":Codeium Auth",
+  opts = {
+    enable_cmp_source = vim.g.ai_cmp,
+    virtual_text = {
+      enabled = not vim.g.ai_cmp,
+      key_bindings = {
+        accept = false, -- handled by nvim-cmp / blink.cmp
+        next = "<M-]>",
+        prev = "<M-[>",
+      },
+    },
+  },
+}
 
 	
 	{
@@ -57,6 +73,7 @@ return {
 					},
 				},
 			},
+			"codeium.nvim", "saghen/blink.compat"
 			"mikavilpas/blink-ripgrep.nvim",
 			"giuxtaposition/blink-cmp-copilot",
 		},
@@ -64,7 +81,7 @@ return {
 			"User FilePost",
 			"CmdlineChanged",
 		},
-		version = "*",
+	version = "*",
 
 		opts = {
 			keymap = { preset = "super-tab" },
@@ -78,6 +95,8 @@ return {
 				},
 			},
 			sources = {
+				      compat = { "codeium" },
+
 				default = { "copilot", "snippets", "lsp", "ripgrep" },
 				providers = {
 					copilot = {
@@ -86,6 +105,11 @@ return {
 						score_offset = 100,
 						async = true,
 					},
+					        codeium = {
+          kind = "Codeium",
+          score_offset = 100,
+          async = true,
+        },
 					ripgrep = {
 						module = "blink-ripgrep",
 						name = "Ripgrep",
