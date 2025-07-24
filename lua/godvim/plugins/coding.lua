@@ -88,9 +88,8 @@ return {
 				},
 			},
 			sources = {
-				default = { "copilot", "codium", "snippets", "lsp", "ripgrep" },
+				default = { "copilot", "snippets", "lsp", "ripgrep" },
 				providers = {
-				        codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
 					copilot = {
 						name = "copilot",
 						module = "blink-cmp-copilot",
