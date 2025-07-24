@@ -46,7 +46,10 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
-		opts = {},
+		    config = function()
+        require("codeium").setup({
+        })
+    end
 },
 
 
