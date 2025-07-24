@@ -20,7 +20,6 @@ return {
     },
     opts = {
       keymap = { preset = "super-tab" },
-      snippets = { preset = "mini_snippets" },
       cmdline = {
         completion = { menu = { auto_show = true }, ghost_text = { enabled = true } },
       },
