@@ -20,9 +20,4 @@ return {
 
 
 	{ "nvim-lua/plenary.nvim", lazy = true },
-	{
-		"echasnovski/mini.icons",
-		lazy = true,
-		version = false,
-	},
 }
