@@ -1,6 +1,6 @@
 return {
   {
-  "Exafunction/windsurf.nvim",
+  "Exafunction/codeium.nvim",
   event = "User FilePost",
   lazy = true,
   build = ":Codeium Auth",
