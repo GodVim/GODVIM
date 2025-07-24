@@ -8,39 +8,7 @@ return {
   -- Surround
   { "echasnovski/mini.surround", event = "InsertEnter", opts = {} },
 
-  -- Mini Snippets
-  {
-    "echasnovski/mini.snippets",
-    event = "InsertEnter",
-    dependencies = { "rafamadriz/friendly-snippets" },
-    config = function()
-      local loader = require("mini.snippets").gen_loader
-      require("mini.snippets").setup({
-        snippets = {
-          loader.from_file("~/.config/nvim/snippets/global.json"),
-          loader.from_lang(),
-        },
-      })
-    end,
-  },
 
-  -- Codeium
-  {
-    "Exafunction/windsurf.nvim",
-    event = "User FilePost",
-    lazy = true,
-    build = ":Codeium Auth",
-    opts = {
-      enable_cmp_source = true,
-      virtual_text = {
-        enabled = false,
-        key_bindings = {
-          next = "<M-]>",
-          prev = "<M-[>",
-        },
-      },
-    },
-  },
 
   -- Blink.cmp
   {
