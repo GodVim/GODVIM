@@ -94,6 +94,6 @@ return {
 	},
 	{
 		"nvim-zh/better-escape.vim",
-		event = "CursorMoved"
+		event = "InsertEnter"
 	},
 }
