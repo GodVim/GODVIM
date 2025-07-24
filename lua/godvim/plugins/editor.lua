@@ -88,7 +88,6 @@ return {
 				{ "<leader>:", "<cmd>lua Snacks.picker.command_history()<cr>", desc = "Command History" },
 
 				{ "<leader>t", "<cmd>lua Snacks.terminal.toggle()<cr>", desc = "Terminal" },
-				{ "<leader>e", "<cmd>lua require('mini.files').open()<cr>", desc = "File Explorer" },
 				{ "<leader>l", "<cmd>Lazy<cr>", desc = "Lazy" },
 			},
 		},
