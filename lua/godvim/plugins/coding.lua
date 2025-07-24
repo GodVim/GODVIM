@@ -50,6 +50,20 @@ return {
     local neocodeium = require("neocodeium")
     neocodeium.setup()
     vim.keymap.set("i", "<A-f>", neocodeium.accept)
+local blink = require('blink.cmp')
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'BlinkCmpMenuOpen',
+  callback = function()
+    neocodeium.clear()
+  end,
+})
+
+neocodeium.setup({
+  filter = function()
+    return not blink.is_visible()
+  end,
+})
   end,
 },
 	
