@@ -1,5 +1,4 @@
-                      return {
-	
+return {	
     {
         "folke/snacks.nvim",
         event = "User FilePost",
