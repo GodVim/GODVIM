@@ -49,6 +49,7 @@ return {
 		dependencies = {
 			    {
       'Exafunction/codeium.nvim',
+				config = function()require("codeium").setup({})end,
     },
 			{
 				"zbirenbaum/copilot.lua",
