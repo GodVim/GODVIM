@@ -20,17 +20,6 @@ return {
 			autotag = {
 				enable = true,
 			},
-
-	--		ensure_installed = {
---				"json",--
---				"yaml",
---				"markdown",
---				"markdown_inline",
---				"bash",
---				"lua",
---				"gitignore",
---				"java",
---			},
 		    })
 		end,
 	},
