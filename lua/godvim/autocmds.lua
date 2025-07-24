@@ -43,3 +43,23 @@ autocmd("User", {
 })
 
 
+autocmd({ "VimEnter", "BufReadPost", "BufNewFile" }, {
+  group = vim.api.nvim_create_augroup("NvFilePre", { clear = true }),
+  callback = function(args)
+    local file = vim.api.nvim_buf_get_name(args.buf)
+    local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
+
+    if not vim.g.ui_entered and args.event == "VimEnter" then
+      vim.g.ui_entered = true
+    end
+
+    if file ~= "" and buftype ~= "nofile" and vim.g.ui_entered then
+      vim.api.nvim_exec_autocmds("User", { pattern = "FilePre", modeline = false })
+      vim.api.nvim_del_augroup_by_name "NvFilePre"
+
+      vim.schedule(function()
+        vim.api.nvim_exec_autocmds("FileType", {})
+      end)
+    end
+  end,
+})
