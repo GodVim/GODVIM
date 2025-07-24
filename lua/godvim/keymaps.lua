@@ -30,6 +30,12 @@ map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 
 
+-- why does it copy when i wanna delete?
+vim.keymap.set({'n', 'x'}, 'c', '"_c')
+vim.keymap.set({'n', 'x'}, 'x', '"_x')
+vim.keymap.set({'n', 'x'}, 'X', '"_d')
+
+
 -- Misc.
 map('n', '<F8>', "<cmd>Jaq<cr>", { noremap = true, silent = true })
 map('n', 'r', '<C-r>')
