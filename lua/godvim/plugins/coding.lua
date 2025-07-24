@@ -13,7 +13,7 @@ return {
     event = "User FilePost",
     version = "*",
     dependencies = {
-      { "mikavilpas/blink-ripgrep.nvim", lazy = true },
+      "mikavilpas/blink-ripgrep.nvim",
     },
     opts = {
       keymap = { preset = "super-tab" },
