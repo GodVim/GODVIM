@@ -1,15 +1,5 @@
 return {
 	{
-		"echasnovski/mini.files",
-		cmd = "MiniFiles",
-		version = false,
-		config = function()
-			require("mini.files").setup()
-			require("mini.icons").setup()
-		end,
-	},
-
-	{
 		"folke/snacks.nvim",
 		event = "BufReadPre",
 		---@type snacks.Config
