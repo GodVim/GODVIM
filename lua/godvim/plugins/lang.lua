@@ -11,8 +11,7 @@ return {
   version = "^1.0.0",
   cmd = { "Mason" },
   event = "User FilePost",
-  opts = {},Neovim has integrated built-in commenting functionality, which provides a convenient way to comment and uncomment code directly within the editor. This feature is accessible through the gc command, which can be used in both normal and visual modes to toggle comments.￼3
-
+  opts = {},
 },
 
 -- mason-lspconfig
