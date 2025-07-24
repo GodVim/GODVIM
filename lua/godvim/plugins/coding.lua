@@ -73,7 +73,7 @@ return {
 					},
 				},
 			},
-			"codeium.nvim", "saghen/blink.compat"
+			"codeium.nvim", "saghen/blink.compat",
 			"mikavilpas/blink-ripgrep.nvim",
 			"giuxtaposition/blink-cmp-copilot",
 		},
