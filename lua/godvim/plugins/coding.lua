@@ -42,10 +42,12 @@ return {
 	},
 	
 	{
-	  	"Exafunction/windsurf.vim",
-  		event = "BufEnter",
+    "Exafunction/windsurf.nvim",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
 		opts = {},
-	},
+},
 
 
 	
