@@ -13,10 +13,10 @@ map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 map('n', 'r', '<C-r>')
 
 -- Moving lines and preserving indentation
-vim.keymap.set('n', '<C-j>', "<cmd>move .+1<cr>==")
-vim.keymap.set('n', '<C-k>', "<cmd>move .-2<cr>==")
-vim.keymap.set('x', '<C-j>', "<esc><cmd>'<,'>move '>+1<cr>gv=gv")
-vim.keymap.set('x', '<C-k>', "<esc><cmd>'<,'>move '<-2<cr>gv=gv")
+map('n', '<C-j>', "<cmd>move .+1<cr>==")
+map('n', '<C-k>', "<cmd>move .-2<cr>==")
+map('x', '<C-j>', "<esc><cmd>'<,'>move '>+1<cr>gv=gv")
+map('x', '<C-k>', "<esc><cmd>'<,'>move '<-2<cr>gv=gv")
 
 
 map('n', '<F8>', "<cmd>Jaq<cr>", { noremap = true, silent = true })
