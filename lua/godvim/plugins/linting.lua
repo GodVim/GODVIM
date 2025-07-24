@@ -8,7 +8,6 @@ return {
       lint.linters_by_ft = {
         javascript = { "biome" },
         typescript = { "biome" },
-        json = { "biome" },
         lua = { "luacheck" },
         markdown = { "markdownlint" },
         go = { "golangci_lint" },
