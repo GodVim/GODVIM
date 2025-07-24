@@ -41,22 +41,15 @@ return {
 		end,
 	},
 	
-	{
-    "Exafunction/windsurf.nvim",
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-    },
-		    config = function()
-        require("codeium").setup({
-        })
-    end
-},
 
 
 	
 	{
 		"Saghen/blink.cmp",
 		dependencies = {
+			    {
+      'Exafunction/codeium.nvim',
+    },
 			{
 				"zbirenbaum/copilot.lua",
 				build = ":Copilot auth",
