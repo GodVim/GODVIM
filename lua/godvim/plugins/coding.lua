@@ -2,9 +2,6 @@ return {
   -- Autopairs
   { "echasnovski/mini.pairs", event = "InsertEnter", opts = {} },
 
-  -- Commenting
-  { "echasnovski/mini.comment", event = "User FilePost", opts = {} },
-
   -- Surround
   { "echasnovski/mini.surround", event = "InsertEnter", opts = {} },
 
