@@ -1,26 +1,9 @@
 return {
-
--- lspconfig
-{
-  "neovim/nvim-lspconfig",
-  event = "User FilePost",
-  config = function()
-    local lspconfig = require("lspconfig")
-    local servers = {
-      "lua_ls",
-      "jsonls",
-      "gopls",
-      "yamlls",
-      "tailwindcss",
-      "marksman",
-      "bashls",
-    }
-
-    for _, server in ipairs(servers) do
-      lspconfig[server].setup({})
-    end
-  end,
-},
+  -- lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    event = "User FilePost",
+  },
 
 -- mason
 {
@@ -46,11 +29,13 @@ return {
       "marksman",
       "bashls",
     },
+    handlers = {
+        function(server_name)
+            require("lspconfig")[server_name].setup {}
+        end
+    },
     automatic_installation = true,
-  },
-  config = function(_, opts)
-    require("mason-lspconfig").setup(opts)
-  end,
+  }
 },
 
 -- mason-tool-installer (for formatters/linters)
