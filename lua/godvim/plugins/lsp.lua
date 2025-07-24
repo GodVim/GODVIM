@@ -56,7 +56,6 @@ return {
       "prettier",
       "biome",
       "goimports",
-      "gofmt",
       "taplo",
 
       -- linters
