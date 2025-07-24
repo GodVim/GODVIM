@@ -42,3 +42,4 @@ map('n', 'r', '<C-r>')
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 
+map('n', '<leader><space>', '<cmd>ls<cr>:buffer ')
