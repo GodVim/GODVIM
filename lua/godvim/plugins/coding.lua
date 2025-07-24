@@ -26,8 +26,9 @@ return {
 
   -- Codeium
   {
-    "Exafunction/codeium.nvim",
-    event = "InsertEnter",
+    "Exafunction/windsurf.nvim",
+    event = "User FilePost",
+    lazy = true,
     build = ":Codeium Auth",
     opts = {
       enable_cmp_source = true,
@@ -44,10 +45,9 @@ return {
   -- Blink.cmp
   {
     "Saghen/blink.cmp",
-    event = { "User FilePost", "CmdlineChanged" },
+    event = "User FilePost",
     version = "*",
     dependencies = {
-      { "codeium.nvim", lazy = true },
       { "saghen/blink.compat", lazy = true },
       { "mikavilpas/blink-ripgrep.nvim", lazy = true },
     },
