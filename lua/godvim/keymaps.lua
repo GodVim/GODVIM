@@ -31,9 +31,9 @@ map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result
 
 
 -- why does it copy when i wanna delete?
-vim.keymap.set({'n', 'x'}, 'c', '"_c')
-vim.keymap.set({'n', 'x'}, 'x', '"_x')
-vim.keymap.set({'n', 'x'}, 'X', '"_d')
+map({'n', 'x'}, 'c', '"_c')
+map({'n', 'x'}, 'x', '"_x')
+map({'n', 'x'}, 'X', '"_d')
 
 
 -- Misc.
@@ -41,3 +41,4 @@ map('n', '<F8>', "<cmd>Jaq<cr>", { noremap = true, silent = true })
 map('n', 'r', '<C-r>')
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+
