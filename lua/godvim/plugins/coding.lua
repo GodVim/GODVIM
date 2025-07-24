@@ -48,8 +48,6 @@ return {
   event = "VeryLazy",
   config = function()
     local neocodeium = require("neocodeium")
-    neocodeium.setup()
-    vim.keymap.set("i", "<A-f>", neocodeium.accept)
 local blink = require('blink.cmp')
 
 vim.api.nvim_create_autocmd('User', {
@@ -64,6 +62,8 @@ neocodeium.setup({
     return not blink.is_visible()
   end,
 })
+    vim.keymap.set("i", "<A-f>", neocodeium.accept)
+			
   end,
 },
 	
