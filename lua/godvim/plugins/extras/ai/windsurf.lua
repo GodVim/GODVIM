@@ -27,7 +27,7 @@ return {
     },
     opts = {
       sources = {
-        default = { "codeium", "lsp", "ripgrep" },
+        default = { "codeium" },
         providers = {
           codeium = {
             name = "Codeium",
