@@ -1,4 +1,5 @@
 return {
+  {
   "Exafunction/windsurf.nvim",
   event = "User FilePost",
   lazy = true,
@@ -13,4 +14,28 @@ return {
       },
     },
   },
+},
+  
+  -- Blink.cmp
+  {
+    "Saghen/blink.cmp",
+    event = "User FilePost",
+    version = "*",
+    dependencies = {
+      { "saghen/blink.compat", lazy = true },
+    },
+    opts = {
+      sources = {
+        default = { "codeium", "lsp", "ripgrep" },
+        providers = {
+          codeium = {
+            name = "Codeium",
+            module = "codeium.blink",
+            async = true,
+          },
+        },
+      },
+    },
+  }
+
 }
