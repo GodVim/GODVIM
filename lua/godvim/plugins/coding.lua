@@ -16,7 +16,6 @@ return {
     event = "User FilePost",
     version = "*",
     dependencies = {
-      { "saghen/blink.compat", lazy = true },
       { "mikavilpas/blink-ripgrep.nvim", lazy = true },
     },
     opts = {
@@ -29,13 +28,7 @@ return {
         list = { selection = { auto_insert = false } },
       },
       sources = {
-        default = { "codeium", "snippets", "lsp", "ripgrep" },
-        providers = {
-          codeium = {
-            name = "Codeium",
-            module = "codeium.blink",
-            async = true,
-          },
+        default = { "snippets", "lsp", "ripgrep" },
           ripgrep = {
             name = "Ripgrep",
             module = "blink-ripgrep",
