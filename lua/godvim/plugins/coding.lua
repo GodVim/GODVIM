@@ -42,18 +42,20 @@ return {
 	},
 	
 
-
+-- add this to the file where you setup your other plugins:
+{
+  "monkoose/neocodeium",
+  event = "VeryLazy",
+  config = function()
+    local neocodeium = require("neocodeium")
+    neocodeium.setup()
+    vim.keymap.set("i", "<A-f>", neocodeium.accept)
+  end,
+},
 	
 	{
 		"Saghen/blink.cmp",
 		dependencies = {
-			    {
-      'Exafunction/codeium.nvim',
-				config = function()require("codeium").setup({
-							  enable_cmp = false,
-
-				})end,
-    },
 			{
 				"zbirenbaum/copilot.lua",
 				build = ":Copilot auth",
