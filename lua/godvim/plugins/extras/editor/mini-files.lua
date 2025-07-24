@@ -3,7 +3,10 @@ return {
   cmd = "MiniFiles",
   dependencies = {
     { "echasnovski/mini.icons", lazy = true, opts = {} },
-  }
+  },
+  keys = {
+    { "<leader>e", "<cmd>lua require('mini.files').open()<cr>", desc = "File Explorer" },
+  },
   version = false,
   opts = {},
 }
