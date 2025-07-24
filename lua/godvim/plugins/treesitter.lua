@@ -27,6 +27,6 @@ return {
 	{
 		"m-demare/hlargs.nvim",
 		opts = {},
-		event = { "BufReadPre", "BufNewFile" },
+		event = "BufReadPre",
 	},
 }
