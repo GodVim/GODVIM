@@ -11,7 +11,8 @@ return {
   version = "^1.0.0",
   cmd = { "Mason" },
   event = "User FilePost",
-  opts = {},
+  opts = {},Neovim has integrated built-in commenting functionality, which provides a convenient way to comment and uncomment code directly within the editor. This feature is accessible through the gc command, which can be used in both normal and visual modes to toggle comments.￼3
+
 },
 
 -- mason-lspconfig
@@ -93,7 +94,7 @@ return {
 -- nvim-lint (linter)
 {
   "mfussenegger/nvim-lint",
-  event = { "BufReadPre", "BufNewFile" },
+  event = "BufEnter",
   config = function()
     local lint = require("lint")
     lint.linters_by_ft = {
@@ -107,8 +108,8 @@ return {
       toml = { "taplo" },
     }
 
-    -- run linter on save
-    vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+   vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+      group = lint_augroup,
       callback = function()
         lint.try_lint()
       end,
