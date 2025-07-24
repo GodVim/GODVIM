@@ -47,9 +47,9 @@ return {
     event = { "User FilePost", "CmdlineChanged" },
     version = "*",
     dependencies = {
-      "codeium.nvim",
---      "saghen/blink.compat",
-      "mikavilpas/blink-ripgrep.nvim",
+      { "codeium.nvim", lazy = true },
+      { "saghen/blink.compat", lazy = true },
+      { "mikavilpas/blink-ripgrep.nvim", lazy = true },
     },
     opts = {
       keymap = { preset = "super-tab" },
