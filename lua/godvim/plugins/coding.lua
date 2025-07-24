@@ -40,7 +40,15 @@ return {
 			})
 		end,
 	},
+	
+	{
+	  	"Exafunction/windsurf.vim",
+  		event = "BufEnter",
+		opts = {},
+	},
 
+
+	
 	{
 		"Saghen/blink.cmp",
 		dependencies = {
@@ -76,8 +84,9 @@ return {
 				},
 			},
 			sources = {
-				default = { "copilot", "snippets", "lsp", "ripgrep" },
+				default = { "copilot", "codium", "snippets", "lsp", "ripgrep" },
 				providers = {
+				        codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
 					copilot = {
 						name = "copilot",
 						module = "blink-cmp-copilot",
