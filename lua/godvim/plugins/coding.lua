@@ -95,9 +95,8 @@ return {
 				},
 			},
 			sources = {
-				      compat = { "codeium" },
 
-				default = { "copilot", "snippets", "lsp", "ripgrep" },
+				default = { "codeium", "snippets", "lsp", "ripgrep" },
 				providers = {
 					copilot = {
 						name = "copilot",
@@ -105,11 +104,8 @@ return {
 						score_offset = 100,
 						async = true,
 					},
-					        codeium = {
-          kind = "Codeium",
-          score_offset = 100,
-          async = true,
-        },
+        codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
+
 					ripgrep = {
 						module = "blink-ripgrep",
 						name = "Ripgrep",
