@@ -80,7 +80,7 @@ autocmd("BufEnter", {
 autocmd("BufEnter", {
   pattern = "*",
   callback = function()
-    if vim.bo.ft = "alpha" then
+    if vim.bo.ft == "alpha" then
       vim.opt.laststatus = 0
     end
   end,
