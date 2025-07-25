@@ -24,4 +24,10 @@ return {
     end
   },
 
+  {
+    "nanozuki/tabby.nvim",
+    ---@type TabbyConfig
+    opts = {},
+  }
+
 }
