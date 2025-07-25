@@ -11,13 +11,16 @@ return {
   },
 
   {
-    "ccxnu/rosebones",
-    event = "VimEnter",
-    priority = 1000,
-    config = function()
-      require("rosebones").setup({})
-      vim.cmd.colorscheme('rosebones')
-      return {}
-    end,
-  }
+	  "rose-pine/neovim",
+	  name = "rose-pine",
+	  config = function()
+      require("rose-pine").setup({
+        styles = {
+          transparency = false,
+        },
+      }
+		  vim.cmd("colorscheme rose-pine")
+	  end
+  },
+  
 }
