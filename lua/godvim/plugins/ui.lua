@@ -73,7 +73,9 @@ return {
       })
     end,
   },
-},
 
+},
+		{ 'echasnovski/mini.statusline', opts = {} version = '*' },
+		{ 'echasnovski/mini.icons', lazy = true, version = '*' },
   
 }
