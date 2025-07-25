@@ -32,11 +32,48 @@ return {
     dependencies = "nvim-tree/nvim-web-devicons",
     opts = {}
   },
+return {
+  {
+    "goolord/alpha-nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "VimEnter",
+    config = function()
+      local alpha = require("alpha")
+      local dashboard = require("alpha.themes.dashboard")
+
+      dashboard.section.header.val = {
+        "  ███╗   ███╗██████╗ ███████╗████████╗███████╗██████╗ ",
+        "  ████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗",
+        "  ██╔████╔██║██████╔╝███████╗   ██║   █████╗  ██████╔╝",
+        "  ██║╚██╔╝██║██╔═══╝ ╚════██╗  ██║   ██╔══╝  ██╔══██╗",
+        "  ██║ ╚═╝ ██║██║     ███████╗  ██║   ███████╗██║  ██║",
+        "  ╚═╝     ╚═╝╚═╝     ╚══════╝  ╚═╝   ╚══════╝╚═╝  ╚═╝",
+      }
+
+      dashboard.section.buttons.val = {
+        dashboard.button("f", "  Find File", ":Telescope find_files<CR>"),
+        dashboard.button("n", "  New File", ":ene | startinsert<CR>"),
+        dashboard.button("g", "  Find Text", ":Telescope live_grep<CR>"),
+        dashboard.button("r", "  Recent Files", ":Telescope oldfiles<CR>"),
+        dashboard.button("c", "  Config", ":e $MYVIMRC | startinsert<CR>"),
+        dashboard.button("s", "  Restore Session", ":SessionManager load_last_session<CR>"),
+        dashboard.button("l", "󰒲  Lazy", ":Lazy<CR>"),
+        dashboard.button("q", "  Quit", ":qa<CR>"),
+      }
+
+      dashboard.section.footer.val = "Welcome to Neovim!"
+
+      alpha.setup(dashboard.config)
+    end,
+  },
+}
 
 	-- Dashboard
 	{
 		"folke/snacks.nvim",
 		event = "UiEnter",
+		enabled = false,
+		
 		opts = {
 			dashboard = {
 				enabled = true,
