@@ -2,7 +2,7 @@ return {
   -- nvim-lint (linter)
   {
     "mfussenegger/nvim-lint",
-    event = "BufEnter",
+    event = "User BufEnter",
     config = function()
       local lint = require("lint")
       lint.linters_by_ft = {
