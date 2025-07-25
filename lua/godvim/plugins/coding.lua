@@ -24,7 +24,7 @@ return {
         list = { selection = { auto_insert = false } },
       },
       sources = {
-        default = { "snippets", "lsp", "ripgrep" },
+        default = {  "lsp", "ripgrep" },
         sources = {
           ripgrep = {
             name = "Ripgrep",
