@@ -41,14 +41,7 @@ return {
       local alpha = require("alpha")
       local dashboard = require("alpha.themes.dashboard")
 
-      dashboard.section.header.val = {
-        "  ███╗   ███╗██████╗ ███████╗████████╗███████╗██████╗ ",
-        "  ████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗",
-        "  ██╔████╔██║██████╔╝███████╗   ██║   █████╗  ██████╔╝",
-        "  ██║╚██╔╝██║██╔═══╝ ╚════██╗  ██║   ██╔══╝  ██╔══██╗",
-        "  ██║ ╚═╝ ██║██║     ███████╗  ██║   ███████╗██║  ██║",
-        "  ╚═╝     ╚═╝╚═╝     ╚══════╝  ╚═╝   ╚══════╝╚═╝  ╚═╝",
-      }
+
 
       dashboard.section.buttons.val = {
         dashboard.button("f", "  Find File", ":Telescope find_files<CR>"),
@@ -61,7 +54,6 @@ return {
         dashboard.button("q", "  Quit", ":qa<CR>"),
       }
 
-      dashboard.section.footer.val = "Welcome to Neovim!"
 
       alpha.setup(dashboard.config)
     end,
