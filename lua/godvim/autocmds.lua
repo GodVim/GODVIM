@@ -76,4 +76,12 @@ autocmd("BufEnter", {
     end
   end,
 })
-autocmd("FileType"), { alpha set laststatus=0   })
+
+autocmd("BufEnter", {
+  pattern = "*",
+  callback = function()
+    if vim.bo.ft ~= "alpha" then
+      set laststatus=0
+    end
+  end,
+})
