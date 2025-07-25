@@ -29,9 +29,10 @@ return {
   },
 
   {
+    event="VeryLazy",
   "tiagovla/scope.nvim",
   config = true
-},
+  },
   
   -- Colorscheme
   {
