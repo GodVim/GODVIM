@@ -5,6 +5,7 @@ return {
     "folke/snacks.nvim",
     event = "UiEnter",
 
+    enabled = true,
     opts = {
       dashboard = {
         enabled = true,
