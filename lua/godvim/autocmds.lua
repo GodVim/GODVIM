@@ -76,3 +76,4 @@ autocmd("BufEnter", {
     end
   end,
 })
+autocmd FileType alpha set laststatus=0   
