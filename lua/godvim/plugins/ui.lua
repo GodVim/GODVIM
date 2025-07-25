@@ -15,6 +15,7 @@ return {
     name = "rose-pine",
     config = function()
       require("rose-pine").setup({
+        varient = "moon",
         styles = {
           transparency = true,
         },
