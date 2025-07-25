@@ -75,7 +75,7 @@ return {
   },
 
 },
-		{ 'echasnovski/mini.statusline', opts = {}, version = '*' },
+		{ 'echasnovski/mini.statusline', event = "User FilePost", opts = {}, version = '*' },
 		{ 'echasnovski/mini.icons', lazy = true, version = '*' },
   
 }
