@@ -64,23 +64,15 @@ autocmd({ "VimEnter", "BufReadPost", "BufNewFile" }, {
   end,
 })
 
-autocmd({ "UIEnter", "BufEnter", "BufNewFile" }, {
-  group = vim.api.nvim_create_augroup("NvBufEnter", { clear = true }),
+autocmd("BufEnter", {
+  desc = "Trigger linting on BufEnter for real files",
   callback = function(args)
-    local file = vim.api.nvim_buf_get_name(args.buf)
-    local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
+    local buf = args.buf
+    local buftype = vim.api.nvim_get_option_value("buftype", { buf = buf })
+    local bufname = vim.api.nvim_buf_get_name(buf)
 
-    if not vim.g.ui_entered and args.event == "UIEnter" then
-      vim.g.ui_entered = true
-    end
-
-    if file ~= "" and buftype ~= "nofile" and vim.g.ui_entered then
-      vim.api.nvim_exec_autocmds("User", { pattern = "BufEnter", modeline = false })
-      vim.api.nvim_del_augroup_by_name "NvBufEnter"
-
-      vim.schedule(function()
-        vim.api.nvim_exec_autocmds("FileType", {})
-      end)
+    if buftype == "" and bufname ~= "" and vim.fn.filereadable(bufname) == 1 then
+      vim.api.nvim_exec_autocmds("User", { pattern = "FileEnter", modeline = false })
     end
   end,
 })
