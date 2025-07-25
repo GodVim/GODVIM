@@ -16,7 +16,7 @@ return {
       "mikavilpas/blink-ripgrep.nvim",
     },
     opts = {
-      keymap = { preset = "super-tab" },
+      keymap = { preset = "enter" },
       cmdline = {
         completion = { menu = { auto_show = true }, ghost_text = { enabled = true } },
       },
