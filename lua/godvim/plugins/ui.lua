@@ -31,6 +31,7 @@ return {
   {
     event="VeryLazy",
   "tiagovla/scope.nvim",
+    opts = {},
   config = true
   },
   
