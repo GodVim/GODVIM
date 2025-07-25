@@ -12,6 +12,7 @@ return {
 
   {
     "rose-pine/neovim",
+    event = "VimEnter",
     name = "rose-pine",
     config = function()
       require("rose-pine").setup({
