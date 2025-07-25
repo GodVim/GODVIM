@@ -45,10 +45,10 @@ return {
 
       dashboard.section.buttons.val = {
         dashboard.button("n", "  New File", ":ene | startinsert<CR>"),
-        dashboard.button("f", "  Find File", ":lua Snacks.picker.<CR>"),
-        dashboard.button("g", "  Find Text", ":Telescope live_grep<CR>"),
-        dashboard.button("r", "  Recent Files", ":Telescope oldfiles<CR>"),
-        dashboard.button("c", "  Config", ":e $MYVIMRC | startinsert<CR>"),
+        dashboard.button("f", "  Find File", ":lua Snacks.picker.files()<CR>"),
+        dashboard.button("g", "  Find Text", ":lua Snacks.picker.grep()<CR>"),
+        dashboard.button("r", "  Recent Files", ":lua Snacks.picker.recent()<CR>"),
+        dashboard.button("c", "  Config", ":lua Snacks.picker.pick('files', {cwd = vim.fn.stdpath('config')})<CR>"),
         dashboard.button("l", "󰒲  Lazy", ":Lazy<CR>"),
         dashboard.button("q", "  Quit", ":qa<CR>"),
       }
