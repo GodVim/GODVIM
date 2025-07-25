@@ -25,9 +25,10 @@ return {
   },
 
   {
-    "nanozuki/tabby.nvim",
-    ---@type TabbyConfig
-    opts = {},
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = "nvim-tree/nvim-web-devicons"
   }
+
 
 }
