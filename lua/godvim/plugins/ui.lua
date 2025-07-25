@@ -27,6 +27,7 @@ return {
   {
     "akinsho/bufferline.nvim",
     version = "*",
+    event = "User FilePost",
     dependencies = "nvim-tree/nvim-web-devicons",
     opts = {}
   },
