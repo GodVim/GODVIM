@@ -44,12 +44,11 @@ return {
 
 
       dashboard.section.buttons.val = {
-        dashboard.button("f", "  Find File", ":Telescope find_files<CR>"),
         dashboard.button("n", "  New File", ":ene | startinsert<CR>"),
+        dashboard.button("f", "  Find File", ":lua Snacks.picker.<CR>"),
         dashboard.button("g", "  Find Text", ":Telescope live_grep<CR>"),
         dashboard.button("r", "  Recent Files", ":Telescope oldfiles<CR>"),
         dashboard.button("c", "  Config", ":e $MYVIMRC | startinsert<CR>"),
-        dashboard.button("s", "  Restore Session", ":SessionManager load_last_session<CR>"),
         dashboard.button("l", "󰒲  Lazy", ":Lazy<CR>"),
         dashboard.button("q", "  Quit", ":qa<CR>"),
       }
@@ -76,55 +75,5 @@ return {
   },
 },
 
-	-- Dashboard
-	{
-		"folke/snacks.nvim",
-		event = "UiEnter",
-		enabled = false,
-		
-		opts = {
-			dashboard = {
-				enabled = true,
-				preset = {
-					keys = {
-						{
-							icon = " ",
-							key = "f",
-							desc = "Find File",
-							action = ":lua Snacks.dashboard.pick('files')",
-						},
-						{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-						{
-							icon = " ",
-							key = "g",
-							desc = "Find Text",
-							action = ":lua Snacks.dashboard.pick('live_grep')",
-						},
-						{
-							icon = " ",
-							key = "r",
-							desc = "Recent Files",
-							action = ":lua Snacks.dashboard.pick('oldfiles')",
-						},
-						{
-							icon = " ",
-							key = "c",
-							desc = "Config",
-							action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
-						},
-						{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
-						{
-							icon = "󰒲 ",
-							key = "l",
-							desc = "Lazy",
-							action = ":Lazy",
-							enabled = package.loaded.lazy ~= nil,
-						},
-						{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
-					},
-				},
-			},
-		},
-	},
   
 }
