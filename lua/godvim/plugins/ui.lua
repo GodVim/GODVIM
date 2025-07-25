@@ -32,7 +32,7 @@ return {
     dependencies = "nvim-tree/nvim-web-devicons",
     opts = {}
   },
-return {
+ {
   {
     "goolord/alpha-nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
