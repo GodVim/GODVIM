@@ -25,7 +25,7 @@ return {
       },
       sources = {
         default = {  "lsp", "ripgrep" },
-        sources = {
+        providers = {
           ripgrep = {
             module = "blink-ripgrep",
             name = "Ripgrep",
