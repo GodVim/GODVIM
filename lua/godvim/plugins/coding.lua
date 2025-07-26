@@ -27,14 +27,8 @@ return {
         default = {  "lsp", "ripgrep" },
         sources = {
           ripgrep = {
-            name = "Ripgrep",
             module = "blink-ripgrep",
-            score_offset = -4,
-            opts = {
-              prefix_mix_len = 3,
-              context_size = 5,
-              max_filesize = "1M",
-            },
+            name = "Ripgrep",
           },
         },
       },
