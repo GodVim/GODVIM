@@ -8,10 +8,10 @@ map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
 
 -- Moving lines and preserving indentation
-map('n', '<C-j>', "<cmd>move .+1<cr>==")
-map('n', '<C-k>', "<cmd>move .-2<cr>==")
-map('x', '<C-j>', "<esc><cmd>'<,'>move '>+1<cr>gv=gv")
-map('x', '<C-k>', "<esc><cmd>'<,'>move '<-2<cr>gv=gv")
+map('n', '<A-j>', "<cmd>move .+1<cr>==")
+map('n', '<A-k>', "<cmd>move .-2<cr>==")
+map('x', '<A-j>', "<esc><cmd>'<,'>move '>+1<cr>gv=gv")
+map('x', '<A-k>', "<esc><cmd>'<,'>move '<-2<cr>gv=gv")
 
 
 -- change font
