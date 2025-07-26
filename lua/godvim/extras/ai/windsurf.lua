@@ -27,7 +27,7 @@ return {
     },
     opts = {
       sources = {
-        default = { "codeium" },
+        compat = { "codeium" },
         providers = {
           codeium = {
             name = "Codeium",
