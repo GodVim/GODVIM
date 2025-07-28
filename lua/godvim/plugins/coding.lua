@@ -10,7 +10,7 @@ return {
   -- Blink.cmp
   {
     "Saghen/blink.cmp",
-    event = "User FilePost",
+    event = { "User FilePost", "CmdlineChanged" },
     version = "*",
     dependencies = {
       "mikavilpas/blink-ripgrep.nvim",
