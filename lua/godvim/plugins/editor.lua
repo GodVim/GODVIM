@@ -83,7 +83,6 @@ return {
 				{ "<leader>cr", vim.lsp.buf.rename, desc = "Rename" },
 
 				----- random stuff -----
-				{ "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
 				{ "<leader>/", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
 				{ "<leader>:", "<cmd>lua Snacks.picker.command_history()<cr>", desc = "Command History" },
 
