@@ -44,10 +44,10 @@ map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete Buffer" })     -- :b
 
 
 -- tabs
-map({ "n" }, "<leader>tn", "<cmd>tabnew<cr>", { desc = "New Tab" })
-map({ "n" }, "<leader>tl", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-map({ "n" }, "<leader>th", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
-map({ "n" }, "<leader>tc", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "New Tab" })
+map("n", "<leader>tl", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "<leader>th", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+map("n", "<leader>tc", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader>td", function()
   vim.ui.input({ prompt = ":" }, function(input)
     if input and #input > 0 then
