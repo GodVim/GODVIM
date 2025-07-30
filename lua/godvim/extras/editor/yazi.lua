@@ -8,7 +8,7 @@ return {
       "<leader>-",
       mode = { "n", "v" },
       "<cmd>Yazi toggle<cr>",
-      desc = "Open yazi at the current file",
+      desc = "Open yazi",
     }
   },
   opts = {
