@@ -37,7 +37,6 @@ map({ "n" }, "<leader>tl", "<cmd>tabnext<cr>", { desc = "Next Tab" })           
 map({ "n" }, "<leader>th", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })   -- like <leader>tb before
 map({ "n" }, "<leader>tL", "<cmd>tablast<cr>", { desc = "Last Tab" })
 map({ "n" }, "<leader>tH", "<cmd>tabfirst<cr>", { desc = "First Tab" })
-map({ "n" }, "<leader>tm", "<cmd>tabmove<cr>", { desc = "Move Tab" })           -- Moves current tab (optionally add a number after)
 map({ "n" }, "<leader>tc", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map({ "n" }, "<leader>to", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
 map("n", "<leader>td", function()
