@@ -45,11 +45,8 @@ end, { desc = "Run Command in All Tabs" })
 map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "New Buffer" })
 map("n", "<leader>bl", "<cmd>bnext<cr>", { desc = "Next Buffer" })        -- :bnext
 map("n", "<leader>bh", "<cmd>bprevious<cr>", { desc = "Previous Buffer" }) -- :bprevious
-map("n", "<leader>bf", "<cmd>bfirst<cr>", { desc = "First Buffer" })     -- :bfirst
-map("n", "<leader>bl", "<cmd>blast<cr>", { desc = "Last Buffer" })       -- :blast
 map("n", "<leader>bm", "<cmd>bmodified<cr>", { desc = "Next Modified Buffer" }) -- :bmodified
 map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete Buffer" })     -- :bdelete
-map("n", "<leader>bb", "<cmd>lua Snacks.picker.buffers()<cr>", { desc = "Switch buffer" })
 
 
 
