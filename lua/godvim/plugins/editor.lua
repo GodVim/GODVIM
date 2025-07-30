@@ -57,12 +57,7 @@ return {
 				{ "<leader>c", group = "Code" },
 				{ "<leader>b", group = "Buffers" },
 				{ "<leader>s", group = "Search" },
-				{ "<leader>d", group = "Debug" },
-
-				----- Buffers -----
-				{ "<leader>bd", "<cmd>bdelete!<cr>", desc = "Close buffer" },
-				{ "<leader>bn", "<cmd>enew<cr>", desc = "New buffer" },
-				{ "<leader>bb", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Switch buffer" },
+				{ "<leader>t", group = "Tabs" },
 
 				----- Telescope -----
 				{ "<leader>sf", "<cmd>lua Snacks.picker.files()<cr>", desc = "Files" },
