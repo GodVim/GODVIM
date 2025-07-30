@@ -42,12 +42,15 @@ map("n", "<leader>td", function()
   end)
 end, { desc = "Run Command in All Tabs" })
 map("n", "<leader>te", function()
-  vim.ui.input({ prompt = "filename..." }, function(input)
-    if input and #input > 0 then
-      vim.cmd("tabedit " .. input)
-    end
-  end)
-end, { desc = "Edit file in new tab" })
+  require("snacks").picker.files({
+    prompt = "Pick a file to open in a new tab",
+    select = function(file)
+      if file and #file > 0 then
+        vim.cmd("tabedit " .. vim.fn.fnameescape(file))
+      end
+    end,
+  })
+end, { desc = "Edit file in new tab via Snacks picker" })
 
 -- Misc
 map({ "n" }, "<leader>ts", "<cmd>tabs<cr>", { desc = "List Tabs" })             -- Shows open tabs
