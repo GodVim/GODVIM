@@ -29,11 +29,16 @@ return {
     "akinsho/bufferline.nvim",
     version = "*",
     dependencies = {
-      "tiagovla/scope.nvim",
-      opts = {}
+      {
+        "tiagovla/scope.nvim",
+        opts = {}
+      },
+      {
+        "nvim-tree/nvim-web-devicons",
+        lazy = true
+      },
     },
     event = "User FilePost",
-    dependencies = "nvim-tree/nvim-web-devicons",
     opts = {}
   },
 	
