@@ -88,11 +88,5 @@ return {
     event = "User FilePost",
     opts = {},
     version = '*'
-  },
-  {
-    'echasnovski/mini.icons',
-    lazy = true,
-    version = '*'
-  },
-  
+  },  
 }
