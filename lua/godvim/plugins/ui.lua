@@ -25,13 +25,13 @@ return {
     end
   },
 
---  {
---    "akinsho/bufferline.nvim",
---    version = "*",
---    event = "User FilePost",
---    dependencies = "nvim-tree/nvim-web-devicons",
---    opts = {}
---  },
+  {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    event = "User FilePost",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    opts = {}
+  },
 	
 { "tiagovla/scope.nvim", config = function()require("scope").setup({})
 		end, },
