@@ -35,10 +35,7 @@ map({ "n" }, "<leader>te", "<cmd>tabedit<cr>", { desc = "Edit file in new Tab" }
 map({ "n" }, "<leader>tf", "<cmd>tabfind ", { desc = "Find file in new Tab" })  -- Leaves space for filename
 map({ "n" }, "<leader>tl", "<cmd>tabnext<cr>", { desc = "Next Tab" })           -- like <leader>tf before
 map({ "n" }, "<leader>th", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })   -- like <leader>tb before
-map({ "n" }, "<leader>tL", "<cmd>tablast<cr>", { desc = "Last Tab" })
-map({ "n" }, "<leader>tH", "<cmd>tabfirst<cr>", { desc = "First Tab" })
 map({ "n" }, "<leader>tc", "<cmd>tabclose<cr>", { desc = "Close Tab" })
-map({ "n" }, "<leader>to", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
 map("n", "<leader>td", function()
   vim.ui.input({ prompt = "Command for :tabdo: " }, function(input)
     if input and #input > 0 then
