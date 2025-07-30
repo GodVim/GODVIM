@@ -37,8 +37,6 @@ return {
     opts = {}
   },
 	
---{ "tiagovla/scope.nvim", opts = {} },
- 
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
@@ -80,7 +78,16 @@ return {
   },
 
 
-		{ 'echasnovski/mini.statusline', event = "User FilePost", opts = {}, version = '*' },
-		{ 'echasnovski/mini.icons', lazy = true, version = '*' },
+  {
+    'echasnovski/mini.statusline',
+    event = "User FilePost",
+    opts = {},
+    version = '*'
+  },
+  {
+    'echasnovski/mini.icons',
+    lazy = true,
+    version = '*'
+  },
   
 }
