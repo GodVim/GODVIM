@@ -33,9 +33,9 @@ return {
 --    opts = {}
 --  },
 	{
-  'backdround/tabscope.nvim',
+  "nanozuki/tabby.nvim",
   opts = {},
-		event = "User FilePost",
+		event = "BufReadPost",
 },
  
   {
