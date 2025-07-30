@@ -40,5 +40,31 @@ return {
   {
     "nvchad/volt",
     lazy = true,
-  }
+  },
+
+  {
+    "rose-pine/neovim",
+    enabled = false
+  },
+
+  {
+    "akinsho/bufferline.nvim",
+    enabled = false
+  },
+	
+  {
+    "goolord/alpha-nvim",
+    enabled = false
+  },
+
+
+  {
+    'echasnovski/mini.statusline',
+    enabled = false
+  },
+  {
+    'echasnovski/mini.icons',
+    enabled = false
+  },
+  
 }
