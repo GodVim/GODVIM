@@ -25,14 +25,19 @@ return {
     end
   },
 
-  {
-    "akinsho/bufferline.nvim",
-    version = "*",
-    event = "User FilePost",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    opts = {}
-  },
- {
+--  {
+--    "akinsho/bufferline.nvim",
+--    version = "*",
+--    event = "User FilePost",
+--    dependencies = "nvim-tree/nvim-web-devicons",
+--    opts = {}
+--  },
+	{
+  'nanozuki/tabby.nvim',
+  opts = {},
+		event = "User FilePost",
+},
+ 
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
@@ -73,7 +78,7 @@ return {
     end,
   },
 
-},
+
 		{ 'echasnovski/mini.statusline', event = "User FilePost", opts = {}, version = '*' },
 		{ 'echasnovski/mini.icons', lazy = true, version = '*' },
   
