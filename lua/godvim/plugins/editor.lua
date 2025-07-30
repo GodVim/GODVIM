@@ -86,7 +86,7 @@ return {
 				{ "<leader>/", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
 				{ "<leader>:", "<cmd>lua Snacks.picker.command_history()<cr>", desc = "Command History" },
 
-				{ "<C-t>", "<cmd>lua Snacks.terminal.toggle()<cr>", desc = "Terminal" },
+				{ "<C-/>", "<cmd>lua Snacks.terminal.toggle()<cr>", desc = "Terminal" },
 				{ "<leader>l", "<cmd>Lazy<cr>", desc = "Lazy" },
 			},
 		},
