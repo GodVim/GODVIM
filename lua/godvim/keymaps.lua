@@ -31,18 +31,23 @@ map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result
 
 -- tabs
 map({ "n" }, "<leader>tn", "<cmd>tabnew<cr>", { desc = "New Tab" })
-map({ "n" }, "<leader>te", "<cmd>tabedit<cr>", { desc = "Edit file in new Tab" })
-map({ "n" }, "<leader>tf", "<cmd>tabfind ", { desc = "Find file in new Tab" })  -- Leaves space for filename
 map({ "n" }, "<leader>tl", "<cmd>tabnext<cr>", { desc = "Next Tab" })           -- like <leader>tf before
 map({ "n" }, "<leader>th", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })   -- like <leader>tb before
 map({ "n" }, "<leader>tc", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader>td", function()
-  vim.ui.input({ prompt = "Command for :tabdo: " }, function(input)
+  vim.ui.input({ prompt = ":" }, function(input)
     if input and #input > 0 then
       vim.cmd("tabdo " .. input)
     end
   end)
 end, { desc = "Run Command in All Tabs" })
+map("n", "<leader>te", function()
+  vim.ui.input({ prompt = "filename..." }, function(input)
+    if input and #input > 0 then
+      vim.cmd("tabedit " .. input)
+    end
+  end)
+end, { desc = "Edit file in new tab" })
 
 -- Misc
 map({ "n" }, "<leader>ts", "<cmd>tabs<cr>", { desc = "List Tabs" })             -- Shows open tabs
