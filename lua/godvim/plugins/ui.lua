@@ -33,7 +33,8 @@ return {
 --    opts = {}
 --  },
 	
-{ "tiagovla/scope.nvim", config = true },
+{ "tiagovla/scope.nvim", config = function()require("scope").setup({})
+		end, },
  
   {
     "goolord/alpha-nvim",
