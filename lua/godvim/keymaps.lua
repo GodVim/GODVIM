@@ -29,6 +29,29 @@ map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev Search R
 map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 
+-- tabs
+map({ "n" }, "<leader>tn", "<cmd>tabnew<cr>", { desc = "New Tab" })
+map({ "n" }, "<leader>te", "<cmd>tabedit<cr>", { desc = "Edit file in new Tab" })
+map({ "n" }, "<leader>tf", "<cmd>tabfind ", { desc = "Find file in new Tab" })  -- Leaves space for filename
+map({ "n" }, "<leader>tl", "<cmd>tabnext<cr>", { desc = "Next Tab" })           -- like <leader>tf before
+map({ "n" }, "<leader>th", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })   -- like <leader>tb before
+map({ "n" }, "<leader>tL", "<cmd>tablast<cr>", { desc = "Last Tab" })
+map({ "n" }, "<leader>tH", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+map({ "n" }, "<leader>tm", "<cmd>tabmove<cr>", { desc = "Move Tab" })           -- Moves current tab (optionally add a number after)
+map({ "n" }, "<leader>tc", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+map({ "n" }, "<leader>to", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
+map("n", "<leader>td", function()
+  vim.ui.input({ prompt = "Command for :tabdo: " }, function(input)
+    if input and #input > 0 then
+      vim.cmd("tabdo " .. input)
+    end
+  end)
+end, { desc = "Run Command in All Tabs" })
+
+-- Misc
+map({ "n" }, "<leader>ts", "<cmd>tabs<cr>", { desc = "List Tabs" })             -- Shows open tabs
+
+
 
 -- why does it copy when i wanna delete?
 map({'n', 'x'}, 'c', '"_c')
