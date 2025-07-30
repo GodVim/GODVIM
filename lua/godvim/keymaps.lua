@@ -31,8 +31,8 @@ map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result
 
 -- tabs
 map({ "n" }, "<leader>tn", "<cmd>tabnew<cr>", { desc = "New Tab" })
-map({ "n" }, "<leader>tl", "<cmd>tabnext<cr>", { desc = "Next Tab" })           -- like <leader>tf before
-map({ "n" }, "<leader>th", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })   -- like <leader>tb before
+map({ "n" }, "<leader>tl", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map({ "n" }, "<leader>th", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 map({ "n" }, "<leader>tc", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader>td", function()
   vim.ui.input({ prompt = ":" }, function(input)
@@ -41,16 +41,6 @@ map("n", "<leader>td", function()
     end
   end)
 end, { desc = "Run Command in All Tabs" })
-map("n", "<leader>te", function()
-  require("snacks").picker.files({
-    prompt = "Pick a file to open in a new tab",
-    select = function(file)
-      if file and #file > 0 then
-        vim.cmd("tabedit " .. vim.fn.fnameescape(file))
-      end
-    end,
-  })
-end, { desc = "Edit file in new tab via Snacks picker" })
 
 -- Misc
 map({ "n" }, "<leader>ts", "<cmd>tabs<cr>", { desc = "List Tabs" })             -- Shows open tabs
