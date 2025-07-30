@@ -39,7 +39,7 @@ map({'n', 'x'}, 'X', '"_d')
 map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "New Buffer" })
 map("n", "<leader>bl", "<cmd>bnext<cr>", { desc = "Next Buffer" })        -- :bnext
 map("n", "<leader>bh", "<cmd>bprevious<cr>", { desc = "Previous Buffer" }) -- :bprevious
-map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete Buffer" })     -- :bdelete
+map("n", "<leader>bd", "<cmd>lua require('snacks').bufdelete()<cr>", { desc = "Delete Buffer" })     -- :bdelete
 
 
 -- tabs
