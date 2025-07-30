@@ -41,5 +41,6 @@ map('n', '<F8>', "<cmd>Jaq<cr>", { noremap = true, silent = true })
 map('n', 'r', '<C-r>')
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+map("i", "<C-Backspace>", "<C-W>", { noremap = true, silent = true })
 
 map('n', '<leader><space>', '<cmd>ls<cr>:buffer ')
