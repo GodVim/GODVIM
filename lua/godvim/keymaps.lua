@@ -29,6 +29,20 @@ map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev Search R
 map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 
+
+-- why does it copy when i wanna delete?
+map({'n', 'x'}, 'c', '"_c')
+map({'n', 'x'}, 'x', '"_x')
+map({'n', 'x'}, 'X', '"_d')
+
+
+-- buffers
+map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "New Buffer" })
+map("n", "<leader>bl", "<cmd>bnext<cr>", { desc = "Next Buffer" })        -- :bnext
+map("n", "<leader>bh", "<cmd>bprevious<cr>", { desc = "Previous Buffer" }) -- :bprevious
+map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete Buffer" })     -- :bdelete
+
+
 -- tabs
 map({ "n" }, "<leader>tn", "<cmd>tabnew<cr>", { desc = "New Tab" })
 map({ "n" }, "<leader>tl", "<cmd>tabnext<cr>", { desc = "Next Tab" })
@@ -41,20 +55,6 @@ map("n", "<leader>td", function()
     end
   end)
 end, { desc = "Run Command in All Tabs" })
-
-map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "New Buffer" })
-map("n", "<leader>bl", "<cmd>bnext<cr>", { desc = "Next Buffer" })        -- :bnext
-map("n", "<leader>bh", "<cmd>bprevious<cr>", { desc = "Previous Buffer" }) -- :bprevious
-map("n", "<leader>bm", "<cmd>bmodified<cr>", { desc = "Next Modified Buffer" }) -- :bmodified
-map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete Buffer" })     -- :bdelete
-
-
-
-
--- why does it copy when i wanna delete?
-map({'n', 'x'}, 'c', '"_c')
-map({'n', 'x'}, 'x', '"_x')
-map({'n', 'x'}, 'X', '"_d')
 
 
 -- Misc.
