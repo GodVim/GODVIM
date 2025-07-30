@@ -32,11 +32,8 @@ return {
 --    dependencies = "nvim-tree/nvim-web-devicons",
 --    opts = {}
 --  },
-	{
-  "nanozuki/tabby.nvim",
-  opts = {},
-		event = "BufReadPost",
-},
+	
+{ "tiagovla/scope.nvim", config = true }
  
   {
     "goolord/alpha-nvim",
