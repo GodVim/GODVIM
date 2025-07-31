@@ -10,6 +10,22 @@ return {
     },
   },
 
+	 {
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-tree/nvim-web-devicons", -- optional, but recommended
+    },
+    cmd = "NeoTree",
+    keys = {
+      { "<leader>ft", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
+    },
+  }
+}
+	
   {
     "rose-pine/neovim",
     event = "VimEnter",
