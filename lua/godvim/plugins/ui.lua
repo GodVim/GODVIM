@@ -9,8 +9,7 @@ return {
       }
     },
   },
-
-	 {
+	 
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -23,8 +22,8 @@ return {
     keys = {
       { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
     },
-  }
-}
+  },
+
 	
   {
     "rose-pine/neovim",
