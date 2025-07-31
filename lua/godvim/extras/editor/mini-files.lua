@@ -1,4 +1,4 @@
-return {
+return {{
   "echasnovski/mini.files",
   cmd = "MiniFiles",
   dependencies = {
@@ -9,4 +9,7 @@ return {
   },
   version = false,
   opts = {},
-}
+},{
+    enabled = false,
+    "nvim-neo-tree/neo-tree.nvim",
+}}
